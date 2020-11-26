@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace Bid_A_Car_Project.Models
 {
     public class SaleContext : DbContext
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual  DbSet<ImagesVehicle> ImagesVehicles { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,7 +23,7 @@ namespace WebApplication1.Models
                     "server=localhost;" +
                     "port=3306;" +
                     "user=root;" +
-                    "database=Test_Capstone;";
+                    "database=Bid_A_Car_Capstone_Project;";
                 string version = "10.4.14-MariaDB";
 
                 optionsBuilder.UseMySql(connection, x => x.ServerVersion(version));
@@ -147,7 +148,7 @@ namespace WebApplication1.Models
                 .HasConstraintName(keyTransaction);
 
             });
-            modelBuilder.Entity<ImagesVehicles>(entity =>
+            modelBuilder.Entity<ImagesVehicle>(entity =>
             {
 
 

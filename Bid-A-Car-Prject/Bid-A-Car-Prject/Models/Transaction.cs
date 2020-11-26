@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace Bid_A_Car_Project.Models
 {
     [Table("Transaction")]
     public class Transaction

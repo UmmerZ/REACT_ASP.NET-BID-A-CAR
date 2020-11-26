@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -6,9 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace Bid_A_Car_Project.Models
 { [Table("Images")]
-    public class ImagesVehicles
+    public class ImagesVehicle
     {
         [Key]
         [Column(TypeName = "int(10)")]

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication1.Models
+namespace Bid_A_Car_Project.Models
 { [Table("Vehicle")]
     public class Vehicle
     {
@@ -43,7 +43,7 @@ namespace WebApplication1.Models
 
         public virtual User User { get; set; }
 
-        public ICollection<ImagesVehicles> Images { get; set; }
+        public ICollection<ImagesVehicle> Images { get; set; }
 
     }
 }
