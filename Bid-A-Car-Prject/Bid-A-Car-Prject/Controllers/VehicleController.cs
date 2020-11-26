@@ -41,7 +41,7 @@ namespace Bid_A_Car_Project.Controllers
             
             using (SaleContext context = new SaleContext())
             {
-
+               
                 Vehicle newListing = new Vehicle()
                 {
 
@@ -49,7 +49,7 @@ namespace Bid_A_Car_Project.Controllers
                     Make = make.Trim(),
                     Model = model.Trim(),
                     Kilometers = int.Parse(kms),
-                   Year = DateTime.Parse(year),
+                   Year = int.Parse(year),
                    Description = description.Trim(),
                    UserID = int.Parse(userID)
                    

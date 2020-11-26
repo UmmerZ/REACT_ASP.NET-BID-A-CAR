@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bid_A_Car_Prject.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    [Migration("20201126020202_IntialMigration")]
+    [Migration("20201126025442_IntialMigration")]
     partial class IntialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,9 +130,8 @@ namespace Bid_A_Car_Prject.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
 
-                    b.Property<string>("Kilometers")
-                        .IsRequired()
-                        .HasColumnType("varchar(60)");
+                    b.Property<int>("Kilometers")
+                        .HasColumnType("int(9)");
 
                     b.Property<string>("Make")
                         .IsRequired()
@@ -147,9 +146,8 @@ namespace Bid_A_Car_Prject.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int(10)");
 
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("varchar(6)");
+                    b.Property<int>("Year")
+                        .HasColumnType("int(6)");
 
                     b.HasKey("VehicleID");
 
@@ -163,31 +161,31 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             VehicleID = -1,
                             Description = "The cat is in mint condition, Lady Driven ",
-                            Kilometers = "3000",
+                            Kilometers = 3000,
                             Make = "BMW",
                             Model = "X5",
                             UserID = -2,
-                            Year = "2013-11-25 00:00:00"
+                            Year = 2014
                         },
                         new
                         {
                             VehicleID = -2,
                             Description = "3 year old drives like brand new ",
-                            Kilometers = "13000",
+                            Kilometers = 13000,
                             Make = "AUDI",
                             Model = "Q5",
                             UserID = -1,
-                            Year = "2017-11-25 00:00:00"
+                            Year = 2012
                         },
                         new
                         {
                             VehicleID = -3,
                             Description = "Trick runs smooth Dont need it any more ",
-                            Kilometers = "33000",
+                            Kilometers = 33000,
                             Make = "Ford",
                             Model = "F150",
                             UserID = -3,
-                            Year = "2018-11-25 00:00:00"
+                            Year = 2018
                         });
                 });
 

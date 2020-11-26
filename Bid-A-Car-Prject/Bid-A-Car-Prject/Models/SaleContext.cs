@@ -104,7 +104,7 @@ namespace Bid_A_Car_Project.Models
                         Make = "BMW",
                         Model = "X5",
                         Kilometers = 3000,
-                        Year = new DateTime(2013, 11, 25),
+                        Year = 2014,
                         Description = "The cat is in mint condition, Lady Driven ",
                         UserID = -2
                     },
@@ -114,7 +114,7 @@ namespace Bid_A_Car_Project.Models
                         Make = "AUDI",
                         Model = "Q5",
                         Kilometers = 13000,
-                        Year = new DateTime(2017, 11, 25),
+                        Year = 2012,
                         Description = "3 year old drives like brand new ",
                         UserID = -1
                     },
@@ -124,7 +124,7 @@ namespace Bid_A_Car_Project.Models
                         Make = "Ford",
                         Model = "F150",
                         Kilometers = 33000,
-                        Year = new DateTime(2018, 11, 25),
+                        Year = 2018,
                         Description = "Trick runs smooth Dont need it any more ",
                         UserID = -3
                     }

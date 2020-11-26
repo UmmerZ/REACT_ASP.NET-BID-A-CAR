@@ -20,7 +20,7 @@ function CreateListing(props) {
             case "id":
                 setID(event.target.value);
                 break;
-            case "name":
+            case "make":
                 setMake(event.target.value);
                 break;
             case "model":
@@ -86,25 +86,25 @@ function CreateListing(props) {
                 <label htmlFor="id">Listing ID</label>
                 <input class="form-control"  id="id" type="number" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="quantity">UserID</label>
+                <label htmlFor="userID">UserID</label>
                 <input class="form-control" id="userID" type="number" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="name">Make</label>
+                <label htmlFor="make">Make</label>
                 <input class="form-control" id="make" type="text" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="quantity">Model</label>
+                <label htmlFor="model">Model</label>
                 <input class="form-control"  id="model" type="text" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="quantity">Odometer</label>
+                <label htmlFor="kms">Odometer</label>
                 <input class="form-control" id="kms" type="number" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="quantity">Year </label>
+                <label htmlFor="year">Year </label>
                 <input class="form-control" id="year" type="number" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="quantity">Description </label>
+                <label htmlFor="description">Description </label>
                 <textarea class="form-control" id="description" type="text" onChange={handleFieldChange} />
                 <br/>
-                <input class="btn btn-primary"type="submit" value="Submit!" />
+                <input class="btn btn-primary"type="submit" value="Submit" />
             </form>
         </div>
     );

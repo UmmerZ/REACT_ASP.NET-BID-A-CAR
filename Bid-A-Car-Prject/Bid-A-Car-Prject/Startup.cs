@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 
 namespace Bid_A_Car_Prject
 {
@@ -28,6 +29,13 @@ namespace Bid_A_Car_Prject
             {
                 configuration.RootPath = "ClientApp/build";
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Policy1", builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000").WithMethods("POST", "GET", "PUT", "DELETE").WithHeaders(HeaderNames.ContentType);
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +51,7 @@ namespace Bid_A_Car_Prject
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors("Policy1");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

@@ -57,8 +57,8 @@ namespace Bid_A_Car_Prject.Migrations
                     Model = table.Column<string>(type: "varchar(60)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_general_ci"),
-                    Kilometers = table.Column<string>(type: "varchar(60)", nullable: false),
-                    Year = table.Column<string>(type: "varchar(6)", nullable: false),
+                    Kilometers = table.Column<int>(type: "int(9)", nullable: false),
+                    Year = table.Column<int>(type: "int(6)", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", nullable: true),
                     UserID = table.Column<int>(type: "int(10)", nullable: false)
                 },
@@ -111,17 +111,17 @@ namespace Bid_A_Car_Prject.Migrations
             migrationBuilder.InsertData(
                 table: "Vehicle",
                 columns: new[] { "VehicleID", "Description", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -2, "3 year old drives like brand new ", "13000", "AUDI", "Q5", -1, "2017-11-25 00:00:00" });
+                values: new object[] { -2, "3 year old drives like brand new ", 13000, "AUDI", "Q5", -1, 2012 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
                 columns: new[] { "VehicleID", "Description", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", "3000", "BMW", "X5", -2, "2013-11-25 00:00:00" });
+                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", 3000, "BMW", "X5", -2, 2014 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
                 columns: new[] { "VehicleID", "Description", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -3, "Trick runs smooth Dont need it any more ", "33000", "Ford", "F150", -3, "2018-11-25 00:00:00" });
+                values: new object[] { -3, "Trick runs smooth Dont need it any more ", 33000, "Ford", "F150", -3, 2018 });
 
             migrationBuilder.CreateIndex(
                 name: "FK_ImagesVehicles_Vehicle",

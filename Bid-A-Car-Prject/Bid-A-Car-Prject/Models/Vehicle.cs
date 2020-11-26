@@ -25,12 +25,12 @@ namespace Bid_A_Car_Project.Models
         public string Model { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(60)")]
+        [Column(TypeName = "int(9)")]
         public int Kilometers { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(6)")]
-        public DateTime Year { get; set; }
+        [Column(TypeName = "int(6)")]
+        public int Year { get; set; }
 
         [Column(TypeName = "varchar(500)")]
         public string Description { get; set; }
