@@ -35,22 +35,7 @@ namespace Bid_A_Car_Project.Controllers
 
             return result;
         }
-        //public IActionResult Create(string id, string make, string model, string kms, string year, string description, string userID)
-        //{
-
-        //    try
-        //    {
-        //        CreateListing(id, make, model, kms, year, description, userID);
-        //        ViewBag.Message = $"Product Created";
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        ViewBag.Error = e;
-        //        ViewBag.Message = $"Error with Validation:  {e.Message}";
-        //    }
-
-        //    return View();
-        //}
+       
         public Vehicle CreateListing(string id, string make, string model, string kms, string year, string description, string userID)
         {
             
