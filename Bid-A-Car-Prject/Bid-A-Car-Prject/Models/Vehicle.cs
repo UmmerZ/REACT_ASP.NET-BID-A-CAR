@@ -43,7 +43,7 @@ namespace WebApplication1.Models
 
         public virtual User User { get; set; }
 
-        public ICollection<Image> Images { get; set; }
+        public ICollection<ImagesVehicles> Images { get; set; }
 
     }
 }
