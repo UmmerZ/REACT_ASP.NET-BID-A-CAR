@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -38,12 +39,17 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "int(10)")]
        public int UserID { get; set; }
 
+        [Required]
+        [NotMapped]
+        [Column(TypeName = "Vehicle Image")]
+        public IFormFile CarImage { get; set; }
+
         [ForeignKey(nameof(UserID))]
         [InverseProperty(nameof(Models.User.Vehicles))]
 
         public virtual User User { get; set; }
 
-        public ICollection<ImagesVehicle> Images { get; set; }
+        
 
     }
 }

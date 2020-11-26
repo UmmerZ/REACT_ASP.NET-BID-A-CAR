@@ -11,7 +11,7 @@ namespace Bid_A_Car_Project.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual  DbSet<ImagesVehicle> ImagesVehicles { get; set; }
+       
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -148,23 +148,7 @@ namespace Bid_A_Car_Project.Models
                 .HasConstraintName(keyTransaction);
 
             });
-            modelBuilder.Entity<ImagesVehicle>(entity =>
-            {
-
-
-                string keyImage = "FK_" + nameof(ImagesVehicles) +
-                    "_" + nameof(Vehicle);
-
-                entity.HasIndex(e => e.VehicleID)
-                .HasName(keyImage);
-
-                entity.HasOne(thisEntity => thisEntity.Vehicle)
-                .WithMany(parent => parent.Images)
-                .HasForeignKey(thisEntity => thisEntity.VehicleID)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName(keyImage);
-
-            });
+           
         }
 
         }
