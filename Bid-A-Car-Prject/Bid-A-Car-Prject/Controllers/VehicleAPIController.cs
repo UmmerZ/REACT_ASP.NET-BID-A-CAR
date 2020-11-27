@@ -32,12 +32,12 @@ namespace Bid_A_Car_Project.Controllers
             return result;
         }
         [HttpPost("Create")]
-        public ActionResult<Vehicle> ProductCreate_POST(string id, string make, string model, string kms, string year, string description, string userID)
+        public ActionResult<Vehicle> ProductCreate_POST(string id, string make, string model, string kms, string year, string description, string userID, List<IFormFile> files)
         {
             ActionResult<Vehicle> result;
             try
             {
-                result = new VehicleController().CreateListing(id, make, model, kms, year, description, userID);
+                result = new VehicleController().CreateListing(id, make, model, kms, year, description, userID, files);
             }
 
             catch (Exception e)
@@ -46,6 +46,13 @@ namespace Bid_A_Car_Project.Controllers
             }
             return result;
 
+        }
+
+        [HttpPost("ImageUpload")]
+        public Task<List<string>> Upload(string title, List<IFormFile> files)
+        {
+            Console.WriteLine(title);
+            return new VehicleController().UploadFile(title, files);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Bid_A_Car_Prject.Models;
+﻿using Bid_A_Car_Project.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Bid_A_Car_Prject.Controllers
+namespace Bid_A_Car_Project.Controllers
 {
     [Route("api/file")]
     [ApiController]

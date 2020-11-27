@@ -2,14 +2,16 @@
 using Bid_A_Car_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bid_A_Car_Prject.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    partial class SaleContextModelSnapshot : ModelSnapshot
+    [Migration("20201127062730_InseretedNewImagesTable")]
+    partial class InseretedNewImagesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

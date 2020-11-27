@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Bid_A_Car_Project.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace Bid_A_Car_Prject.Models
+namespace Bid_A_Car_Project.Models
 {[Table("FileModel")]
     public class FileModel
     {
@@ -21,8 +21,8 @@ namespace Bid_A_Car_Prject.Models
         [Column(TypeName = "varchar(100)")]
         public string FileName { get; set; }
 
-
-        public ICollection<IFormFile> FormFile { get; set; }
+      
+      
 
         [Column(TypeName = "int(10)")]
         public int VehicleID { get; set; }

@@ -1,4 +1,4 @@
-﻿using Bid_A_Car_Prject.Models;
+﻿using Bid_A_Car_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -150,7 +150,24 @@ namespace Bid_A_Car_Project.Models
                 .HasConstraintName(keyTransaction);
 
             });
-           
+
+            modelBuilder.Entity<FileModel>(entity =>
+            {
+
+
+                string keyImage = "FK_" + nameof(FileModel) +
+                    "_" + nameof(Vehicle);
+
+                entity.HasIndex(e => e.VehicleID)
+                .HasName(keyImage);
+
+                entity.HasOne(thisEntity => thisEntity.Vehicle)
+                .WithMany(parent => parent.FileModels)
+                .HasForeignKey(thisEntity => thisEntity.VehicleID)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName(keyImage);
+
+            });
         }
 
         }

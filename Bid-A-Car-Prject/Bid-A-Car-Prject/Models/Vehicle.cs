@@ -1,4 +1,4 @@
-﻿using Bid_A_Car_Prject.Models;
+﻿using Bid_A_Car_Project.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -22,6 +22,7 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VehicleID { get; set; }
+        [InverseProperty(nameof(FileModel.Vehicle))]
 
         [Required]
         [Column(TypeName = "varchar(60)")]
@@ -44,14 +45,14 @@ namespace Bid_A_Car_Project.Models
 
         [Column(TypeName = "int(10)")]
        public int UserID { get; set; }
-
+        public virtual ICollection<FileModel> FileModels { get; set; }
 
         [ForeignKey(nameof(UserID))]
         [InverseProperty(nameof(Models.User.Vehicles))]
 
          public virtual User User { get; set; }
 
-        public virtual ICollection<FileModel> FileModels { get; set; }
+    
 
 
 
