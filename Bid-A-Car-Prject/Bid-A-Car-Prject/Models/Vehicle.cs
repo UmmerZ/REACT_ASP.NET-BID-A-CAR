@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bid_A_Car_Prject.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,8 +11,13 @@ namespace Bid_A_Car_Project.Models
 { [Table("Vehicle")]
     public class Vehicle
     {
+      public Vehicle()
+        {
+            FileModels = new HashSet<FileModel>();
+        }
 
-        
+
+
         [Key]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -39,17 +45,18 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "int(10)")]
        public int UserID { get; set; }
 
-        [Required]
-        [NotMapped]
-        [Column(TypeName = "Vehicle Image")]
-        public IFormFile CarImage { get; set; }
 
         [ForeignKey(nameof(UserID))]
         [InverseProperty(nameof(Models.User.Vehicles))]
 
-        public virtual User User { get; set; }
+         public virtual User User { get; set; }
 
-        
+        public virtual ICollection<FileModel> FileModels { get; set; }
+
+
+
+
+
 
     }
 }

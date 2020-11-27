@@ -3,25 +3,21 @@ import axios from "axios";
 
 export const FileUpload = () => {
     const [file, setFile] = useState();
-    const [imageID, setImageID] = useState();
-    const [userID, setUserID] = useState();
-    const [imageName, setImageName] = useState();
+    const [fileName, setFileName] = useState();
 
     const saveFile = (e) => {
         console.log(e.target.files[0]);
         setFile(e.target.files[0]);
-        //setImageID(e.target.files[0].id);
-        setImageName(e.target.files[0].name);
-        //setUserID(e.target.files[0].userID);
+     
+        setFileName(e.target.files[0].name);
+        
     };
 
     const uploadFile = async (e) => {
         console.log(file);
         const formData = new FormData();
-        formData.append("ImageFile", file);
-        //formData.append("UserID", userID);
-        //formData.append("ImageID", imageID);
-        formData.append("ImageName", imageName);
+        formData.append("formFile", file);
+        formData.append("fileName", fileName);
 
         try {
             const res = await axios.post("https://localhost:44314/api/file", formData);

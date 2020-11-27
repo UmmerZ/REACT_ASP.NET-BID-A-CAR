@@ -77,12 +77,12 @@ function CreateListing(props) {
     }
 
     return (
-        <div>
+        <div >
             <h1>Create Listing</h1>
 
             <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
 
-            <form onSubmit={handleSubmit} class= "form-group">
+            <form onSubmit={handleSubmit} class="form-group" >
                 <label htmlFor="id">Listing ID</label>
                 <input class="form-control"  id="id" type="number" onChange={handleFieldChange} />
                 <br />
@@ -103,7 +103,12 @@ function CreateListing(props) {
                 <br />
                 <label htmlFor="description">Description </label>
                 <textarea class="form-control" id="description" type="text" onChange={handleFieldChange} />
-                <br/>
+                <br />
+                <div class="custom-file">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                    <input type="file" class="custom-file-input" id="customFile"/>
+                </div>
+                <br />
                 <input class="btn btn-primary"type="submit" value="Submit" />
             </form>
         </div>
