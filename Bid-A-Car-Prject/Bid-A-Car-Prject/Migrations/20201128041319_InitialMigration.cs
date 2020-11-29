@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bid_A_Car_Prject.Migrations
 {
-    public partial class IntialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,7 +60,8 @@ namespace Bid_A_Car_Prject.Migrations
                     Kilometers = table.Column<int>(type: "int(9)", nullable: false),
                     Year = table.Column<int>(type: "int(6)", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", nullable: true),
-                    UserID = table.Column<int>(type: "int(10)", nullable: false)
+                    UserID = table.Column<int>(type: "int(10)", nullable: false),
+                    ImageName = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,26 +72,6 @@ namespace Bid_A_Car_Prject.Migrations
                         principalTable: "User",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    ImageID = table.Column<int>(type: "int(10)", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ImageName = table.Column<string>(type: "varchar(100)", nullable: true),
-                    VehicleID = table.Column<int>(type: "int(10)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.ImageID);
-                    table.ForeignKey(
-                        name: "FK_ImagesVehicles_Vehicle",
-                        column: x => x.VehicleID,
-                        principalTable: "Vehicle",
-                        principalColumn: "VehicleID",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -110,23 +91,18 @@ namespace Bid_A_Car_Prject.Migrations
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "VehicleID", "Description", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -2, "3 year old drives like brand new ", 13000, "AUDI", "Q5", -1, 2012 });
+                columns: new[] { "VehicleID", "Description", "ImageName", "Kilometers", "Make", "Model", "UserID", "Year" },
+                values: new object[] { -2, "3 year old drives like brand new ", null, 13000, "AUDI", "Q5", -1, 2012 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "VehicleID", "Description", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", 3000, "BMW", "X5", -2, 2014 });
+                columns: new[] { "VehicleID", "Description", "ImageName", "Kilometers", "Make", "Model", "UserID", "Year" },
+                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", null, 3000, "BMW", "X5", -2, 2014 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "VehicleID", "Description", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -3, "Trick runs smooth Dont need it any more ", 33000, "Ford", "F150", -3, 2018 });
-
-            migrationBuilder.CreateIndex(
-                name: "FK_ImagesVehicles_Vehicle",
-                table: "Images",
-                column: "VehicleID");
+                columns: new[] { "VehicleID", "Description", "ImageName", "Kilometers", "Make", "Model", "UserID", "Year" },
+                values: new object[] { -3, "Trick runs smooth Dont need it any more ", null, 33000, "Ford", "F150", -3, 2018 });
 
             migrationBuilder.CreateIndex(
                 name: "FK_Transaction_User",
@@ -141,9 +117,6 @@ namespace Bid_A_Car_Prject.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Images");
-
             migrationBuilder.DropTable(
                 name: "Transaction");
 

@@ -3,7 +3,7 @@
 
 //export const FileUpload = () => {
 //    const [file, setFile] = useState();
-//    const [fileName, setFileName] = useState();
+//    const [filePath, setFileName] = useState();
 
 //    const saveFile = (e) => {
 //        console.log(e.target.files[0]);
@@ -17,10 +17,10 @@
 //        console.log(file);
 //        const formData = new FormData();
 //        formData.append("formFile", file);
-//        formData.append("fileName", fileName);
+//        formData.append("fileName", filePath);
 
 //        try {
-//            const res = await axios.post("https://localhost:44314/VehicleApi/ImageUpload/file", formData);
+//            const res = await axios.post("https://localhost:44314/api/file", formData);
 //            console.log(res);
 
 //        } catch (ex) {

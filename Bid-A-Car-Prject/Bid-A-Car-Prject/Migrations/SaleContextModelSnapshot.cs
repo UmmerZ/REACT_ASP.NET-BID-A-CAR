@@ -16,27 +16,6 @@ namespace Bid_A_Car_Prject.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Bid_A_Car_Project.Models.FileModel", b =>
-                {
-                    b.Property<int>("FileID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int(10)");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<int>("VehicleID")
-                        .HasColumnType("int(10)");
-
-                    b.HasKey("FileID");
-
-                    b.HasIndex("VehicleID")
-                        .HasName("FK_FileModel_Vehicle");
-
-                    b.ToTable("FileModel");
-                });
-
             modelBuilder.Entity("Bid_A_Car_Project.Models.Transaction", b =>
                 {
                     b.Property<int>("TransactionID")
@@ -129,6 +108,13 @@ namespace Bid_A_Car_Prject.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("varchar(300)");
+
+                    b.Property<string>("IsSold")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
+
                     b.Property<int>("Kilometers")
                         .HasColumnType("int(9)");
 
@@ -160,6 +146,8 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             VehicleID = -1,
                             Description = "The cat is in mint condition, Lady Driven ",
+                            ImageUrl = "wwwroot/bmwx5.jpg",
+                            IsSold = "0",
                             Kilometers = 3000,
                             Make = "BMW",
                             Model = "X5",
@@ -170,6 +158,8 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             VehicleID = -2,
                             Description = "3 year old drives like brand new ",
+                            ImageUrl = "wwwroot/audiq5.jpg",
+                            IsSold = "0",
                             Kilometers = 13000,
                             Make = "AUDI",
                             Model = "Q5",
@@ -180,22 +170,14 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             VehicleID = -3,
                             Description = "Trick runs smooth Dont need it any more ",
+                            ImageUrl = "wwwroot/fordf150.jpg",
+                            IsSold = "0",
                             Kilometers = 33000,
                             Make = "Ford",
                             Model = "F150",
                             UserID = -3,
                             Year = 2018
                         });
-                });
-
-            modelBuilder.Entity("Bid_A_Car_Project.Models.FileModel", b =>
-                {
-                    b.HasOne("Bid_A_Car_Project.Models.Vehicle", "Vehicle")
-                        .WithMany("FileModels")
-                        .HasForeignKey("VehicleID")
-                        .HasConstraintName("FK_FileModel_Vehicle")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Bid_A_Car_Project.Models.Transaction", b =>

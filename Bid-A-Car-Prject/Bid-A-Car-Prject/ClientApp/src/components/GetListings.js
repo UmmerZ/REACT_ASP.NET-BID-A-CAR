@@ -23,7 +23,7 @@ function GetListings(props) {
                 <tbody>
                     {vehicles.map(product =>
                         <tr key={product.id}>
-                            <td>{product.id}</td>
+                            <td>{product.customFile}</td>
                             <td>{product.make}</td>
                             <td>{product.model}</td>
 

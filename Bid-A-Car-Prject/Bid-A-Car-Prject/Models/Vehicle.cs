@@ -11,10 +11,7 @@ namespace Bid_A_Car_Project.Models
 { [Table("Vehicle")]
     public class Vehicle
     {
-      public Vehicle()
-        {
-            FileModels = new HashSet<FileModel>();
-        }
+      
 
 
 
@@ -22,7 +19,7 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VehicleID { get; set; }
-        [InverseProperty(nameof(FileModel.Vehicle))]
+        
 
         [Required]
         [Column(TypeName = "varchar(60)")]
@@ -45,7 +42,16 @@ namespace Bid_A_Car_Project.Models
 
         [Column(TypeName = "int(10)")]
        public int UserID { get; set; }
-        public virtual ICollection<FileModel> FileModels { get; set; }
+
+        [Column(TypeName = "varchar(300)")]
+        public string ImageUrl{ get; set; }
+
+        [Column(TypeName = "varchar(5)")]
+        public bool IsSold { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+        
 
         [ForeignKey(nameof(UserID))]
         [InverseProperty(nameof(Models.User.Vehicles))]

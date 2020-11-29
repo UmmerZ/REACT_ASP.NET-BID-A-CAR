@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bid_A_Car_Prject.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    [Migration("20201126071954_RemovedImagesTable")]
-    partial class RemovedImagesTable
+    [Migration("20201128041319_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Bid_A_Car_Project.Models.Transaction", b =>
@@ -109,6 +109,9 @@ namespace Bid_A_Car_Prject.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("Kilometers")
                         .HasColumnType("int(9)");

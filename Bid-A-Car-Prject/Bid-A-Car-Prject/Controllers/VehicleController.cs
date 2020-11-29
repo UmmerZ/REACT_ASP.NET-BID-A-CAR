@@ -1,6 +1,8 @@
 ﻿using Bid_A_Car_Project.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +14,17 @@ namespace Bid_A_Car_Project.Controllers
 {
     public class VehicleController : Controller
     {
+        
+        //private readonly IWebHostEnvironment _hostingEnv;
+        //private readonly SaleContext _context;
+
+     
+        //public VehicleController(SaleContext context, IWebHostEnvironment hostingEnv)
+        //{
+        //    _hostingEnv = hostingEnv;
+        //    _context = context;
+        //}
+
         public IActionResult Index()
         {
             return View();
@@ -38,12 +51,15 @@ namespace Bid_A_Car_Project.Controllers
             return result;
         }
        
-        public Vehicle CreateListing(string id, string make, string model, string kms, string year, string description, string userID, List<IFormFile> files)
+        public  ActionResult<Vehicle> CreateListing(string id, string make, string model, string kms, string year, string description, string userID, bool issold)
         {
-            
+
+            //string imageCopy = SaveImage(imageFile).ToString();
+
             using (SaleContext context = new SaleContext())
             {
-               
+
+
                 Vehicle newListing = new Vehicle()
                 {
 
@@ -51,50 +67,80 @@ namespace Bid_A_Car_Project.Controllers
                     Make = make.Trim(),
                     Model = model.Trim(),
                     Kilometers = int.Parse(kms),
-                   Year = int.Parse(year),
-                   Description = description.Trim(),
-                   UserID = int.Parse(userID)
+                    Year = int.Parse(year),
+                    Description = description.Trim(),
+                    UserID = int.Parse(userID),
+                    IsSold = false,
                    
+                   
+               
+                  
 
                 };
+               
                 context.Vehicles.Add(newListing);
-                context.SaveChanges();
-                return newListing;
+                 context.SaveChanges();
+                return (newListing);
             }
         }
-        public  async Task<List<String>>UploadFile(string title, List<IFormFile> file)
+
+
+
+        //public async Task  SaveImage(IFormFile imageFile)
+        //{
             
-        {
-            var files = new List<string>();
-            foreach (var imgFIle in file)
-            {
-                string fileName = Path.GetFileName(imgFIle.FileName);
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileName);
-                files.Add(fileName);
-                using (Stream stream = new FileStream(path, FileMode.Create))
-                {
-                    await imgFIle.CopyToAsync(stream);
-                }
-            }
-            AddImageFileToDatabase(files);
-            return files;
-        }
-        public void AddImageFileToDatabase(List<string> names)
-        {
-            using (SaleContext context = new SaleContext())
-            {
-                foreach (var name in names)
-                {
-                    FileModel newImage = new FileModel()
-                    {
-                        FileName = name,
-                        VehicleID = -1
-                    };
-                    context.Add(newImage);
-                    context.SaveChanges();
-                }
-            }
-        }
+
+        //    if (imageFile.Length > 0)
+        //        {
+        //            string imageName = Path.GetFileName(imageFile.FileName);
+        //            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
+        //            string imagePath = Path.Combine(_hostingEnv.WebRootPath, "wwwroot", imageName);
+
+        //            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+        //            {
+        //                await imageFile.CopyToAsync(fileStream);
+        //            }
+              
+                    
+                    
+                    
+                    
+        //    }
+            
+        //}
+        //public async Task<List<String>> UploadFile(string title, List<IFormFile> file)
+
+        //{
+        //    var imgFiles = new List<string>();
+        //    foreach (var imgFile in file)
+        //    {
+        //        string fileName = Path.GetFileName(imgFile.FileName);
+        //        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileName);
+        //        imgFiles.Add(fileName);
+        //        using (Stream stream = new FileStream(path, FileMode.Create))
+        //        {
+        //            await imgFile.CopyToAsync(stream);
+        //        }
+        //    }
+        //    AddImageFileToDatabase(imgFiles);
+        //    return imgFiles;
+        //}
+        //public void AddImageFileToDatabase(List<string> names)
+        //{
+        //    using (SaleContext context = new SaleContext())
+        //    {
+        //        foreach (var path in names)
+        //        {
+        //            FileModel newImage = new FileModel()
+        //            {
+        //                FilePath =path,
+        //                VehicleID = -1
+        //            };
+        //            context.Add(newImage);
+        //            context.SaveChanges();
+        //        }
+        //    }
+        //}
 
         public List<Vehicle> GetListings()
         {

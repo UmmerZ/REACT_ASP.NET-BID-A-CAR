@@ -12,7 +12,8 @@ function CreateListing(props) {
     const [year, setYear] = useState("");
     const [description, setDescription] = useState("");
     const [userID, setUserID] = useState("");
-    const [customFile, setCustomFile] = ("");
+    const [image, setImages] = useState("");
+    const [imageName, setImageName] = useState("");
 
     const [waiting, setWaiting] = useState(false);
 
@@ -39,8 +40,11 @@ function CreateListing(props) {
             case "userID":
                 setUserID(event.target.value);
                 break;
-            case "customFile":
-                setCustomFile(event.target.value);
+            case "image":
+                setImages(event.target.value);
+                break;
+            case "imageName":
+                setImageName(event.target.value);
                 break;
         }
     }
@@ -49,7 +53,7 @@ function CreateListing(props) {
         event.preventDefault();
         setWaiting(true);
         const formData = new FormData();
-        formData.append('files', customFile);
+        formData.append('image', setImages);
 
         axios(
             {
@@ -65,6 +69,8 @@ function CreateListing(props) {
                     year: year,
                     description: description,
                     userID: userID,
+                    imageName: imageName,
+                    image: image
 
 
                 }
@@ -114,7 +120,7 @@ function CreateListing(props) {
                 <br />
                 <div class="custom-file">
                     <label class="custom-file-label" for="customFile">Choose file</label>
-                    <input type="file" class="custom-file-input" id="customFile" onChange={handleFieldChange} accept="image/*"/>
+                    <input type="file" class="custom-file-input" id="image" onChange={handleFieldChange} accept="image/*"/>
                 </div>
                 <br />
                 <input class="btn btn-primary"type="submit" value="Submit" />

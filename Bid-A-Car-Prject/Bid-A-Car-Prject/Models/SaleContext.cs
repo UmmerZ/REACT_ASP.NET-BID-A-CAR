@@ -12,7 +12,7 @@ namespace Bid_A_Car_Project.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<FileModel> FileModels { get; set; }
+    
 
 
 
@@ -108,7 +108,9 @@ namespace Bid_A_Car_Project.Models
                         Kilometers = 3000,
                         Year = 2014,
                         Description = "The cat is in mint condition, Lady Driven ",
-                        UserID = -2
+                        UserID = -2,
+                       IsSold = false,
+                       ImageUrl = "wwwroot/bmwx5.jpg"
                     },
                     new Vehicle()
                     {
@@ -118,7 +120,9 @@ namespace Bid_A_Car_Project.Models
                         Kilometers = 13000,
                         Year = 2012,
                         Description = "3 year old drives like brand new ",
-                        UserID = -1
+                        UserID = -1,
+                         IsSold = false,
+                        ImageUrl = "wwwroot/audiq5.jpg"
                     },
                     new Vehicle()
                     {
@@ -128,9 +132,11 @@ namespace Bid_A_Car_Project.Models
                         Kilometers = 33000,
                         Year = 2018,
                         Description = "Trick runs smooth Dont need it any more ",
-                        UserID = -3
+                        UserID = -3,
+                         IsSold = false,
+                        ImageUrl = "wwwroot/fordf150.jpg"
                     }
-                    );
+                    ) ;
             });
 
             modelBuilder.Entity<Transaction>(entity =>
@@ -151,23 +157,9 @@ namespace Bid_A_Car_Project.Models
 
             });
 
-            modelBuilder.Entity<FileModel>(entity =>
-            {
+            
 
 
-                string keyImage = "FK_" + nameof(FileModel) +
-                    "_" + nameof(Vehicle);
-
-                entity.HasIndex(e => e.VehicleID)
-                .HasName(keyImage);
-
-                entity.HasOne(thisEntity => thisEntity.Vehicle)
-                .WithMany(parent => parent.FileModels)
-                .HasForeignKey(thisEntity => thisEntity.VehicleID)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName(keyImage);
-
-            });
         }
 
         }
