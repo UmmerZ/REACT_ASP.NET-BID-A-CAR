@@ -8,24 +8,24 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 
 namespace Bid_A_Car_Project.Controllers
 {
 
-    [Route("[controller]")]
-       [ApiController]
+  
     public class VehicleController : Controller
     {
-        //private readonly IWebHostEnvironment _webHostEnvironment;
-        //    private readonly SaleContext _context;
-        //    public VehicleController (SaleContext dbContext, IWebHostEnvironment webHostEnvironment)
-        //{
-        //    _context = dbContext;
-        //    _webHostEnvironment = webHostEnvironment;
+    //    private readonly IWebHostEnvironment _webHostEnvironment;
+    //    private readonly SaleContext _context;
+    //    public VehicleController( SaleContext context, IWebHostEnvironment webHostEnvironment)
+    //    {
 
-        //}
+    //        _webHostEnvironment = webHostEnvironment;
+    //        _context = context;
+    //    }
 
         public IActionResult Index()
         {
@@ -58,63 +58,76 @@ namespace Bid_A_Car_Project.Controllers
         }
 
        
-      [HttpPost("Create")]
-        public async Task<IActionResult> CreateListing( [FromForm] Vehicle models)
+    
+    public Vehicle CreateListing(string vehicleID, string make, string model, string kilometers, string year, string description, string userID, string price )
+    {
+        
+
+        using (SaleContext context = new SaleContext())
         {
-            models.ImageUrl = await UploadedFile(models.ImageFile);
-
-            using (SaleContext context = new SaleContext())
+            Vehicle newListing = new Vehicle()
             {
-                Vehicle newListing = new Vehicle
-                {
 
-                    VehicleID = models.VehicleID,
-                    Make = models.Make,
-                    Model = models.Model,
-                    Kilometers = models.Kilometers,
-                    Year = models.Year,
-                    Description = models.Description,
-                    UserID = models.UserID,
-                    IsSold = false,
-                    ImageUrl = models.ImageUrl
+                VehicleID = int.Parse(vehicleID),
+                Make = make.Trim(),
+                Model = model.Trim(),
+                Kilometers = int.Parse(kilometers),
+                Year = int.Parse(kilometers),
+                Description = description.Trim(),
+                UserID = int.Parse(kilometers),
+                IsSold = false,
+                ImageUrl = null,
+                Price = int.Parse(price)
 
-                };
-                context.Vehicles.Add(models);
-                await context.SaveChangesAsync();
-
-            }    
-            return StatusCode(201);
+            };
+            context.Vehicles.Add(newListing);
+             context.SaveChangesAsync();
+            return newListing;
         }
+        
+    }
+    //    public async Task<IActionResult> UploadImage(Vehicle models, IFormFile file)
+    //    {
+    //        if (ModelState.IsValid)
+    //        {
+    //            var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+    //            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
+    //            using (Stream stream = new FileStream(path, FileMode.Create))
+    //            {
+    //                await file.CopyToAsync(stream);
+    //            }
+    //            models.ImageUrl= filename;
+    //            _context.Add(models);
+    //            _context.SaveChanges();
+    //        }
+
+    //        return RedirectToAction("Index");
+    //    }
 
 
 
 
 
- [NonAction]
-        public async Task<string> UploadedFile(IFormFile file)
-        {
+        //[NonAction]
+        //       public string Upload(IFormFile file)
+        //       {
+        //           var uploadDirecotroy = "wwwroot";
+        //           var uploadPath = Path.Combine(_webHostEnvironment.WebRootPath, uploadDirecotroy);
 
-            try
-            {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(fileStream);
-                }
+        //           if (!Directory.Exists(uploadPath))
+        //               Directory.CreateDirectory(uploadPath);
 
-                return uniqueFileName;
-            }
-            catch
-            {
-                throw new Exception("problem with file upload");
-            }
-               
-            
-        }
-           
-               
+        //           var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+        //           var filePath = Path.Combine(uploadPath, fileName);
+
+        //           using (var stream = file.Create(filePath))
+        //           {
+        //               file.CopyTo(stream);
+        //           }
+        //           return fileName;
+        //       }
+
+
         //public async Task<List<String>> UploadFile(string title, List<IFormFile> file)
 
         //{

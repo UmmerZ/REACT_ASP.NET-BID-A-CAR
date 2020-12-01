@@ -15,13 +15,13 @@ namespace Bid_A_Car_Project.Controllers
     [ApiController]
     public class VehicleAPIController : ControllerBase
     {
-        private readonly SaleContext dbContext;
-        private readonly IWebHostEnvironment webHostEnvironment;
-        public VehicleAPIController(SaleContext context, IWebHostEnvironment hostEnvironment)
-        {
-            dbContext = context;
-            webHostEnvironment = hostEnvironment;
-        }
+        //private readonly SaleContext _context;
+        //private readonly IWebHostEnvironment _webHostEnvironment;
+        //public VehicleAPIController(SaleContext context, IWebHostEnvironment hostEnvironment)
+        //{
+        //   _context = context;
+        //    _webHostEnvironment = hostEnvironment;
+        //}
 
         [HttpGet("All")]
         public ActionResult<IEnumerable<Vehicle>> AllVehicles_GET()
@@ -41,12 +41,12 @@ namespace Bid_A_Car_Project.Controllers
             return result;
         }
         [HttpPost("Create")]
-        public ActionResult ProductCreate_POST([FromForm] Vehicle models)
+        public ActionResult<Vehicle> ProductCreate_POST(string vehicleID, string make, string model, string kilometers, string year, string description, string userID, string price)
         {
 
             try
             {
-               new VehicleController().CreateListing(models);
+               new VehicleController().CreateListing(vehicleID, make, model, kilometers,year,description, userID, price);
             }
 
             catch (Exception e)
