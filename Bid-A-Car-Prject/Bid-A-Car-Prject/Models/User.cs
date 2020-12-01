@@ -27,7 +27,7 @@ namespace Bid_A_Car_Project.Models
 
         [Column(TypeName = "binary(100)")]
         public string Password { get; set; }
-
+        [NotMapped]
         [Column(TypeName = "int(12)")]
         public string  PhoneNumber { get; set; }
 

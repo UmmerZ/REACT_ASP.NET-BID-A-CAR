@@ -9,9 +9,20 @@ using System.Threading.Tasks;
 namespace Bid_A_Car_Prject.Controllers
 {
    
-    public class UserController : ControllerBase
+    public class UserController : Controller
     {
-        [HttpGet("All")]
+
+        public User GetUserByID(string id)
+        {
+           User userResult;
+            using (SaleContext context = new SaleContext())
+
+            {
+                userResult = context.Users.Where(x => x.ID == int.Parse(id)).Single();
+              
+            }
+            return userResult;
+        }
         public List<User> GetUsers()
         {
             List<User> userResults;
@@ -24,7 +35,7 @@ namespace Bid_A_Car_Prject.Controllers
         }
   
         
-        public User RegisterUser(string id, string name, string userName, string password, string phoneNumner, string streetAddress, string city, string postalCode)
+        public User RegisterUser(string id, string name, string userName, string password, string phoneNumber, string streetAddress, string city, string postalCode)
         {
                using (SaleContext context = new SaleContext())
             {
@@ -34,7 +45,7 @@ namespace Bid_A_Car_Prject.Controllers
                     Name = name.Trim(),
                     UserName = userName.Trim(),
                     Password = password.Trim(),
-                    PhoneNumber = phoneNumner.Trim(),
+                    PhoneNumber = phoneNumber.Trim(),
                     StreetAdress = streetAddress.Trim(),
                     City = city.Trim(),
                     PostalCode = postalCode.Trim()
