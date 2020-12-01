@@ -12,27 +12,24 @@ function GetListings(props) {
     // Build the table based on forecast data.
     function renderProductsTable(vehicles) {
         return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
-                <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {vehicles.map(product =>
-                        <tr key={product.id}>
-                            <td>{product.customFile}</td>
-                            <td>{product.make}</td>
-                            <td>{product.model}</td>
+           
+                
+            <div>
+                {vehicles.map(product => {
+                    return (
+                        <div>
+                            
+                            <img src={ product.imageUrl}/>
+                            <div>{product.make}</div>
+                            <div>{product.model}</div>
+                            <div>{product.year}</div>
+                            <div>{product.description}</div>
+                            < button class = "btn btn-success"type="submit" value="Bid">Bid</button>
+                        </div>
+                    );
 
-                        </tr>
-
-
-                    )}
-                </tbody>
-            </table>
+                } )}
+               </div>
         );
     }
 

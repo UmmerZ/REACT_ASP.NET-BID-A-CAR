@@ -24,8 +24,15 @@ namespace Bid_A_Car_Prject
         {
 
             services.AddControllersWithViews();
-            //services.AddDbContext<SaleContext>();
-           
+            services.AddDbContext<SaleContext>();
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("Policy1", builder =>
+            //    {
+            //        builder.WithOrigins("https://localhost:44314").WithMethods("POST", "GET", "PUT", "DELETE").WithHeaders(HeaderNames.ContentType);
+            //    });
+            //});
+
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -49,7 +56,7 @@ namespace Bid_A_Car_Prject
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-  
+            //app.UseCors("Policy1");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

@@ -21,19 +21,19 @@ namespace Bid_A_Car_Project.Models
         public int VehicleID { get; set; }
         
 
-        [Required]
+        
         [Column(TypeName = "varchar(60)")]
         public string Make { get; set; }
 
-        [Required]
+       
         [Column(TypeName = "varchar(60)")]
         public string Model { get; set; }
 
-        [Required]
+        
         [Column(TypeName = "int(9)")]
         public int Kilometers { get; set; }
 
-        [Required]
+        
         [Column(TypeName = "int(6)")]
         public int Year { get; set; }
 
@@ -49,7 +49,6 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "varchar(5)")]
         public bool IsSold { get; set; }
 
-        [NotMapped]
         public IFormFile ImageFile { get; set; }
         
 

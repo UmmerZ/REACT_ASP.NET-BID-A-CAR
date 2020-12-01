@@ -2,25 +2,26 @@
 import axios from 'axios';
 
 function CreateListing(props) {
-    const displayName = props.name;
+    
     const [statusCode, setStatusCode] = useState(0);
     const [response, setResponse] = useState([]);
-    const [id, setID] = useState("");
+    const [vehicleID, setVehicleID] = useState("");
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
     const [kms, setKms] = useState("");
     const [year, setYear] = useState("");
     const [description, setDescription] = useState("");
     const [userID, setUserID] = useState("");
-    const [image, setImages] = useState("");
-    const [imageName, setImageName] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [imageFile, setImageFile] = useState("");
+
 
     const [waiting, setWaiting] = useState(false);
 
     function handleFieldChange(event) {
-        switch (event.target.id) {
-            case "id":
-                setID(event.target.value);
+        switch (event.target.make) {
+            case "vehicleID":
+                setVehicleID(event.target.value);
                 break;
             case "make":
                 setMake(event.target.value);
@@ -40,12 +41,11 @@ function CreateListing(props) {
             case "userID":
                 setUserID(event.target.value);
                 break;
-            case "image":
-                setImages(event.target.value);
+            case "imageFile":
+                setImageFile(event.target.files[0]);
                 break;
-            case "imageName":
-                setImageName(event.target.value);
-                break;
+           
+            
         }
     }
 
@@ -53,24 +53,25 @@ function CreateListing(props) {
         event.preventDefault();
         setWaiting(true);
         const formData = new FormData();
-        formData.append('image', setImages);
+        formData.append('file', imageFile);
+        
 
         axios(
             {
                 method: 'post',
-                url: 'VehicleAPI/Create',
+                url: 'Vehicle/Create',
                 headers: { 'Content-Type': 'multipart/form-data' },
                 data: formData,
                 params: {
-                    id: id,
+                   vehicleID: vehicleID,
                     make: make,
                     model: model,
                     kms: kms,
                     year: year,
                     description: description,
                     userID: userID,
-                    imageName: imageName,
-                    image: image
+           
+                    
 
 
                 }
@@ -97,8 +98,8 @@ function CreateListing(props) {
             <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
 
             <form onSubmit={handleSubmit} class="form-group" >
-                <label htmlFor="id">Listing ID</label>
-                <input class="form-control"  id="id" type="number" onChange={handleFieldChange} />
+                <label htmlFor="vehicleID">Listing ID</label>
+                <input class="form-control"  id="vehicleID" type="number" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="userID">UserID</label>
                 <input class="form-control" id="userID" type="number" onChange={handleFieldChange} />
@@ -119,8 +120,8 @@ function CreateListing(props) {
                 <textarea class="form-control" id="description" type="text" onChange={handleFieldChange} />
                 <br />
                 <div class="custom-file">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
-                    <input type="file" class="custom-file-input" id="image" onChange={handleFieldChange} accept="image/*"/>
+                   <label class="custom-file-label" for="imageFile">Choose file</label>
+                    <input type="file" class="custom-file-input" id="imageFile" onChange={handleFieldChange} />
                 </div>
                 <br />
                 <input class="btn btn-primary"type="submit" value="Submit" />

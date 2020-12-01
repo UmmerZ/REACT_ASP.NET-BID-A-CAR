@@ -1,36 +1,36 @@
-//import React, { useState } from 'react';
-//import axios from "axios";
+import React, { useState } from 'react';
+import axios from "axios";
 
-//export const FileUpload = () => {
-//    const [file, setFile] = useState();
-//    const [filePath, setFileName] = useState();
+export const FileUpload = () => {
+    const [file, setFile] = useState();
+    const [filePath, setFileName] = useState();
 
-//    const saveFile = (e) => {
-//        console.log(e.target.files[0]);
-//        setFile(e.target.files[0]);
+    const saveFile = (e) => {
+        console.log(e.target.files[0]);
+        setFile(e.target.files[0]);
      
-//        setFileName(e.target.files[0].name);
+        setFileName(e.target.files[0].name);
         
-//    };
+    };
 
-//    const uploadFile = async (e) => {
-//        console.log(file);
-//        const formData = new FormData();
-//        formData.append("formFile", file);
-//        formData.append("fileName", filePath);
+    const uploadFile = async (e) => {
+        console.log(file);
+        const formData = new FormData();
+        formData.append("formFile", file);
+        formData.append("fileName", filePath);
 
-//        try {
-//            const res = await axios.post("https://localhost:44314/api/file", formData);
-//            console.log(res);
+        try {
+            const res = await axios.post("https://localhost:44314/Vehicle/Create", formData);
+            console.log(res);
 
-//        } catch (ex) {
-//            console.log(ex);
-//        }
-//    };
-//    return (
-//        <>
-//            <input type="file" onChange={saveFile} />
-//            <input type="button" value="upload" onClick={uploadFile} />
-//            </>)
-//            }
+        } catch (ex) {
+            console.log(ex);
+        }
+    };
+    return (
+        <>
+            <input type="file" onChange={saveFile} />
+            <input type="button" value="upload" onClick={uploadFile} />
+            </>)
+            }
 

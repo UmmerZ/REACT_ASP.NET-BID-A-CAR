@@ -1,4 +1,5 @@
-﻿using Bid_A_Car_Project.Models;
+﻿
+using Bid_A_Car_Project.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,13 +15,18 @@ namespace Bid_A_Car_Project.Controllers
     [ApiController]
     public class VehicleAPIController : ControllerBase
     {
-        //private SaleContext context;
-        //private IWebHostEnvironment hostingEnv;
+        private readonly SaleContext dbContext;
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public VehicleAPIController(SaleContext context, IWebHostEnvironment hostEnvironment)
+        {
+            dbContext = context;
+            webHostEnvironment = hostEnvironment;
+        }
 
         [HttpGet("All")]
         public ActionResult<IEnumerable<Vehicle>> AllVehicles_GET()
         {
-            return new  VehicleController().GetListings();
+            return new VehicleController().GetListings();
         }
 
 
@@ -35,27 +41,23 @@ namespace Bid_A_Car_Project.Controllers
             return result;
         }
         [HttpPost("Create")]
-        public  ActionResult<Vehicle> ProductCreate_POST(string id, string make, string model, string kms, string year, string description, string userID, bool issold)
+        public ActionResult ProductCreate_POST([FromForm] Vehicle models)
         {
-            ActionResult<Vehicle> result;
+
             try
             {
-                result =   new VehicleController().CreateListing(id, make, model, kms, year, description, userID, issold);
+               new VehicleController().CreateListing(models);
             }
 
             catch (Exception e)
             {
-                result = StatusCode(500, $"Unknown error occurred, please try again later.{e.Message}");
+                return StatusCode(500, $"Unknown error occurred, please try again later.{e.Message}");
             }
-            return result;
 
+           return StatusCode(StatusCodes.Status201Created);
         }
 
-        //[HttpPost("ImageUpload")]
-        //public Task<List<string>> Upload(string title, List<IFormFile> files)
-        //{
-        //    Console.WriteLine(title);
-        //    return new VehicleController().UploadFile(title, files);
-        //}
+
+
     }
 }
