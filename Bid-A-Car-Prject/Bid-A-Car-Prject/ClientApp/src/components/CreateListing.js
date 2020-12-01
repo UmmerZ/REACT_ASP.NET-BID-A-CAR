@@ -12,8 +12,9 @@ function CreateListing(props) {
     const [year, setYear] = useState("");
     const [description, setDescription] = useState("");
     const [userID, setUserID] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [imageFile, setImageFile] = useState("");
+    const [imageUrl, setImageUrl] = useState("sample.jpg");
+    const [isSold, setIsSold] = useState("false")
+    const [price, setPrice] = useState("");
 
 
     const [waiting, setWaiting] = useState(false);
@@ -41,8 +42,8 @@ function CreateListing(props) {
             case "userID":
                 setUserID(event.target.value);
                 break;
-            case "imageFile":
-                setImageFile(event.target.files[0]);
+            case "price":
+                setPrice(event.target.value);
                 break;
            
             
@@ -53,15 +54,14 @@ function CreateListing(props) {
         event.preventDefault();
         setWaiting(true);
         const formData = new FormData();
-        formData.append('file', imageFile);
+       
         
 
         axios(
             {
                 method: 'post',
-                url: 'Vehicle/Create',
-                headers: { 'Content-Type': 'multipart/form-data' },
-                data: formData,
+                url: 'VehicleAPI/Create',
+                
                 params: {
                    vehicleID: vehicleID,
                     make: make,
@@ -70,6 +70,9 @@ function CreateListing(props) {
                     year: year,
                     description: description,
                     userID: userID,
+                    price: price,
+                    isSold: isSold,
+                    imageUrl: imageUrl
            
                     
 
@@ -92,39 +95,38 @@ function CreateListing(props) {
     }
 
     return (
-        <div >
+        <div class= "container">
             <h1>Create Listing</h1>
 
             <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
 
-            <form onSubmit={handleSubmit} class="form-group" >
+            <form onSubmit={handleSubmit} class="well form-horizontal" id="contact_form" >
                 <label htmlFor="vehicleID">Listing ID</label>
-                <input class="form-control"  id="vehicleID" type="number" onChange={handleFieldChange} />
+                <input  id="vehicleID" type="number" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="userID">UserID</label>
-                <input class="form-control" id="userID" type="number" onChange={handleFieldChange} />
+                <input  id="userID" type="number" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="make">Make</label>
-                <input class="form-control" id="make" type="text" onChange={handleFieldChange} />
+                <input  id="make" type="text" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="model">Model</label>
-                <input class="form-control"  id="model" type="text" onChange={handleFieldChange} />
+                <input   id="model" type="text" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="kms">Odometer</label>
-                <input class="form-control" id="kms" type="number" onChange={handleFieldChange} />
+                <input  id="kms" type="number" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="year">Year </label>
-                <input class="form-control" id="year" type="number" onChange={handleFieldChange} />
+                <input  id="year" type="number" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="description">Description </label>
-                <textarea class="form-control" id="description" type="text" onChange={handleFieldChange} />
+                <textarea  id="description" type="text" onChange={handleFieldChange} />
                 <br />
-                <div class="custom-file">
-                   <label class="custom-file-label" for="imageFile">Choose file</label>
-                    <input type="file" class="custom-file-input" id="imageFile" onChange={handleFieldChange} />
-                </div>
+                <label htmlFor="Price">Price</label>
+                <input  id="price" type="number" onChange={handleFieldChange} />
                 <br />
-                <input class="btn btn-primary"type="submit" value="Submit" />
+                <br />
+                <input class="btn btn-primary" type="submit" value="Submit" onClick={handleSubmit} />
             </form>
         </div>
     );

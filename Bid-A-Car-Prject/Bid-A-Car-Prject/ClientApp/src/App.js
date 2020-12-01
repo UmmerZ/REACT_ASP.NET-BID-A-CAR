@@ -7,6 +7,7 @@ import { CreateListing } from './components/CreateListing';
 
 import './custom.css'
 import { FileUpload } from './components/FileUpload';
+import { Registration } from './components/RegisterUser';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -18,6 +19,7 @@ export default class App extends Component {
                 <Route path='/create-listing' component={CreateListing} />
                 <Route path='/get-listings' component={GetListings} />
                 <Route path='/create-Images' component={FileUpload} />
+                <Route path='/registrationi' component={Registration} />
             </Layout>
         );
     }

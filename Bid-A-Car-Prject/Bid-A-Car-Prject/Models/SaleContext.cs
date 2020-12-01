@@ -46,7 +46,7 @@ namespace Bid_A_Car_Project.Models
                         ID = -1,
                         Name = "John",
                         UserName = "johnny123",
-                        PhoneNumber = 780000000,
+                        PhoneNumber = "780000000",
                         StreetAdress = " 111 Crescent Ave",
                         City = "Edmonton",
                         PostalCode = "T5T5T5"
@@ -56,7 +56,7 @@ namespace Bid_A_Car_Project.Models
                         ID = -2,
                         Name = "Bill",
                         UserName = "billy123",
-                        PhoneNumber = 780111111,
+                        PhoneNumber = "780111111",
                         StreetAdress = " 222 Crescent Ave",
                         City = "Calgary",
                         PostalCode = "T6T6T6"
@@ -66,7 +66,7 @@ namespace Bid_A_Car_Project.Models
                         ID = -3,
                         Name = "John",
                         UserName = "johnny123",
-                        PhoneNumber = 780225887,
+                        PhoneNumber = "780225887",
                         StreetAdress = " 666 Crescent Ave",
                         City = "Chicago",
                         PostalCode = "T7T7T7"
@@ -110,7 +110,8 @@ namespace Bid_A_Car_Project.Models
                         Description = "The cat is in mint condition, Lady Driven ",
                         UserID = -2,
                        IsSold = false,
-                       ImageUrl = "wwwroot/bmwx5.jpg"
+                       ImageUrl = "wwwroot/bmwx5.jpg",
+                       Price = 30000
                     },
                     new Vehicle()
                     {
@@ -122,7 +123,8 @@ namespace Bid_A_Car_Project.Models
                         Description = "3 year old drives like brand new ",
                         UserID = -1,
                          IsSold = false,
-                        ImageUrl = "wwwroot/audiq5.jpg"
+                        ImageUrl = "wwwroot/audiq5.jpg",
+                        Price = 40000
                     },
                     new Vehicle()
                     {
@@ -134,7 +136,8 @@ namespace Bid_A_Car_Project.Models
                         Description = "Trick runs smooth Dont need it any more ",
                         UserID = -3,
                          IsSold = false,
-                        ImageUrl = "wwwroot/fordf150.jpg"
+                        ImageUrl = "wwwroot/fordf150.jpg",
+                        Price = 20000
                     }
                     ) ;
             });

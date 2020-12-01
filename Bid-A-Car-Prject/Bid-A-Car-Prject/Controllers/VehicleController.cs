@@ -41,10 +41,7 @@ namespace Bid_A_Car_Project.Controllers
             ViewBag.Product = GetListingByID(id);
             return View();
         }
-        public IActionResult CreateListing()
-        {
-            return View();
-        }
+        
         public Vehicle GetListingByID(string id)
         {
             Vehicle result;
@@ -59,29 +56,29 @@ namespace Bid_A_Car_Project.Controllers
 
        
     
-    public Vehicle CreateListing(string vehicleID, string make, string model, string kilometers, string year, string description, string userID, string price )
+    public Vehicle CreateListing(string vehicleID, string make, string model, string kms, string year, string description, string userID, string price )
     {
         
 
         using (SaleContext context = new SaleContext())
         {
-            Vehicle newListing = new Vehicle()
-            {
+                Vehicle newListing = new Vehicle()
+                {
 
-                VehicleID = int.Parse(vehicleID),
-                Make = make.Trim(),
-                Model = model.Trim(),
-                Kilometers = int.Parse(kilometers),
-                Year = int.Parse(kilometers),
-                Description = description.Trim(),
-                UserID = int.Parse(kilometers),
-                IsSold = false,
-                ImageUrl = null,
-                Price = int.Parse(price)
+                    VehicleID = int.Parse(vehicleID),
+                    Make = make.Trim(),
+                    Model = model.Trim(),
+                    Kilometers = int.Parse(kms),
+                    Year = int.Parse(year),
+                    Description = description.Trim(),
+                    UserID = int.Parse(userID),
+                    IsSold = false,
+                  
+                    Price = int.Parse(price)
 
-            };
+                };
             context.Vehicles.Add(newListing);
-             context.SaveChangesAsync();
+             context.SaveChanges();
             return newListing;
         }
         

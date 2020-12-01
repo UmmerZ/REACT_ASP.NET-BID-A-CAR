@@ -25,8 +25,11 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "varchar(50)")]
         public string UserName { get; set; }
 
+        [Column(TypeName = "binary(100)")]
+        public string Password { get; set; }
+
         [Column(TypeName = "int(12)")]
-        public int PhoneNumber { get; set; }
+        public string  PhoneNumber { get; set; }
 
         [Column(TypeName = "varchar(200)")]
         public string StreetAdress { get; set; }

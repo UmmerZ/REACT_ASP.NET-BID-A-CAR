@@ -15,13 +15,7 @@ namespace Bid_A_Car_Project.Controllers
     [ApiController]
     public class VehicleAPIController : ControllerBase
     {
-        //private readonly SaleContext _context;
-        //private readonly IWebHostEnvironment _webHostEnvironment;
-        //public VehicleAPIController(SaleContext context, IWebHostEnvironment hostEnvironment)
-        //{
-        //   _context = context;
-        //    _webHostEnvironment = hostEnvironment;
-        //}
+       
 
         [HttpGet("All")]
         public ActionResult<IEnumerable<Vehicle>> AllVehicles_GET()
@@ -41,12 +35,12 @@ namespace Bid_A_Car_Project.Controllers
             return result;
         }
         [HttpPost("Create")]
-        public ActionResult<Vehicle> ProductCreate_POST(string vehicleID, string make, string model, string kilometers, string year, string description, string userID, string price)
+        public ActionResult<Vehicle> ProductCreate_POST(string vehicleID, string make, string model, string kms, string year, string description, string userID, string price)
         {
-
+            ActionResult<Vehicle> result;
             try
             {
-               new VehicleController().CreateListing(vehicleID, make, model, kilometers,year,description, userID, price);
+              result = new VehicleController().CreateListing(vehicleID, make, model, kms, year, description, userID, price);
             }
 
             catch (Exception e)
@@ -54,7 +48,7 @@ namespace Bid_A_Car_Project.Controllers
                 return StatusCode(500, $"Unknown error occurred, please try again later.{e.Message}");
             }
 
-           return StatusCode(StatusCodes.Status201Created);
+            return result;
         }
 
 

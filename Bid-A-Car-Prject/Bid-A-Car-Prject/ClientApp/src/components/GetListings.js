@@ -20,11 +20,13 @@ function GetListings(props) {
                         <div>
                             
                             <img src={ product.imageUrl}/>
-                            <div>{product.make}</div>
-                            <div>{product.model}</div>
-                            <div>{product.year}</div>
-                            <div>{product.description}</div>
-                            < button class = "btn btn-success"type="submit" value="Bid">Bid</button>
+                            <div><strong>Make:</strong> {product.make}</div>
+                            <div><strong>Model:</strong> {product.model}</div>
+                            <div><strong>Year</strong> {product.year}</div>
+                            <div><strong>Description: </strong>{product.description}</div>
+                            <div><strong>Price:</strong> {product.price}</div>
+                            < button class="btn btn-success" type="submit" value="Bid">Bid</button><br/>
+                            < button class="btn btn-success" type="submit" value="BaseBid">Base Bid: {product.price-5000}</button>
                         </div>
                     );
 
