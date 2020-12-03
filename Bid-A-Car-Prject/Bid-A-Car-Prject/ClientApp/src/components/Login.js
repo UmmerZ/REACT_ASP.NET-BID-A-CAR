@@ -32,6 +32,7 @@ export default function Logins() {
                     value={password}
                     onChange={e => setPassword(e.target.Value)}
                 />
+                <div className="help-block">Password is required</div>
 
                 <input type="submit" value="Submit" disabled={!ValidateForm} />
             </form>

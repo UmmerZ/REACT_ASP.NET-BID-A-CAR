@@ -71,6 +71,7 @@ export function RegisterUser(props) {
                 <div class="col">
                     <label htmlFor="password">Password</label>
                         <input class="form-control" type="password" name="password" id="password" />
+                        <div className="help-block">Password is required</div>
                 </div>
 
                 <div class="col">
