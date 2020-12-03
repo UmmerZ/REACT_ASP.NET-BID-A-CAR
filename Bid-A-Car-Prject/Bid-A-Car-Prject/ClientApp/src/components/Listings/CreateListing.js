@@ -5,7 +5,7 @@ function CreateListing(props) {
     
     const [statusCode, setStatusCode] = useState(0);
     const [response, setResponse] = useState([]);
-    const [vehicleID, setVehicleID] = useState("");
+   
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
     const [kms, setKms] = useState("");
@@ -20,10 +20,8 @@ function CreateListing(props) {
     const [waiting, setWaiting] = useState(false);
 
     function handleFieldChange(event) {
-        switch (event.target.make) {
-            case "vehicleID":
-                setVehicleID(event.target.value);
-                break;
+        switch (event.target.id) {
+            
             case "make":
                 setMake(event.target.value);
                 break;
@@ -63,7 +61,7 @@ function CreateListing(props) {
                 url: 'VehicleAPI/Create',
                 
                 params: {
-                   vehicleID: vehicleID,
+                 
                     make: make,
                     model: model,
                     kms: kms,
@@ -101,9 +99,7 @@ function CreateListing(props) {
             <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
 
             <form onSubmit={handleSubmit} class="well form-horizontal" id="contact_form" >
-                <label htmlFor="vehicleID">Listing ID</label>
-                <input  id="vehicleID" type="number" onChange={handleFieldChange} />
-                <br />
+              
                 <label htmlFor="userID">UserID</label>
                 <input  id="userID" type="number" onChange={handleFieldChange} />
                 <br />

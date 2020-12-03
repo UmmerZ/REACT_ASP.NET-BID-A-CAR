@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Bid-A-Car-Prject",
-    "\\Bid-A-Car-Prject\\Bid-A-Car-Prject"
+    "\\Bid-A-Car-Prject\\Bid-A-Car-Prject",
+    "\\Bid-A-Car-Prject\\Bid-A-Car-Prject\\Controllers",
+    "\\Bid-A-Car-Prject\\Bid-A-Car-Prject\\Models"
   ],
   "SelectedNode": "\\Bid-A-Car-Prject\\Bid-A-Car-Prject.sln",
   "PreviewInSolutionExplorer": false

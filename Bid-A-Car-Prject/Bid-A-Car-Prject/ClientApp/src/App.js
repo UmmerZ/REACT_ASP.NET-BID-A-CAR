@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { GetListings } from './components/GetListings';
-import { CreateListing } from './components/CreateListing';
-import { RegisterUser } from './components/RegisterUser';
+import { GetListings } from './components/Listings/GetListings';
+import { CreateListing } from './components/Listings/CreateListing';
+import { RegisterUser } from './components/Users/RegisterUser';
 import './custom.css'
 import { FileUpload } from './components/FileUpload';
-import { Registration } from './components/UserProfile';
-import Logins from './components/Login';
+import { Registration } from './components/Users/UserProfile';
+import Logins from './components/Users/Login';
+import { Provider } from 'react-redux';
+import store from 'react-redux';
+
 
 export default class App extends Component {
     static displayName = App.name;
 
     render() {
         return (
+            <Provider store = {store} >
             <Layout>
                 <Route exact path='/' component={Home} />
                 <Route path='/create-listing' component={CreateListing} />
@@ -23,7 +27,8 @@ export default class App extends Component {
                 <Route path='/registration' component={Registration} />
                 <Route path='/logins' component={Logins} />
                 <Route path='/register-user' component={RegisterUser} />
-            </Layout>
+                </Layout>
+                </Provider  >
         );
     }
 }

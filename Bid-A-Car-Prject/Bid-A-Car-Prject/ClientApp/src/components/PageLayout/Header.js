@@ -8,7 +8,7 @@ const Header = () => {
             <header>
 
                 <h1 className="logo">Bid<strong className="logo-cars">Cars</strong></h1>
-                <Nav />
+             
 
             </header>
         </>

@@ -56,7 +56,7 @@ namespace Bid_A_Car_Project.Controllers
 
        
     
-    public Vehicle CreateListing(string vehicleID, string make, string model, string kms, string year, string description, string userID, string price )
+    public Vehicle CreateListing( string make, string model, string kms, string year, string description, string userID, string price )
     {
         
 
@@ -65,7 +65,7 @@ namespace Bid_A_Car_Project.Controllers
                 Vehicle newListing = new Vehicle()
                 {
 
-                    VehicleID = int.Parse(vehicleID),
+                   
                     Make = make.Trim(),
                     Model = model.Trim(),
                     Kilometers = int.Parse(kms),
