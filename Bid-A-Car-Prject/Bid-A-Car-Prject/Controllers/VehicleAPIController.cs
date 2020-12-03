@@ -46,10 +46,10 @@ namespace Bid_A_Car_Project.Controllers
          ******************************************************************/
 
         [HttpGet("ByID")]
-        public ActionResult<Vehicle> VehicleByID_GET(string id)
+        public ActionResult<Vehicle> VehicleByID_GET(string vehicleID)
         {
 
-            return new VehicleController().GetListingByID(id);
+            return new VehicleController().GetListingByID(vehicleID);
         }
 
 
@@ -114,21 +114,33 @@ namespace Bid_A_Car_Project.Controllers
       API request to Delete the listing with provided ID
       ******************************************************************/
 
-        [HttpPost("DeleteListing")]
-        public void DeleteListing_POST(string id)
+        [HttpDelete("DeleteListing")]
+        public void DeleteListing_POST(string vehicleID)
         {
-             new VehicleController().DeleteListing(id);
+             new VehicleController().DeleteListing(vehicleID);
         }
 
 
         /*****************************************************************
       API request to Update the listing with provided ID
       ******************************************************************/
-        [HttpPost("DeleteListing")]
-        public ActionResult<Vehicle> UpdateListing_POST(string id, string update, string newValue)
+        [HttpPut("UpdateListing")]
+        public ActionResult<Vehicle> UpdateListing_POST(string vehicleID, string make, string model, string kms, string year, string description, string price)
+           
         {
-           return new VehicleController().UpdateListing(id, update, newValue);
-        }
+            ActionResult<Vehicle> result;
+            try {
+                result = new VehicleController().UpdateListingByID(vehicleID, make, model, kms, year, description, price);
+                return result;
+            }
+            catch(Exception e)
+            {
+                throw new Exception($"sorry{e.Message}");
+                throw new Exception($"sorry{e.Message}");
+            }
+                    }
+            
+          
 
     }
 }

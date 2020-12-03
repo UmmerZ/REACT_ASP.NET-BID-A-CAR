@@ -24,29 +24,29 @@ export class NavMenu extends Component {
   render () {
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
+        <Navbar className="navbar-expand-sm  navbar-toggleable-sm ng-white border-bottom box-shadow mb-3 bg-warning" light>
           <Container>
-            <NavbarBrand tag={Link} to="/"><img src = "../images/logo_website.jpg"/></NavbarBrand>
+                    <NavbarBrand className= "bg-warning"tag={Link} to="/"></NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
+                        <ul className="navbar-nav flex-grow ">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                                <NavLink tag={Link} className="text-dark bg-warning" to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/create-listing">Create A Listing</NavLink>
+                                <NavLink tag={Link} className="text-dark bg-warning" to="/create-listing">Create A Listing</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/get-listings">Listing</NavLink>
+                                <NavLink tag={Link} className="text-dark bg-warning" to="/get-listings">Listing</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} className="text-dark" to="/create-Images">Upload Images</NavLink>
+                                <NavLink tag={Link} className="text-dark bg-warning" to="/create-Images">Upload Images</NavLink>
                             </NavItem>
                             <NavItem>
-                            <NavLink tag={Link} className="text-dark" to="/registration">Register User</NavLink>
+                                <NavLink tag={Link} className="text-dark bg-warning" to="/registration">Register User</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} className="text-dark" to="/logins">Register User</NavLink>
+                                <NavLink tag={Link} className="text-dark bg-warning" to="/logins">Register User</NavLink>
                             </NavItem>
               </ul>
             </Collapse>

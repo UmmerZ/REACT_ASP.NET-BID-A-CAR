@@ -15,7 +15,8 @@ using System.Threading.Tasks;
 namespace Bid_A_Car_Project.Controllers
 {
 
-  
+    [Route("[controller]")]
+    [ApiController]
     public class VehicleController : Controller
     {
     //    private readonly IWebHostEnvironment _webHostEnvironment;
@@ -42,12 +43,12 @@ namespace Bid_A_Car_Project.Controllers
             return View();
         }
         
-        public Vehicle GetListingByID(string id)
+        public Vehicle GetListingByID(string vehicleID)
         {
             Vehicle result;
             using (SaleContext context = new SaleContext())
             {
-               result = context.Vehicles.Where(x => x.VehicleID == int.Parse(id)).Single();
+               result = context.Vehicles.Where(x => x.VehicleID == int.Parse(vehicleID)).Single();
 
             }
 
@@ -84,63 +85,60 @@ namespace Bid_A_Car_Project.Controllers
         
     }
 
-        public void DeleteListing(string id)
+        public void DeleteListing(string vehiclelD)
         {
             
             using (SaleContext context = new SaleContext())
             {
-              context.Vehicles.Remove(GetListingByID(id));
+              context.Vehicles.Remove(GetListingByID(vehiclelD));
                 context.SaveChanges();
               
             }
         }
 
-        public Vehicle UpdateListing(string id,  string update,  string newValue)
+        public Vehicle UpdateListingByID(string vehicleID, string make, string model, string kms, string year, string description,  string price)
         {
+            Vehicle result;
+            int parsedID = int.Parse(vehicleID);
+
+            // TODO: Trim name;
+
+        
+
             using (SaleContext context = new SaleContext())
             {
-                Vehicle updatedListing = context.Vehicles.Where(x => x.UserID == int.Parse(id)).Single();
-                switch (update)
-                {
-                    case "make":
-                        updatedListing.Make = newValue.Trim();
-                        break;
-                    case "model":
-                        updatedListing.Model = newValue.Trim();
-                        break;
-                    case "kms":
-                        updatedListing.Kilometers = int.Parse(newValue);
-                        break;
-                    case "description":
-                        updatedListing.Description = newValue.Trim();
-                        break;
-                    case "price":
-                        updatedListing.Price = int.Parse(newValue);
-                        break;
-                    default:
-                        return updatedListing;
-                }
-                context.SaveChanges();
-                return updatedListing;
-            }
-        }
-    //    public async Task<IActionResult> UploadImage(Vehicle models, IFormFile file)
-    //    {
-    //        if (ModelState.IsValid)
-    //        {
-    //            var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-    //            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
-    //            using (Stream stream = new FileStream(path, FileMode.Create))
-    //            {
-    //                await file.CopyToAsync(stream);
-    //            }
-    //            models.ImageUrl= filename;
-    //            _context.Add(models);
-    //            _context.SaveChanges();
-    //        }
+                result = context.Vehicles.Where(x => x.VehicleID == parsedID).Single();
 
-    //        return RedirectToAction("Index");
-    //    }
+               
+
+                result.Make = make;
+                result.Model = model;
+                result.Kilometers = int.Parse(kms);
+                result.Year = int.Parse(year);
+                result.Description = description;
+                result.Price = int.Parse(price);
+                context.SaveChanges();
+            }
+            return result;
+        }
+
+        //    public async Task<IActionResult> UploadImage(Vehicle models, IFormFile file)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        //            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
+        //            using (Stream stream = new FileStream(path, FileMode.Create))
+        //            {
+        //                await file.CopyToAsync(stream);
+        //            }
+        //            models.ImageUrl= filename;
+        //            _context.Add(models);
+        //            _context.SaveChanges();
+        //        }
+
+        //        return RedirectToAction("Index");
+        //    }
 
 
 

@@ -12,4 +12,26 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+.button-view{
+    border-radius: 15%;
+    background: #1e292e;
+    padding: .5em 1em;
+    margin-right : 1em;
+    color: #fff;
+    
 
+}
+    .button-view:hover {
+        background: #808080;
+        text-decoration: none;
+       
+    }
+
+    * {
+        background-color: aliceblue;
+    }
+    h1{
+        text-align: center;
+        color: aliceblue;
+        border-radius: 15%;
+    }

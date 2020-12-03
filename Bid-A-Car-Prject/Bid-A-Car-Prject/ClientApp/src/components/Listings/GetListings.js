@@ -1,13 +1,20 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { Button } from 'bootstrap';
+import { Link } from 'react-router-dom';
 
 function GetListings(props) {
     const displayName = GetListings.name;
+    const [vehicleID, setVehicleID] = useState("");
 
     // Configure our state, and our setState standin methods.
     const [vehicles, setVehicles] = useState([]);
     const [loading, setLoading] = useState(true);
+   
+    const deleteListing = async () => {
+        const payload = { vehicleID: vehicles.vehicleID };
+        await axios.delete("http://localhost:44314/VehicleAPI/DeleteListing?vehicleID=${vehicleID", payload);
+    }
 
     // Build the table based on forecast data.
     function renderProductsTable(vehicles) {
@@ -25,8 +32,13 @@ function GetListings(props) {
                             <div><strong>Year</strong> {product.year}</div>
                             <div><strong>Description: </strong>{product.description}</div>
                             <div><strong>Price:</strong> {product.price}</div>
-                            < button class="btn btn-success" type="submit" value="Bid">Bid</button><br/>
-                            < button class="btn btn-success" type="submit" value="BaseBid">Base Bid: {product.price-5000}</button>
+                           
+                            <div class = "btn-toolbar">
+                                < Link class="button-view" >View</Link>
+                                < Link class="button-view" >Edit</Link>
+                                < Link class="button-view" onClick={() => deleteListing(product.vehicleID)} >Delete</Link>
+                            </div>
+                            <hr />
                         </div>
                     );
 
@@ -55,11 +67,11 @@ function GetListings(props) {
 
     return (
 
-        <div>
-            <h1 id="tabelLabel" >Listings</h1>
+        <div className= "">
+            <h1 className="shadow p-3 mb-5 bg-dark rounded " >Listings</h1>
             <p>This component demonstrates fetching data from the server.</p>
             {contents}
-
+            <hr/>
             <button className="btn btn-primary" onClick={() => { setLoading(true) }}>Refresh</button>
         </div>
     );

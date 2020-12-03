@@ -9,8 +9,8 @@ import './custom.css'
 import { FileUpload } from './components/FileUpload';
 import { Registration } from './components/Users/UserProfile';
 import Logins from './components/Users/Login';
-import { Provider } from 'react-redux';
-import store from 'react-redux';
+import { EditListing } from './components/Listings/EditListing';
+
 
 
 export default class App extends Component {
@@ -18,7 +18,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <Provider store = {store} >
+            
             <Layout>
                 <Route exact path='/' component={Home} />
                 <Route path='/create-listing' component={CreateListing} />
@@ -27,8 +27,9 @@ export default class App extends Component {
                 <Route path='/registration' component={Registration} />
                 <Route path='/logins' component={Logins} />
                 <Route path='/register-user' component={RegisterUser} />
+                <Route path='/edit-listing' component={EditListing} />
                 </Layout>
-                </Provider  >
+                
         );
     }
 }

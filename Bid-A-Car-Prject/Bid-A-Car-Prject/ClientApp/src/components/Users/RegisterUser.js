@@ -56,7 +56,7 @@ export function RegisterUser(props) {
 
     return (
         <div class = "form-group">
-            <h1>Register</h1>
+            <h1>Edit</h1>
             <form method="/" action="post">
                 <div class="form-group">
                     <label  htmlFor="userName">User Name</label>
