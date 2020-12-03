@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bid_A_Car_Prject.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class intialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,9 @@ namespace Bid_A_Car_Prject.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_general_ci"),
                     UserName = table.Column<string>(type: "varchar(50)", nullable: true),
-                    PhoneNumber = table.Column<int>(type: "int(12)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Password = table.Column<string>(type: "varchar(20)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "varchar(10)", nullable: true),
                     StreetAdress = table.Column<string>(type: "varchar(200)", nullable: true),
                     City = table.Column<string>(type: "varchar(50)", nullable: true),
                     PostalCode = table.Column<string>(type: "varchar(8)", nullable: true)
@@ -53,7 +55,7 @@ namespace Bid_A_Car_Prject.Migrations
                 {
                     VehicleID = table.Column<int>(type: "int(10)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Make = table.Column<string>(type: "varchar(60)", nullable: false),
+                    Make = table.Column<string>(type: "varchar(60)", nullable: true),
                     Model = table.Column<string>(type: "varchar(60)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_general_ci"),
@@ -61,7 +63,9 @@ namespace Bid_A_Car_Prject.Migrations
                     Year = table.Column<int>(type: "int(6)", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", nullable: true),
                     UserID = table.Column<int>(type: "int(10)", nullable: false),
-                    ImageName = table.Column<string>(type: "varchar(100)", nullable: true)
+                    ImageUrl = table.Column<string>(type: "varchar(300)", nullable: true),
+                    IsSold = table.Column<string>(type: "varchar(10)", nullable: false),
+                    Price = table.Column<int>(type: "int(10)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,33 +80,33 @@ namespace Bid_A_Car_Prject.Migrations
 
             migrationBuilder.InsertData(
                 table: "User",
-                columns: new[] { "ID", "City", "Name", "PhoneNumber", "PostalCode", "StreetAdress", "UserName" },
-                values: new object[] { -1, "Edmonton", "John", 780000000, "T5T5T5", " 111 Crescent Ave", "johnny123" });
+                columns: new[] { "ID", "City", "Email", "Name", "Password", "PhoneNumber", "PostalCode", "StreetAdress", "UserName" },
+                values: new object[] { -1, "Edmonton", "john@example.com", "John", "password", "780000000", "T5T5T5", " 111 Crescent Ave", "johnny123" });
 
             migrationBuilder.InsertData(
                 table: "User",
-                columns: new[] { "ID", "City", "Name", "PhoneNumber", "PostalCode", "StreetAdress", "UserName" },
-                values: new object[] { -2, "Calgary", "Bill", 780111111, "T6T6T6", " 222 Crescent Ave", "billy123" });
+                columns: new[] { "ID", "City", "Email", "Name", "Password", "PhoneNumber", "PostalCode", "StreetAdress", "UserName" },
+                values: new object[] { -2, "Calgary", "bill@example.com", "Bill", "password", "780111111", "T6T6T6", " 222 Crescent Ave", "billy123" });
 
             migrationBuilder.InsertData(
                 table: "User",
-                columns: new[] { "ID", "City", "Name", "PhoneNumber", "PostalCode", "StreetAdress", "UserName" },
-                values: new object[] { -3, "Chicago", "John", 780225887, "T7T7T7", " 666 Crescent Ave", "johnny123" });
+                columns: new[] { "ID", "City", "Email", "Name", "Password", "PhoneNumber", "PostalCode", "StreetAdress", "UserName" },
+                values: new object[] { -3, "Chicago", "peter@example.com", "Peter", "password", "780225887", "T7T7T7", " 666 Crescent Ave", "johnny123" });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "VehicleID", "Description", "ImageName", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -2, "3 year old drives like brand new ", null, 13000, "AUDI", "Q5", -1, 2012 });
+                columns: new[] { "VehicleID", "Description", "ImageUrl", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
+                values: new object[] { -2, "3 year old drives like brand new ", "wwwroot/audiq5.jpg", "0", 13000, "AUDI", "Q5", 40000, -1, 2012 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "VehicleID", "Description", "ImageName", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", null, 3000, "BMW", "X5", -2, 2014 });
+                columns: new[] { "VehicleID", "Description", "ImageUrl", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
+                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", "wwwroot/bmwx5.jpg", "0", 3000, "BMW", "X5", 30000, -2, 2014 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "VehicleID", "Description", "ImageName", "Kilometers", "Make", "Model", "UserID", "Year" },
-                values: new object[] { -3, "Trick runs smooth Dont need it any more ", null, 33000, "Ford", "F150", -3, 2018 });
+                columns: new[] { "VehicleID", "Description", "ImageUrl", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
+                values: new object[] { -3, "Trick runs smooth Dont need it any more ", "wwwroot/fordf150.jpg", "0", 33000, "Ford", "F150", 20000, -3, 2018 });
 
             migrationBuilder.CreateIndex(
                 name: "FK_Transaction_User",

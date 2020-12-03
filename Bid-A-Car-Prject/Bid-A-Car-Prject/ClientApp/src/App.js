@@ -4,10 +4,10 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { GetListings } from './components/GetListings';
 import { CreateListing } from './components/CreateListing';
-
+import { RegisterUser } from './components/RegisterUser';
 import './custom.css'
 import { FileUpload } from './components/FileUpload';
-import { Registration } from './components/RegisterUser';
+import { Registration } from './components/UserProfile';
 import Logins from './components/Login';
 
 export default class App extends Component {
@@ -22,6 +22,7 @@ export default class App extends Component {
                 <Route path='/create-Images' component={FileUpload} />
                 <Route path='/registration' component={Registration} />
                 <Route path='/logins' component={Logins} />
+                <Route path='/register-user' component={RegisterUser} />
             </Layout>
         );
     }

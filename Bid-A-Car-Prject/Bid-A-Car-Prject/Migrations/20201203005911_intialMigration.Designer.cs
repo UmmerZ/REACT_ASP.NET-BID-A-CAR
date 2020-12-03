@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bid_A_Car_Prject.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    [Migration("20201129044835_AddedIsSoLDColumnInVehicleClass")]
-    partial class AddedIsSoLDColumnInVehicleClass
+    [Migration("20201203005911_intialMigration")]
+    partial class intialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,13 +47,19 @@ namespace Bid_A_Car_Prject.Migrations
                     b.Property<string>("City")
                         .HasColumnType("varchar(50)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Name")
                         .HasColumnType("varchar(100)")
                         .HasAnnotation("MySql:CharSet", "utf8mb4")
                         .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int(12)");
+                    b.Property<string>("Password")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("PostalCode")
                         .HasColumnType("varchar(8)");
@@ -73,8 +79,10 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             ID = -1,
                             City = "Edmonton",
+                            Email = "john@example.com",
                             Name = "John",
-                            PhoneNumber = 780000000,
+                            Password = "password",
+                            PhoneNumber = "780000000",
                             PostalCode = "T5T5T5",
                             StreetAdress = " 111 Crescent Ave",
                             UserName = "johnny123"
@@ -83,8 +91,10 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             ID = -2,
                             City = "Calgary",
+                            Email = "bill@example.com",
                             Name = "Bill",
-                            PhoneNumber = 780111111,
+                            Password = "password",
+                            PhoneNumber = "780111111",
                             PostalCode = "T6T6T6",
                             StreetAdress = " 222 Crescent Ave",
                             UserName = "billy123"
@@ -93,8 +103,10 @@ namespace Bid_A_Car_Prject.Migrations
                         {
                             ID = -3,
                             City = "Chicago",
-                            Name = "John",
-                            PhoneNumber = 780225887,
+                            Email = "peter@example.com",
+                            Name = "Peter",
+                            Password = "password",
+                            PhoneNumber = "780225887",
                             PostalCode = "T7T7T7",
                             StreetAdress = " 666 Crescent Ave",
                             UserName = "johnny123"
@@ -115,13 +127,12 @@ namespace Bid_A_Car_Prject.Migrations
 
                     b.Property<string>("IsSold")
                         .IsRequired()
-                        .HasColumnType("varchar(5)");
+                        .HasColumnType("varchar(10)");
 
                     b.Property<int>("Kilometers")
                         .HasColumnType("int(9)");
 
                     b.Property<string>("Make")
-                        .IsRequired()
                         .HasColumnType("varchar(60)");
 
                     b.Property<string>("Model")
@@ -129,6 +140,9 @@ namespace Bid_A_Car_Prject.Migrations
                         .HasColumnType("varchar(60)")
                         .HasAnnotation("MySql:CharSet", "utf8mb4")
                         .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int(10)");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int(10)");
@@ -153,6 +167,7 @@ namespace Bid_A_Car_Prject.Migrations
                             Kilometers = 3000,
                             Make = "BMW",
                             Model = "X5",
+                            Price = 30000,
                             UserID = -2,
                             Year = 2014
                         },
@@ -165,6 +180,7 @@ namespace Bid_A_Car_Prject.Migrations
                             Kilometers = 13000,
                             Make = "AUDI",
                             Model = "Q5",
+                            Price = 40000,
                             UserID = -1,
                             Year = 2012
                         },
@@ -177,6 +193,7 @@ namespace Bid_A_Car_Prject.Migrations
                             Kilometers = 33000,
                             Make = "Ford",
                             Model = "F150",
+                            Price = 20000,
                             UserID = -3,
                             Year = 2018
                         });

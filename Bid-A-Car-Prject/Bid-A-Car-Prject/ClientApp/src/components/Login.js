@@ -14,7 +14,7 @@ export default function Logins() {
 
     return (
         <div>
-            <form action="post " onSubmit={handleSubmit}>
+            <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="userNameLogin"></label>
                 <input
                     type="text"
@@ -36,5 +36,5 @@ export default function Logins() {
                 <input type="submit" value="Submit" disabled={!ValidateForm} />
             </form>
         </div>
-    );
+    )
 }

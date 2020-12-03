@@ -35,7 +35,7 @@ namespace Bid_A_Car_Prject.Controllers
         }
   
         
-        public User RegisterUser(string id, string name, string userName, string password, string phoneNumber, string streetAddress, string city, string postalCode)
+        public User RegisterUser(string id, string name, string phoneNumber, string streetAddress, string city, string postalCode)
         {
                using (SaleContext context = new SaleContext())
             {
@@ -43,8 +43,7 @@ namespace Bid_A_Car_Prject.Controllers
                 {
                     ID = int.Parse(id),
                     Name = name.Trim(),
-                    UserName = userName.Trim(),
-                    Password = password.Trim(),
+                   
                     PhoneNumber = phoneNumber.Trim(),
                     StreetAdress = streetAddress.Trim(),
                     City = city.Trim(),
@@ -54,6 +53,18 @@ namespace Bid_A_Car_Prject.Controllers
                 context.SaveChanges();
                 return newRegistration;
             }
+        }
+
+        public bool IfUserExists(string username, string password)
+        {
+            
+            using (SaleContext context = new SaleContext()){
+             bool result = context.Users.Where(x => x.UserName == username && x.Password == password).Any();
+
+               
+            }
+
+            return true;
         }
     }
 }

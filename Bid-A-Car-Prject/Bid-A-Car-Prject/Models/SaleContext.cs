@@ -12,7 +12,8 @@ namespace Bid_A_Car_Project.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-    
+        
+
 
 
 
@@ -35,9 +36,14 @@ namespace Bid_A_Car_Project.Models
         {
             modelBuilder.Entity<User>(entity =>
             {
+
+               
+
                 entity.Property(e => e.Name)
                 .HasCharSet("utf8mb4")
                 .HasCollation("utf8mb4_general_ci");
+
+               
 
 
                 entity.HasData(
@@ -46,6 +52,8 @@ namespace Bid_A_Car_Project.Models
                         ID = -1,
                         Name = "John",
                         UserName = "johnny123",
+                        Email= "john@example.com",
+                        Password = "password",
                         PhoneNumber = "780000000",
                         StreetAdress = " 111 Crescent Ave",
                         City = "Edmonton",
@@ -56,6 +64,8 @@ namespace Bid_A_Car_Project.Models
                         ID = -2,
                         Name = "Bill",
                         UserName = "billy123",
+                        Email = "bill@example.com",
+                        Password = "password",
                         PhoneNumber = "780111111",
                         StreetAdress = " 222 Crescent Ave",
                         City = "Calgary",
@@ -64,8 +74,10 @@ namespace Bid_A_Car_Project.Models
                     new User()
                     {
                         ID = -3,
-                        Name = "John",
+                        Name = "Peter",
                         UserName = "johnny123",
+                        Email = "peter@example.com",
+                        Password = "password",
                         PhoneNumber = "780225887",
                         StreetAdress = " 666 Crescent Ave",
                         City = "Chicago",

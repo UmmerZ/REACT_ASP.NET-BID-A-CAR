@@ -25,10 +25,13 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "varchar(50)")]
         public string UserName { get; set; }
 
-        [Column(TypeName = "binary(100)")]
+        [Column(TypeName = "varchar(100)")]
+        public string Email { get; set; }
+
+        [Column(TypeName = "varchar(20)")]
         public string Password { get; set; }
-        [NotMapped]
-        [Column(TypeName = "int(12)")]
+        
+        [Column(TypeName = "varchar(10)")]
         public string  PhoneNumber { get; set; }
 
         [Column(TypeName = "varchar(200)")]
@@ -39,6 +42,7 @@ namespace Bid_A_Car_Project.Models
 
          [Column(TypeName = "varchar(8)")]
         public string PostalCode { get; set; }
+
 
 
         

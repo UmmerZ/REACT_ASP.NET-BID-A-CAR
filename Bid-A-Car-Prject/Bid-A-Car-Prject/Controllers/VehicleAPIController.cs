@@ -93,14 +93,30 @@ namespace Bid_A_Car_Project.Controllers
         API request to Create New User
         ******************************************************************/
         [HttpPost("RegisterUser")]
-        public ActionResult<User> Register_POST(string id, string name, string userName, string password, string phoneNumber, string streetAddress, string city, string postalCode)
+        public ActionResult<User> Register_POST(string id, string name,  string phoneNumber, string streetAddress, string city, string postalCode)
             
         {
             ActionResult<User> result;
-            result = new UserController().RegisterUser(id, name, userName, password, phoneNumber, streetAddress, city, postalCode);
+            result = new UserController().RegisterUser(id, name, phoneNumber, streetAddress, city, postalCode);
             return result;
         }
           
-       
+       [HttpGet("IfUserExists")]
+       public bool GetLogin_GET(string username, string password)
+            
+        {
+            return new UserController().IfUserExists(username, password);
+           
+        }
+        /*****************************************************************
+      API request to Delete the listing with provided ID
+      ******************************************************************/
+
+        [HttpPost("DeleteListing")]
+        public void DeleteListing_POST(string id)
+        {
+             new VehicleController().DeleteListing(id);
+        }
+         
     }
 }

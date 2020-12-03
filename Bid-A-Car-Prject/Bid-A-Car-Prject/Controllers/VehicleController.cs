@@ -83,6 +83,17 @@ namespace Bid_A_Car_Project.Controllers
         }
         
     }
+
+        public void DeleteListing(string id)
+        {
+            
+            using (SaleContext context = new SaleContext())
+            {
+              context.Vehicles.Remove(GetListingByID(id));
+                context.SaveChanges();
+              
+            }
+        }
     //    public async Task<IActionResult> UploadImage(Vehicle models, IFormFile file)
     //    {
     //        if (ModelState.IsValid)
