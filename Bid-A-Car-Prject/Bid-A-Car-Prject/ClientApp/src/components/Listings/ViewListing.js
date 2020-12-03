@@ -50,13 +50,13 @@ function viewListing(props) {
 
             <form onSubmit={e => handleSubmit(e)} class="well form-horizontal" id="contact_form" >
 
-
+                <div>
                 <label htmlFor="make">Make</label>
                 <input id="make" type="text" value={make} onChange={e => handleFieldChange(e)} />
-                <br />
+                
                 <label htmlFor="model">Model</label>
                 <input id="model" type="text" value={model} onChange={e => handleFieldChange(e)} />
-                <br />
+                </div>
                 <label htmlFor="kms">Odometer</label>
                 <input id="kms" type="number" value={kms} onChange={e => handleFieldChange(e)} />
                 <br />

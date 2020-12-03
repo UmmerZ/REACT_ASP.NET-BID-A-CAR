@@ -63,9 +63,9 @@ namespace Bid_A_Car_Project.Controllers
 
         using (SaleContext context = new SaleContext())
         {
-                Vehicle newListing = new Vehicle()
+                Vehicle newListing = new Vehicle
                 {
-
+                    
                    
                     Make = make.Trim(),
                     Model = model.Trim(),
