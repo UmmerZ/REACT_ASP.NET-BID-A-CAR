@@ -108,6 +108,8 @@ namespace Bid_A_Car_Project.Controllers
             return new UserController().IfUserExists(username, password);
            
         }
+
+
         /*****************************************************************
       API request to Delete the listing with provided ID
       ******************************************************************/
@@ -117,6 +119,16 @@ namespace Bid_A_Car_Project.Controllers
         {
              new VehicleController().DeleteListing(id);
         }
-         
+
+
+        /*****************************************************************
+      API request to Update the listing with provided ID
+      ******************************************************************/
+        [HttpPost("DeleteListing")]
+        public ActionResult<Vehicle> UpdateListing_POST(string id, string update, string newValue)
+        {
+           return new VehicleController().UpdateListing(id, update, newValue);
+        }
+
     }
 }

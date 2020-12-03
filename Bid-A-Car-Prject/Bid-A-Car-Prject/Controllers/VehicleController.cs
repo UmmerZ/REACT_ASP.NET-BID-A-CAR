@@ -94,6 +94,36 @@ namespace Bid_A_Car_Project.Controllers
               
             }
         }
+
+        public Vehicle UpdateListing(string id,  string update,  string newValue)
+        {
+            using (SaleContext context = new SaleContext())
+            {
+                Vehicle updatedListing = context.Vehicles.Where(x => x.UserID == int.Parse(id)).Single();
+                switch (update)
+                {
+                    case "make":
+                        updatedListing.Make = newValue.Trim();
+                        break;
+                    case "model":
+                        updatedListing.Model = newValue.Trim();
+                        break;
+                    case "kms":
+                        updatedListing.Kilometers = int.Parse(newValue);
+                        break;
+                    case "description":
+                        updatedListing.Description = newValue.Trim();
+                        break;
+                    case "price":
+                        updatedListing.Price = int.Parse(newValue);
+                        break;
+                    default:
+                        return updatedListing;
+                }
+                context.SaveChanges();
+                return updatedListing;
+            }
+        }
     //    public async Task<IActionResult> UploadImage(Vehicle models, IFormFile file)
     //    {
     //        if (ModelState.IsValid)
