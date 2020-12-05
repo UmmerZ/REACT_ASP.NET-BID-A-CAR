@@ -24,6 +24,7 @@ namespace Bid_A_Car_Prject
         {
 
             services.AddControllersWithViews();
+            services.AddDbContext<SaleContext>();
        
           
 

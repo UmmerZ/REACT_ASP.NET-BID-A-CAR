@@ -6,6 +6,8 @@ export function Registration() {
     const [response, setResponse] = useState([]);
     const [waiting, setWaiting] = useState(false);
     const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -15,27 +17,17 @@ export function Registration() {
 
     function handleFieldChange(e) {
         switch (e.target.id) {
-            case "name":
-                setName(e.target.value);
-                break;
+            
             case "userName":
                 setUserName(e.target.value);
                 break;
             case "password":
                 setPassword(e.target.value);
                 break;
-            case "phoneNumber":
-                setPhoneNumber(e.target.value);
+            case "email":
+                setEmail(e.target.value);
                 break;
-            case "streetAddress":
-                setStreetAddress(e.target.value);
-                break;
-            case "city":
-                setCity(e.target.value);
-                break;
-            case "postalCode":
-                setPostalCode(e.target.value);
-                break;
+         
         }
     }
 
@@ -45,13 +37,11 @@ export function Registration() {
         Axios({ method: 'post',
             url: 'User/Register',
             params: {
-                name: name,
+              
                 userName: userName,
                 password: password,
-                phoneNumber: phoneNumber,
-                streetAddress: streetAddress,
-                city: city,
-                postalCode: postalCode
+                email: email
+                
             }
            
 
@@ -71,27 +61,18 @@ export function Registration() {
             <h1>Register User </h1>
             <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
             <form onSubmit={register} class="well form-horizontal" id="contact_form" >
-                <label htmlFor="name">Name</label>
-                <input id="name" type="number" onChange={handleFieldChange} />
-                <br />
+                
                 <label htmlFor="userName">UserName</label>
-                <input id="userID" type="text" onChange={handleFieldChange} />
+                <input id="userName" type="text" onChange={handleFieldChange} />
                 <br />
                 <label htmlFor="password">Password</label>
                 <input id="password" type="password" onChange={handleFieldChange} />
                 <br />
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input id="PhoneNumber" type="text" onChange={handleFieldChange} />
-                <br />
-                <label htmlFor="streetAddress">Street Address</label>
-                <input id="streetAddress" type="text" onChange={handleFieldChange} />
-                <br />
-                <label htmlFor="city">City </label>
-                <input id="city" type="text" onChange={handleFieldChange} />
-                <br />
-                <label htmlFor="postalCode">Price</label>
-                <input id="postalCode" type="text" onChange={handleFieldChange} />
-                <br />
+                <label htmlFor="email">Phone Number</label>
+                <input id="email" type="email" onChange={handleFieldChange} />
+            
+               
+               
                 <br />
                 <input class="btn btn-primary" type="submit" value="Submit" />
             </form>

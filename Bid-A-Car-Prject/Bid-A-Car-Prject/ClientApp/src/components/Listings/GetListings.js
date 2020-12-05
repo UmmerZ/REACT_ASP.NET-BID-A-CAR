@@ -35,7 +35,7 @@ function GetListings(props) {
                            
                             <div class = "btn-toolbar">
                                 < Link class="button-view" >View</Link>
-                                < Link class="button-view" >Edit</Link>
+                                < Link class="button-view" to={"/edit-listing"+product.id} >Edit</Link>
                                 < Link class="button-view" onClick={() => deleteListing(product.vehicleID)} >Delete</Link>
                             </div>
                             <hr />

@@ -54,16 +54,8 @@ namespace Bid_A_Car_Project.Controllers
 
 
 
-        /*****************************************************************
-        API request to get Individual User from the Database by given ID
-        ******************************************************************/
-        [HttpGet("UserByID")]
-        public ActionResult<User> UserByID_GET(string id)
-        {
-
-            return new UserController().GetUserByID(id);
-        }
-
+       
+    
 
 
         /*****************************************************************
@@ -88,28 +80,6 @@ namespace Bid_A_Car_Project.Controllers
 
 
 
-
-        /*****************************************************************
-        API request to Create New User
-        ******************************************************************/
-        [HttpPost("RegisterUser")]
-        public ActionResult<User> Register_POST(string id, string name,  string phoneNumber, string streetAddress, string city, string postalCode)
-            
-        {
-            ActionResult<User> result;
-            result = new UserController().RegisterUser(id, name, phoneNumber, streetAddress, city, postalCode);
-            return result;
-        }
-          
-       [HttpGet("IfUserExists")]
-       public bool GetLogin_GET(string username, string password)
-            
-        {
-            return new UserController().IfUserExists(username, password);
-           
-        }
-
-
         /*****************************************************************
       API request to Delete the listing with provided ID
       ******************************************************************/
@@ -124,21 +94,21 @@ namespace Bid_A_Car_Project.Controllers
         /*****************************************************************
       API request to Update the listing with provided ID
       ******************************************************************/
-        [HttpPut("UpdateListing")]
-        public ActionResult<Vehicle> UpdateListing_POST(string vehicleID, string make, string model, string kms, string year, string description, string price)
+        [HttpPost("UpdateListing")]
+        public ActionResult<Vehicle> UpdateListing_POST(string id, string make, string model, string kms, string year, string description, string price)
            
         {
-            ActionResult<Vehicle> result;
+            Vehicle result;
             try {
-                result = new VehicleController().UpdateListingByID(vehicleID, make, model, kms, year, description, price);
+                result = new VehicleController().UpdateListingByID(id, make, model, kms, year, description, price) ;
                 return result;
             }
             catch(Exception e)
             {
-                throw new Exception($"sorry{e.Message}");
-                throw new Exception($"sorry{e.Message}");
+                
+                throw new Exception($"Sorry! {e.Message}");
             }
-                    }
+        }
             
           
 

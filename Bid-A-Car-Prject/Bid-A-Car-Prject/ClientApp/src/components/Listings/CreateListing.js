@@ -51,9 +51,6 @@ function CreateListing(props) {
     function handleSubmit(event) {
         event.preventDefault();
         setWaiting(true);
-        const formData = new FormData();
-       
-        
 
         axios(
             {
@@ -68,12 +65,7 @@ function CreateListing(props) {
                     year: year,
                     description: description,
                     userID: userID,
-                    price: price,
-                    isSold: isSold,
-                    imageUrl: imageUrl
-           
-                    
-
+                    price: price
 
                 }
             }
@@ -98,34 +90,34 @@ function CreateListing(props) {
 
             
 
-            <form onSubmit={handleSubmit} class="well form-horizontal" id="contact_form" >
+            <form onSubmit={handleSubmit}  >
               
               
                 <div className="row">
 
-                <label htmlFor="make"></label>
-                    <input className= "col" id="make" type="text" placeholder="Make"onChange={handleFieldChange} />
+                <label htmlFor="make">Make</label>
+                    <input className= "col" id="make" type="text" placeholder="Make" onChange={handleFieldChange} />
                 
-                <label htmlFor="model"></label>
+                    <label htmlFor="model">Model</label>
                     <input className="col" id="model" type="text" placeholder="Model" onChange={handleFieldChange} />
                 </div>
 
                 <div className="row">
-                <label htmlFor="kms"></label>
+                <label htmlFor="kms">Odometer</label>
                     <input className="col" id="kms" type="number" placeholder="Kilometers" onChange={handleFieldChange} />
                 
-                <label htmlFor="year"> </label>
+                <label htmlFor="year">Year</label>
                     <input className="col" id="year" type="number" placeholder="Year" onChange={handleFieldChange} />
                 </div>
                 <div className="row" >
-                    <label htmlFor="Price"></label>
+                    <label htmlFor="Price">Price</label>
                     <input className="col" id="price" type="number" placeholder="Price" onChange={handleFieldChange} />
 
-                    <label htmlFor="color"></label>
-                    <input className="col" id="color" type="text" placeholder="Color" onChange={handleFieldChange} />
+                    <label htmlFor="userID">UserID</label>
+                    <input className="col" id="userID" type="number" placeholder="userID" onChange={handleFieldChange} />
                 </div>
                 <div className= "row">
-                <label htmlFor="description"> </label>
+                <label htmlFor="description">Description</label>
                     <textarea id="description" cols="100" type="text" placeholder="Description"  onChange={handleFieldChange} />
                 </div>
                

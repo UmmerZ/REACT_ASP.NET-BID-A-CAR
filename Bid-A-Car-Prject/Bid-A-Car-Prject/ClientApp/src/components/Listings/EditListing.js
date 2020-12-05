@@ -1,86 +1,137 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 /**************************************************************
  Code Borrowed from-https://github.com/toofaniCoder/React-Users.
  *************************************************************/
-function EditListing(props)  {
-    
-    
-    const { id } = useParams();
-    const [listing , setListing] = useState({
-        make: "",
-        model: "",
-        kms: "",
-        year: "",
-        description: "",
-        price: ""
-    });
-    const { make, model, kms, description,year, price } = listing;
+class EditListing extends React.Component {
+    constructor(props) {
+        super(props)
 
-   
+        this.ChangeMake = this.make.bind(this);
+        this.ChangeModel = this.model.bind(this);
+        this.ChangeKms = this.kms.bind(this);
+        this.ChangeYear = this.year.bind(this);
+        this.ChangeDescription = this.description.bind(this);
+        this.ChangePrice = this.price.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
-    
 
-    const handleFieldChange = e => {
-        const { id, value } = e.target;
-        setListing(prevState => ({
-            ...prevState,
-            [id]: value,
-        }));
+        this.state = {
+            make: "",
+            model: "",
+            kms: "",
+            year: "",
+            description: "",
+            price: ""
 
-    };
-      useEffect(() => {
-    loadListing();
-  }, []);
+        }
+    }
+    componentDidMount() {
+        axios.get('http://localhost:44314/VehicleAPI/Student/ByID?id=' + this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    name: response.data.name,
+                    model: response.data.model,
+                    kms: response.data.kms,
+                    year: response.data.year,
+                    description: response.data.description,
+                    price: response.data.price,
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await axios.put(`http://localhost:44314/VehicleAPI/UpdateLisitingByID=${id}`, listing);
-       
-};
-
-   
-  
-    const loadListing = async () => {
-        const result = await axios.get(`http://localhost:44314/VehicleAPI/ByID=${id}`);
-        setListing(result.data)
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
-    return (
-        <div class="container">
-            <h1 class="shadow p-3 mb-5 bg-dark rounded ">Update Your Listing</h1>
+    ChangeMake(e) {
+        this.setState({
+            make: e.target.value
+        });
+    }
+    ChangeModel(e) {
+        this.setState({
+            model: e.target.value
+        });
+    }
+    ChangeKms(e) {
+        this.setState({
+            kms: e.target.value
+        });
+    }
+    ChangeDescription(e) {
+        this.setState({
+            description: e.target.value
+        });
+    }
+    ChangeYear(e) {
+        this.setState({
+            year: e.target.value
+        });
+    }
+    ChnnagePrice(e) {
+        this.setState({
+            price: e.target.value
+        });
+    }
 
-        
+    onSubmit(e) {
+        debugger;
+        e.preventDefault();
+        const obj = {
+            id: this.props.match.params.id,
+            make: this.state.make,
+            model: this.state.model,
+            kms: this.state.kms,
+            year: this.state.year,
+            description: this.state.description,
+            price: this.state.price
 
-            <form onSubmit={e => handleSubmit(e)} class="well form-horizontal" id="contact_form" >
+        };
+        axios.put('http://localhost:44314/VehicleAPI/UpdateListing/', obj)
+            .then(res => console.log(res.data));
+        debugger;
+        this.props.history.push('/GetListing') 
+    }
+    render() {
 
-                
-                <label htmlFor="make">Make</label>
-                <input id="make" type="text" value={make} onChange={e => handleFieldChange(e)} />
-                <br />
-                <label htmlFor="model">Model</label>
-                <input id="model" type="text" value={model} onChange={e => handleFieldChange(e)} />
-                <br />
-                <label htmlFor="kms">Odometer</label>
-                <input id="kms" type="number" value={kms} onChange={e => handleFieldChange(e)} />
-                <br />
-                <label htmlFor="year">Year </label>
-                <input id="year" type="number" value={year} onChange={e => handleFieldChange(e)} />
-                <br />
-                <label htmlFor="description">Description </label>
-                <textarea id="description" type="text" value={description}onChange={e => handleFieldChange(e)} />
-                <br />
-                <label htmlFor="Price">Price</label>
-                <input id="price" type="number" value={price}onChange={e => handleFieldChange(e)} />
-                <br />
-                <br />
-                <input class="btn btn-primary" type="submit" value="Save Changes" />
-                <button class="btn btn-warning" value = "Cancel">Cancel</button>
-            </form>
-        </div>
-    );
-};
 
-export { EditListing };
+
+        return (
+            <div className="text-center border border-light p-5  " >
+                <h1 className="shadow p-3 mb-5 bg-dark rounded ">Update Your Listing</h1>
+
+
+
+                <form onSubmit={this.onSubmit} id="contact_form" >
+
+
+                    <label htmlFor="make">Make</label>
+                    <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.ChangeMake} />
+                    <br />
+                    <label htmlFor="model">Model</label>
+                    <input name="model" type="text" className="form-control mb-4" value={this.state.model} onChange={this.ChangeModel} />
+                    <br />
+                    <label htmlFor="kms">Odometer</label>
+                    <input name="kms" type="number" className="form-control mb-4" value={this.state.kms} onChange={this.CHangeKms} />
+                    <br />
+                    <label htmlFor="year">Year </label>
+                    <input name="year" type="number" className="form-control mb-4" value={this.state.year} onChange={this.ChangeYear} />
+                    <br />
+                    <label htmlFor="description">Description </label>
+                    <textarea name="description" className="form-control mb-4" type="text" value={this.state.description} onChange={this.ChangeDescription} />
+                    <br />
+                    <label htmlFor="Price">Price</label>
+                    <input name="price" type="number" className="form-control mb-4" value={this.state.price} onChange={this.ChnagePrice} />
+                    <br />
+                    <br />
+                    <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Save Changes" />
+                    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" value="Cancel">Cancel</button>
+                </form>
+            </div>
+        );
+    }
+} export { EditListing };
+

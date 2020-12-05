@@ -17,7 +17,7 @@ namespace Bid_A_Car_Project.Models
 
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int UserID { get; set; }
 
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }

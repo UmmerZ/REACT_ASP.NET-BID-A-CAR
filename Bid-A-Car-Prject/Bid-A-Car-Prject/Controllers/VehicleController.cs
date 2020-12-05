@@ -15,8 +15,7 @@ using System.Threading.Tasks;
 namespace Bid_A_Car_Project.Controllers
 {
 
-    [Route("[controller]")]
-    [ApiController]
+    
     public class VehicleController : Controller
     {
     //    private readonly IWebHostEnvironment _webHostEnvironment;
@@ -43,12 +42,12 @@ namespace Bid_A_Car_Project.Controllers
             return View();
         }
         
-        public Vehicle GetListingByID(string vehicleID)
+        public Vehicle GetListingByID(string id)
         {
             Vehicle result;
             using (SaleContext context = new SaleContext())
             {
-               result = context.Vehicles.Where(x => x.VehicleID == int.Parse(vehicleID)).Single();
+               result = context.Vehicles.Where(x => x.ID == int.Parse(id)).Single();
 
             }
 
@@ -59,11 +58,11 @@ namespace Bid_A_Car_Project.Controllers
     
     public Vehicle CreateListing( string make, string model, string kms, string year, string description, string userID, string price )
     {
-        
+        //Adds new Listing to the Database
 
         using (SaleContext context = new SaleContext())
         {
-                Vehicle newListing = new Vehicle
+                Vehicle newListing = new Vehicle()
                 {
                     
                    
@@ -74,7 +73,6 @@ namespace Bid_A_Car_Project.Controllers
                     Description = description.Trim(),
                     UserID = int.Parse(userID),
                     IsSold = false,
-                  
                     Price = int.Parse(price)
 
                 };
@@ -96,28 +94,34 @@ namespace Bid_A_Car_Project.Controllers
             }
         }
 
-        public Vehicle UpdateListingByID(string vehicleID, string make, string model, string kms, string year, string description,  string price)
+        public Vehicle UpdateListingByID(string id, string make, string model, string kms, string year, string description,  string price)
         {
             Vehicle result;
-            int parsedID = int.Parse(vehicleID);
-
+            int parsedID = int.Parse(id);
             // TODO: Trim name;
-
-        
-
             using (SaleContext context = new SaleContext())
             {
-                result = context.Vehicles.Where(x => x.VehicleID == parsedID).Single();
-
-               
-
-                result.Make = make;
-                result.Model = model;
-                result.Kilometers = int.Parse(kms);
-                result.Year = int.Parse(year);
-                result.Description = description;
-                result.Price = int.Parse(price);
-                context.SaveChanges();
+                
+                result = context.Vehicles.Where(x => x.ID == parsedID).FirstOrDefault();
+                if (result == null)
+                {
+                    //if you want to create a car then
+                    //string userID = "-1";
+                    //result = new VehicleController().CreateListing(make, model, kms, year, description, userID, price);
+                    //if you don't want a new vehicle when a vehicle was not found then
+                    Exception e = new Exception("You are trying to update a car that does not exist. Please create the car first.");
+                    throw e;
+                }
+                else
+                {
+                    result.Make = make.Trim();
+                    result.Model = model.Trim();
+                    result.Kilometers = int.Parse(kms);
+                    result.Year = int.Parse(year);
+                    result.Description = description.Trim();
+                    result.Price = int.Parse(price);
+                    context.SaveChanges();
+                }
             }
             return result;
         }

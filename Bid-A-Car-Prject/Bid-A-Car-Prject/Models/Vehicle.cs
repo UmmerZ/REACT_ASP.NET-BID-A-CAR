@@ -18,14 +18,14 @@ namespace Bid_A_Car_Project.Models
         [Key]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int VehicleID { get; set; }
+        public int ID { get; set; }
         
 
         
         [Column(TypeName = "varchar(60)")]
         public string Make { get; set; }
 
-       [Required]
+       
         [Column(TypeName = "varchar(60)")]
         public string Model { get; set; }
 
@@ -42,9 +42,6 @@ namespace Bid_A_Car_Project.Models
 
         [Column(TypeName = "int(10)")]
        public int UserID { get; set; }
-
-        [Column(TypeName = "varchar(300)")]
-        public string ImageUrl{ get; set; }
 
         [Column(TypeName = "varchar(10)")]
         public bool IsSold { get; set; }

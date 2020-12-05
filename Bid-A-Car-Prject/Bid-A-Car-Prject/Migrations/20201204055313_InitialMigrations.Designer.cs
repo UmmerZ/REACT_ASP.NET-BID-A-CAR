@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bid_A_Car_Prject.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    [Migration("20201203005911_intialMigration")]
-    partial class intialMigration
+    [Migration("20201204055313_InitialMigrations")]
+    partial class InitialMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace Bid_A_Car_Prject.Migrations
 
             modelBuilder.Entity("Bid_A_Car_Project.Models.User", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(10)");
 
@@ -70,14 +70,14 @@ namespace Bid_A_Car_Prject.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ID");
+                    b.HasKey("UserID");
 
                     b.ToTable("User");
 
                     b.HasData(
                         new
                         {
-                            ID = -1,
+                            UserID = -1,
                             City = "Edmonton",
                             Email = "john@example.com",
                             Name = "John",
@@ -89,7 +89,7 @@ namespace Bid_A_Car_Prject.Migrations
                         },
                         new
                         {
-                            ID = -2,
+                            UserID = -2,
                             City = "Calgary",
                             Email = "bill@example.com",
                             Name = "Bill",
@@ -101,7 +101,7 @@ namespace Bid_A_Car_Prject.Migrations
                         },
                         new
                         {
-                            ID = -3,
+                            UserID = -3,
                             City = "Chicago",
                             Email = "peter@example.com",
                             Name = "Peter",
@@ -115,15 +115,12 @@ namespace Bid_A_Car_Prject.Migrations
 
             modelBuilder.Entity("Bid_A_Car_Project.Models.Vehicle", b =>
                 {
-                    b.Property<int>("VehicleID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(10)");
 
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("IsSold")
                         .IsRequired()
@@ -150,7 +147,7 @@ namespace Bid_A_Car_Prject.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("int(6)");
 
-                    b.HasKey("VehicleID");
+                    b.HasKey("ID");
 
                     b.HasIndex("UserID")
                         .HasName("FK_Vehicle_User");
@@ -160,9 +157,8 @@ namespace Bid_A_Car_Prject.Migrations
                     b.HasData(
                         new
                         {
-                            VehicleID = -1,
+                            ID = -1,
                             Description = "The cat is in mint condition, Lady Driven ",
-                            ImageUrl = "wwwroot/bmwx5.jpg",
                             IsSold = "0",
                             Kilometers = 3000,
                             Make = "BMW",
@@ -173,9 +169,8 @@ namespace Bid_A_Car_Prject.Migrations
                         },
                         new
                         {
-                            VehicleID = -2,
+                            ID = -2,
                             Description = "3 year old drives like brand new ",
-                            ImageUrl = "wwwroot/audiq5.jpg",
                             IsSold = "0",
                             Kilometers = 13000,
                             Make = "AUDI",
@@ -186,9 +181,8 @@ namespace Bid_A_Car_Prject.Migrations
                         },
                         new
                         {
-                            VehicleID = -3,
+                            ID = -3,
                             Description = "Trick runs smooth Dont need it any more ",
-                            ImageUrl = "wwwroot/fordf150.jpg",
                             IsSold = "0",
                             Kilometers = 33000,
                             Make = "Ford",

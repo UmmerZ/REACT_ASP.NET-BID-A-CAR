@@ -49,7 +49,7 @@ namespace Bid_A_Car_Project.Models
                 entity.HasData(
                     new User()
                     {
-                        ID = -1,
+                        UserID = -1,
                         Name = "John",
                         UserName = "johnny123",
                         Email= "john@example.com",
@@ -61,7 +61,7 @@ namespace Bid_A_Car_Project.Models
                     },
                     new User()
                     {
-                        ID = -2,
+                        UserID = -2,
                         Name = "Bill",
                         UserName = "billy123",
                         Email = "bill@example.com",
@@ -73,7 +73,7 @@ namespace Bid_A_Car_Project.Models
                     },
                     new User()
                     {
-                        ID = -3,
+                        UserID = -3,
                         Name = "Peter",
                         UserName = "johnny123",
                         Email = "peter@example.com",
@@ -114,7 +114,7 @@ namespace Bid_A_Car_Project.Models
                 entity.HasData(
                     new Vehicle()
                     {
-                        VehicleID = -1,
+                        ID = -1,
                         Make = "BMW",
                         Model = "X5",
                         Kilometers = 3000,
@@ -122,12 +122,12 @@ namespace Bid_A_Car_Project.Models
                         Description = "The cat is in mint condition, Lady Driven ",
                         UserID = -2,
                        IsSold = false,
-                       ImageUrl = "wwwroot/bmwx5.jpg",
+                     
                        Price = 30000
                     },
                     new Vehicle()
                     {
-                        VehicleID = -2,
+                        ID = -2,
                         Make = "AUDI",
                         Model = "Q5",
                         Kilometers = 13000,
@@ -135,12 +135,12 @@ namespace Bid_A_Car_Project.Models
                         Description = "3 year old drives like brand new ",
                         UserID = -1,
                          IsSold = false,
-                        ImageUrl = "wwwroot/audiq5.jpg",
+                       
                         Price = 40000
                     },
                     new Vehicle()
                     {
-                        VehicleID = -3,
+                        ID = -3,
                         Make = "Ford",
                         Model = "F150",
                         Kilometers = 33000,
@@ -148,7 +148,7 @@ namespace Bid_A_Car_Project.Models
                         Description = "Trick runs smooth Dont need it any more ",
                         UserID = -3,
                          IsSold = false,
-                        ImageUrl = "wwwroot/fordf150.jpg",
+                        
                         Price = 20000
                     }
                     ) ;
