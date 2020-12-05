@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function GetListings(props) {
     const displayName = GetListings.name;
-    const [vehicleID, setVehicleID] = useState("");
+    const [id, setID] = useState("");
 
     // Configure our state, and our setState standin methods.
     const [vehicles, setVehicles] = useState([]);
@@ -13,7 +13,7 @@ function GetListings(props) {
    
     const deleteListing = async () => {
         const payload = { vehicleID: vehicles.vehicleID };
-        await axios.delete("http://localhost:44314/VehicleAPI/DeleteListing?vehicleID=${vehicleID", payload);
+        await axios.delete("http://localhost:44314/VehicleAPI/DeleteListing?vehicleID=${id}", payload);
     }
 
     // Build the table based on forecast data.
@@ -35,8 +35,8 @@ function GetListings(props) {
                            
                             <div class = "btn-toolbar">
                                 < Link class="button-view" >View</Link>
-                                < Link class="button-view" to={"/edit-listing"+product.id} >Edit</Link>
-                                < Link class="button-view" onClick={() => deleteListing(product.vehicleID)} >Delete</Link>
+                                < Link class="button-view" to={"/edit-listing/"+product.id} >Edit</Link>
+                                < Link class="button-view" onClick={() => deleteListing(product.id)} >Delete</Link>
                             </div>
                             <hr />
                         </div>

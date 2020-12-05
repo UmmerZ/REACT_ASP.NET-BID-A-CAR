@@ -10,10 +10,7 @@ export function Registration() {
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [streetAddress, setStreetAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [postalCode, setPostalCode] = useState("");
+  
 
     function handleFieldChange(e) {
         switch (e.target.id) {

@@ -8,15 +8,8 @@ import { useParams } from 'react-router-dom';
 class EditListing extends React.Component {
     constructor(props) {
         super(props)
-
-        this.ChangeMake = this.make.bind(this);
-        this.ChangeModel = this.model.bind(this);
-        this.ChangeKms = this.kms.bind(this);
-        this.ChangeYear = this.year.bind(this);
-        this.ChangeDescription = this.description.bind(this);
-        this.ChangePrice = this.price.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
+       
+ 
 
         this.state = {
             make: "",
@@ -24,15 +17,16 @@ class EditListing extends React.Component {
             kms: "",
             year: "",
             description: "",
-            price: ""
-
+            price: "",
+           
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:44314/VehicleAPI/Student/ByID?id=' + this.props.match.params.id)
+        console.log(this.props.match.params)
+        axios.get('https://localhost:44314/VehicleAPI/ByID?id=' + this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    name: response.data.name,
+                    make: response.data.make,
                     model: response.data.model,
                     kms: response.data.kms,
                     year: response.data.year,
@@ -42,36 +36,52 @@ class EditListing extends React.Component {
                 });
             })
             .catch(function (error) {
-                console.log(error);
+               
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
             })
     }
 
-    ChangeMake(e) {
+    make = (e) => {
         this.setState({
             make: e.target.value
         });
     }
-    ChangeModel(e) {
+    model = (e) => {
         this.setState({
             model: e.target.value
         });
     }
-    ChangeKms(e) {
+    kms = (e) => {
         this.setState({
             kms: e.target.value
         });
     }
-    ChangeDescription(e) {
+    description = (e) => {
         this.setState({
             description: e.target.value
         });
     }
-    ChangeYear(e) {
+    year = (e) => {
         this.setState({
             year: e.target.value
         });
     }
-    ChnnagePrice(e) {
+    price = (e) => {
         this.setState({
             price: e.target.value
         });
@@ -109,22 +119,22 @@ class EditListing extends React.Component {
 
 
                     <label htmlFor="make">Make</label>
-                    <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.ChangeMake} />
+                    <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.make} />
                     <br />
                     <label htmlFor="model">Model</label>
-                    <input name="model" type="text" className="form-control mb-4" value={this.state.model} onChange={this.ChangeModel} />
+                    <input name="model" type="text" className="form-control mb-4" value={this.state.model} onChange={this.model} />
                     <br />
                     <label htmlFor="kms">Odometer</label>
-                    <input name="kms" type="number" className="form-control mb-4" value={this.state.kms} onChange={this.CHangeKms} />
+                    <input name="kms" type="number" className="form-control mb-4" value={this.state.kms} onChange={this.kms} />
                     <br />
                     <label htmlFor="year">Year </label>
-                    <input name="year" type="number" className="form-control mb-4" value={this.state.year} onChange={this.ChangeYear} />
+                    <input name="year" type="number" className="form-control mb-4" value={this.state.year} onChange={this.year} />
                     <br />
                     <label htmlFor="description">Description </label>
-                    <textarea name="description" className="form-control mb-4" type="text" value={this.state.description} onChange={this.ChangeDescription} />
+                    <textarea name="description" className="form-control mb-4" type="text" value={this.state.description} onChange={this.description} />
                     <br />
                     <label htmlFor="Price">Price</label>
-                    <input name="price" type="number" className="form-control mb-4" value={this.state.price} onChange={this.ChnagePrice} />
+                    <input name="price" type="number" className="form-control mb-4" value={this.state.price} onChange={this.price} />
                     <br />
                     <br />
                     <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Save Changes" />

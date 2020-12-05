@@ -46,10 +46,10 @@ namespace Bid_A_Car_Project.Controllers
          ******************************************************************/
 
         [HttpGet("ByID")]
-        public ActionResult<Vehicle> VehicleByID_GET(string vehicleID)
+        public ActionResult<Vehicle> VehicleByID_GET(string id)
         {
 
-            return new VehicleController().GetListingByID(vehicleID);
+            return new VehicleController().GetListingByID(id);
         }
 
 

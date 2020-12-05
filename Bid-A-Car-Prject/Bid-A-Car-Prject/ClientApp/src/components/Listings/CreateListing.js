@@ -4,7 +4,7 @@ import axios from 'axios';
 function CreateListing(props) {
     
     const [statusCode, setStatusCode] = useState(0);
-    const [response, setResponse] = useState([]);
+    const [res, setResponse] = useState([]);
    
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
@@ -12,8 +12,7 @@ function CreateListing(props) {
     const [year, setYear] = useState("");
     const [description, setDescription] = useState("");
     const [userID, setUserID] = useState("");
-    const [imageUrl, setImageUrl] = useState("sample.jpg");
-    const [isSold, setIsSold] = useState("false")
+  
     const [price, setPrice] = useState("");
 
 

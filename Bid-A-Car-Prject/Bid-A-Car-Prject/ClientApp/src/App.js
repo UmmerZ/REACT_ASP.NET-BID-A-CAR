@@ -27,7 +27,7 @@ export default class App extends Component {
                 <Route path='/registration' component={Registration} />
                 <Route path='/logins' component={Logins} />
                 <Route path='/register-user' component={RegisterUser} />
-                <Route path='/edit-listing' component={EditListing} />
+                <Route exact path='/edit-listing/:id' component={EditListing} />
                 </Layout>
                 
         );
