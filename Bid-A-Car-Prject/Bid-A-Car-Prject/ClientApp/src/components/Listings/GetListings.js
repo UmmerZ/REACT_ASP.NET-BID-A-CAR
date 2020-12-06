@@ -22,31 +22,27 @@ function GetListings(props) {
 
   // Build the table based on forecast data.
   function renderProductsTable(vehicles) {
-    return (
-      <div>
+      return (
+          
+      <div className="card-body" >
         {vehicles.map(product => {
-          return (
+            return (
+                
             <div>
               <img src={product.imageUrl} />
-              <div>
-                <strong>Make:</strong> {product.make}
-              </div>
-              <div>
-                <strong>Model:</strong> {product.model}
-              </div>
-              <div>
-                <strong>Year</strong> {product.year}
-              </div>
-              <div>
-                <strong>Description: </strong>
+              <h5 className="card-title" >Make: {product.make}
+              </h5>
+              <h6 className=" card-subtitle mb-2 text-muted">Model: {product.model}
+              </h6>
+              <h6 className=" card-subtitle mb-2 text-muted">Year: {product.year}
+              </h6>
+              <p class="card-text">Description: 
                 {product.description}
-              </div>
-              <div>
-                <strong>Price:</strong> {product.price}
-              </div>
-              <div>
-                <strong>Kilometers:</strong> {product.kilometers}
-              </div>
+              </p>
+              <h6 className=" card-subtitle mb-2 text-muted">Price: {product.price}
+              </h6>
+              <h6 className=" card-subtitle mb-2 text-muted">Kilometers:   {product.kilometers}
+              </h6>
 
               <div class="btn-toolbar">
                 <Link class="button-view">View</Link>
@@ -61,10 +57,13 @@ function GetListings(props) {
                 </Link>
               </div>
               <hr />
-            </div>
-          );
+                    </div>
+                   
+            );
+         
         })}
-      </div>
+                </div>
+          
     );
   }
 

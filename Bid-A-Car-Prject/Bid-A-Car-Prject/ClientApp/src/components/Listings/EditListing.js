@@ -1,6 +1,7 @@
 ﻿import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { NavMenu } from '../NavMenu';
 
 /**************************************************************
  Code Borrowed from-https://github.com/toofaniCoder/React-Users.
@@ -116,38 +117,55 @@ class EditListing extends React.Component {
 
 
         return (
-            <div className="text-center border border-light p-5  " >
-                <h1 className="shadow p-3 mb-5 bg-dark rounded ">Update Your Listing</h1>
-
-
-
+           <>
+                <NavMenu />
+                <section id="cover" className="min-vh-100">
+                    <div id="cover-caption">
+                        <div className="container">
+                            <div className="row text-white">
+                                <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                                    <h1 className="display-5 py-2 ">Edit Listing</h1>
+                                    <div className="px-2">
                 <form onSubmit={this.onSubmit} id="contact_form" >
-
+                                            <div className="form-group">
+                                                <label className="sr-only" htmlFor="id">ID</label>
                     <input name="make" type="hidden" className="form-control mb-4" value={this.state.id} onChange={this.id} />
-
-                    <label htmlFor="make">Make</label>
-                    <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.make} />
-                    <br />
-                    <label htmlFor="model">Model</label>
-                    <input name="model" type="text" className="form-control mb-4" value={this.state.model} onChange={this.model} />
-                    <br />
-                    <label htmlFor="kilometers">Odometer</label>
-                    <input name="kilometers" type="number" className="form-control mb-4" value={this.state.kilometers} onChange={this.kilometers} />
-                    <br />
-                    <label htmlFor="year">Year </label>
-                    <input name="year" type="number" className="form-control mb-4" value={this.state.year} onChange={this.year} />
-                    <br />
-                    <label htmlFor="description">Description </label>
-                    <textarea name="description" className="form-control mb-4" type="text" value={this.state.description} onChange={this.description} />
-                    <br />
-                    <label htmlFor="Price">Price</label>
-                    <input name="price" type="number" className="form-control mb-4" value={this.state.price} onChange={this.price} />
-                    <br />
-                    <br />
+                                            </div>
+                                            <div className="form-group">
+                                                <label className="sr-only"  htmlFor="make">Make</label>
+                                                <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.make} />
+                                            </div>
+                                                <div className="form-group">
+                                                <label className="sr-only"  htmlFor="model">Model</label>
+                                                <input name="model" type="text" className="form-control mb-4" value={this.state.model} onChange={this.model} />
+                                            </div>
+                                                    <div className="form-group">
+                                                <label className="sr-only"  htmlFor="kilometers">Odometer</label>
+                                                <input name="kilometers" type="number" className="form-control mb-4" value={this.state.kilometers} onChange={this.kilometers} />
+                                            </div>
+                                                        <div className="form-group">
+                                                <label className="sr-only"  htmlFor="year">Year </label>
+                                                <input name="year" type="number" className="form-control mb-4" value={this.state.year} onChange={this.year} />
+                                            </div>
+                                                            <div className="form-group">
+                                                <label className="sr-only"  htmlFor="description">Description </label>
+                                                <textarea name="description" className="form-control mb-4" type="text" value={this.state.description} onChange={this.description} />
+                                            </div>
+                                                                <div className="form-group">
+                                                <label className="sr-only"  htmlFor="Price">Price</label>
+                                                <input name="price" type="number" className="form-control mb-4" value={this.state.price} onChange={this.price} />
+                                            </div>
+                  
                     <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Save Changes" />
                     <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" value="Cancel">Cancel</button>
                 </form>
-            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </>
         );
     }
 } export { EditListing };

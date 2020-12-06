@@ -1,6 +1,6 @@
 ﻿import React, {useState } from "react";
 import axios from "axios";
-import { NavMenuLogin } from "../PageLayout/NavMenuLogin";
+import { NavMenu } from "../NavMenu";
 
 
 
@@ -67,12 +67,13 @@ import { NavMenuLogin } from "../PageLayout/NavMenuLogin";
      
      return (
          <>
-             <NavMenuLogin />
+             <NavMenu />
            
                 <div class="form-group">
-                    <h1 className="shadow p-3 mb-5 bg-dark rounded">Register</h1>
+                 <h1 className="shadow p-3 mb-5 bg-dark rounded">Register</h1>
+                 <div className="register-forms">
                     <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
-                    <form className="text-center border border-light p-5"  onSubmit={handleSubmit}>
+                    <form   onSubmit={handleSubmit}>
                         <div class="form-group">
 
                             <input class="form-control" type="text" placeholder="User Name" id="userName"  
@@ -99,7 +100,8 @@ import { NavMenuLogin } from "../PageLayout/NavMenuLogin";
                         </div>
 
                         <input className="btn btn-info btn-block my-4" type="submit" value="Register"/>
-                    </form>
+                     </form>
+                     </div>
              </div>
              </>
             );
