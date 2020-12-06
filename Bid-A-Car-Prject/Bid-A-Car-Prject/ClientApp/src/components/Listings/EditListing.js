@@ -9,12 +9,18 @@ class EditListing extends React.Component {
     constructor(props) {
         super(props)
        
- 
+        this.make = this.make.bind(this);
+        this.model = this.model.bind(this);
+        this.kilometers = this.kilometers.bind(this);
+        this.year = this.year.bind(this);
+        this.description = this.description.bind(this);
+        this.price = this.price.bind(this);
+        this.onSubmit = this.onSubmit.bind(this); 
 
         this.state = {
             make: "",
             model: "",
-            kms: "",
+            kilometers: "",
             year: "",
             description: "",
             price: "",
@@ -28,7 +34,7 @@ class EditListing extends React.Component {
                 this.setState({
                     make: response.data.make,
                     model: response.data.model,
-                    kms: response.data.kms,
+                    kilometers: response.data.kilometers,
                     year: response.data.year,
                     description: response.data.description,
                     price: response.data.price,
@@ -66,9 +72,9 @@ class EditListing extends React.Component {
             model: e.target.value
         });
     }
-    kms = (e) => {
+    kilometers = (e) => {
         this.setState({
-            kms: e.target.value
+            kilometers: e.target.value
         });
     }
     description = (e) => {
@@ -88,21 +94,21 @@ class EditListing extends React.Component {
     }
 
     onSubmit(e) {
-        debugger;
+       
         e.preventDefault();
         const obj = {
-            id: this.props.match.params.id,
+            id: this.state.id,
             make: this.state.make,
             model: this.state.model,
-            kms: this.state.kms,
+            kilometers: this.state.kilometers,
             year: this.state.year,
             description: this.state.description,
             price: this.state.price
 
         };
-        axios.put('http://localhost:44314/VehicleAPI/UpdateListing/', obj)
+        axios.put('https://localhost:44314/VehicleAPI/UpdateListing/', obj)
             .then(res => console.log(res.data));
-        debugger;
+       
         this.props.history.push('/GetListing') 
     }
     render() {
@@ -117,6 +123,7 @@ class EditListing extends React.Component {
 
                 <form onSubmit={this.onSubmit} id="contact_form" >
 
+                    <input name="make" type="hidden" className="form-control mb-4" value={this.state.id} onChange={this.id} />
 
                     <label htmlFor="make">Make</label>
                     <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.make} />
@@ -124,8 +131,8 @@ class EditListing extends React.Component {
                     <label htmlFor="model">Model</label>
                     <input name="model" type="text" className="form-control mb-4" value={this.state.model} onChange={this.model} />
                     <br />
-                    <label htmlFor="kms">Odometer</label>
-                    <input name="kms" type="number" className="form-control mb-4" value={this.state.kms} onChange={this.kms} />
+                    <label htmlFor="kilometers">Odometer</label>
+                    <input name="kilometers" type="number" className="form-control mb-4" value={this.state.kilometers} onChange={this.kilometers} />
                     <br />
                     <label htmlFor="year">Year </label>
                     <input name="year" type="number" className="form-control mb-4" value={this.state.year} onChange={this.year} />

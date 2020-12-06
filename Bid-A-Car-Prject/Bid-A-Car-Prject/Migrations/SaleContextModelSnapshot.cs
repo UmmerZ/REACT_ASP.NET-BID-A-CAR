@@ -54,7 +54,7 @@ namespace Bid_A_Car_Prject.Migrations
                         .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");
 
                     b.Property<string>("Password")
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("varchar(10)");
@@ -131,7 +131,6 @@ namespace Bid_A_Car_Prject.Migrations
                         .HasColumnType("varchar(60)");
 
                     b.Property<string>("Model")
-                        .IsRequired()
                         .HasColumnType("varchar(60)")
                         .HasAnnotation("MySql:CharSet", "utf8mb4")
                         .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");

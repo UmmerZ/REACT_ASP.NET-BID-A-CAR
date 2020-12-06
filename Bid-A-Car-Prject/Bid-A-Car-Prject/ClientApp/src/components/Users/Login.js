@@ -1,62 +1,76 @@
-﻿import React, { setState } from "react";
+﻿import React, { Component } from "react";
+import axios from "axios";
 
-export function Logins() {
-    const [userNameLogin, setUserNameLogin] = setState("");
-    const [password, setPassword] = setState("");
+export default class Login extends Component {
+    constructor(props) {
+        super(props);
 
-    function ValidateForm() {
-        return userNameLogin.length > 0 && password.length > 0;
+        this.state = {
+            userName: "",
+            password: "",
+            loginErrors: ""
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    function handleSubmit  (event)  {
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    handleSubmit(event) {
+        const { email, password } = this.state;
+
+        axios
+            .get(
+                "http://localhost:44314/User",
+                {
+                    user: {
+                        email: email,
+                        password: password
+                    }
+                },
+                { withCredentials: true }
+            )
+            .then(response => {
+                if (response.data.logged_in) {
+                    this.props.handleSuccessfulAuth(response.data);
+                }
+            })
+            .catch(error => {
+                console.log("login error", error);
+            });
         event.preventDefault();
     }
 
-    return (
-        <div>
-            
-            <form className="text-center border border-light p-5" action="#!">
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                        required
+                    />
 
-                <p class="h4 mb-4">Sign in</p>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        required
+                    />
 
-                
-    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"/>
-
-                   
-    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"/>
-
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                
-            <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember"/>
-                                        <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                    <button type="submit">Login</button>
+                </form>
             </div>
-                                </div>
-                                <div>
-                                   
-            <a href="">Forgot password?</a>
-                                </div>
-                            </div>
-
-                           
-    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-
-                            
-    <p>Not a member?
-        <a href="">Register</a>
-                            </p>
-
-                            
-    <p>or sign in with:</p>
-
-                            <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-                            <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-                            <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                            <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
-</form>
-                        
-        </div>
-    )
-} export default { Logins };
+        );
+    }
+}

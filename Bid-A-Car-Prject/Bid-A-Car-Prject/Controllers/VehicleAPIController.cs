@@ -85,22 +85,22 @@ namespace Bid_A_Car_Project.Controllers
       ******************************************************************/
 
         [HttpDelete("DeleteListing")]
-        public void DeleteListing_POST(string vehicleID)
+        public void DeleteListing_POST(string id)
         {
-             new VehicleController().DeleteListing(vehicleID);
+             new VehicleController().DeleteListing(id);
         }
 
 
         /*****************************************************************
       API request to Update the listing with provided ID
       ******************************************************************/
-        [HttpPost("UpdateListing")]
-        public ActionResult<Vehicle> UpdateListing_POST(string id, string make, string model, string kms, string year, string description, string price)
+        [HttpPut("UpdateListing")]
+        public ActionResult<Vehicle> UpdateListing_POST(string id, string make, string model, string kilometers, string year, string description, string price)
            
         {
             Vehicle result;
             try {
-                result = new VehicleController().UpdateListingByID(id, make, model, kms, year, description, price) ;
+                result = new VehicleController().UpdateListingByID(id, make, model, kilometers, year, description, price) ;
                 return result;
             }
             catch(Exception e)

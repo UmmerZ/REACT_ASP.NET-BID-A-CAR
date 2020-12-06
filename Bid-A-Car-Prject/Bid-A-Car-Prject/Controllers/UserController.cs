@@ -17,25 +17,16 @@ namespace Bid_A_Car_Prject.Controllers
        API request to get Individual User from the Database by given ID
        ******************************************************************/
 
-        [HttpGet("GetUser")]
-        public User GetUserByUserName(string userName)
+        [HttpGet("login")]
+        public ActionResult<User> GetUserByUserName(string userName, string password)
         {
            User userResult;
             using (SaleContext context = new SaleContext())
                
             {
-                try
-                {
-                    userResult = context.Users.Where(x => x.UserName == userName.Trim()).Single();
-                }
-                catch
-                {
-                    throw new Exception("UserName not Found");
-                }
-               
-              
+                  userResult = context.Users.Where(x => x.UserName == userName.Trim() && x.Password == password.Trim()).Single();
             }
-            return userResult;
+            return Ok();
         }
 
         [HttpGet("All")]
@@ -115,7 +106,8 @@ namespace Bid_A_Car_Prject.Controllers
             
 
         }
-        public ActionResult<User> IfUserExists(string username, string password)
+       
+        public User IfUserExists(string username, string password)
         {
             
             using (SaleContext context = new SaleContext()){

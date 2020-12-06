@@ -1,7 +1,10 @@
 ﻿import React, {useState } from "react";
 import axios from "axios";
+import { NavMenuLogin } from "../PageLayout/NavMenuLogin";
 
- export function RegisterUser() {
+
+
+ export function RegisterUser(props) {
     
     const [statusCode, setStatusCode] = useState(0);
     const [response, setResponse] = useState([]);
@@ -10,7 +13,8 @@ import axios from "axios";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [waiting, setWaiting] = useState(false);
+     const [waiting, setWaiting] = useState(false);
+  
    
     
     function handleChange(event) {
@@ -34,6 +38,7 @@ import axios from "axios";
     function handleSubmit(event) {
         event.preventDefault();
         setWaiting(true);
+        
         axios(
             {
             method: 'post',
@@ -46,6 +51,7 @@ import axios from "axios";
         }
       }
         ).then(response => {
+            if (response.data.status === 'created') 
             console.log(response);
                 setWaiting(false);
                   setResponse(response.data);
@@ -59,7 +65,10 @@ import axios from "axios";
     
     }
      
-            return (
+     return (
+         <>
+             <NavMenuLogin />
+           
                 <div class="form-group">
                     <h1 className="shadow p-3 mb-5 bg-dark rounded">Register</h1>
                     <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
@@ -91,7 +100,8 @@ import axios from "axios";
 
                         <input className="btn btn-info btn-block my-4" type="submit" value="Register"/>
                     </form>
-                </div>
+             </div>
+             </>
             );
         }
    
