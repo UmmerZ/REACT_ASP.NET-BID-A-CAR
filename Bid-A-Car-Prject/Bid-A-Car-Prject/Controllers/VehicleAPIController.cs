@@ -110,7 +110,13 @@ namespace Bid_A_Car_Project.Controllers
             }
         }
             
-          
-
+       [HttpPost("Bid")]
+       public ActionResult<Transaction> CreateTransaction_POST(string sellerID, string buyerID, string numberOfBids, string saleAmount)
+        {
+            ActionResult<Transaction> result;
+            result = new VehicleController().CreateTransaction(sellerID, buyerID, numberOfBids, saleAmount);
+            return result;
+        }
+        
     }
 }

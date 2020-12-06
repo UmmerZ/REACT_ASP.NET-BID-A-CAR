@@ -18,6 +18,12 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "int(10)")]
         public int SellerID { get; set; }
 
+        [Column(TypeName = "int(10)")]
+        public int BuyerID { get; set; }
+
+        [Column(TypeName = "int(10)")]
+        public int NumberOfBids { get; set; }
+
         [Column(TypeName = "int(15)")]
         public int SaleAmount { get; set; }
 

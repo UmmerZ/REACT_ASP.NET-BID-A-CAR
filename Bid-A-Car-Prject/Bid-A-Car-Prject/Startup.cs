@@ -25,8 +25,13 @@ namespace Bid_A_Car_Prject
 
             services.AddControllersWithViews();
             services.AddDbContext<SaleContext>();
-       
-          
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
 
 
             // In production, the React files will be served from this directory
@@ -57,7 +62,7 @@ namespace Bid_A_Car_Prject
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-
+            app.UseCors("MyPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

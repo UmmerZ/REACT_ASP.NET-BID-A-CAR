@@ -107,15 +107,16 @@ namespace Bid_A_Car_Prject.Controllers
 
         }
        
-        public User IfUserExists(string username, string password)
+        [HttpPost("login")]
+        public IActionResult Login(User user)
         {
             
             using (SaleContext context = new SaleContext()){
-             User result = context.Users.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
+             User result = context.Users.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
 
-                return result;  
+                
             }
-
+            return Ok(StatusCode(200));
             
         }
     }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button } from "bootstrap";
 import { Link } from "react-router-dom";
 
+
 function GetListings(props) {
   
   const [id, setID] = useState("");
@@ -23,7 +24,8 @@ function GetListings(props) {
   // Build the table based on forecast data.
   function renderProductsTable(vehicles) {
       return (
-          
+          <>
+        
       <div className="card-body" >
         {vehicles.map(product => {
             return (
@@ -63,7 +65,7 @@ function GetListings(props) {
          
         })}
                 </div>
-          
+      </>    
     );
   }
 

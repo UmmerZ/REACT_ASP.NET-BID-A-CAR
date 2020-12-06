@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bid_A_Car_Prject.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    [Migration("20201205114837_AddedPasswordEncyprtion")]
-    partial class AddedPasswordEncyprtion
+    [Migration("20201206115801_addedTransactionColumn")]
+    partial class addedTransactionColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,12 @@ namespace Bid_A_Car_Prject.Migrations
                 {
                     b.Property<int>("TransactionID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int(10)");
+
+                    b.Property<int>("BuyerID")
+                        .HasColumnType("int(10)");
+
+                    b.Property<int>("NumberOfBids")
                         .HasColumnType("int(10)");
 
                     b.Property<int>("SaleAmount")
@@ -119,6 +125,9 @@ namespace Bid_A_Car_Prject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(10)");
 
+                    b.Property<string>("Color")
+                        .HasColumnType("varchar(50)");
+
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
 
@@ -130,9 +139,11 @@ namespace Bid_A_Car_Prject.Migrations
                         .HasColumnType("int(9)");
 
                     b.Property<string>("Make")
+                        .IsRequired()
                         .HasColumnType("varchar(60)");
 
                     b.Property<string>("Model")
+                        .IsRequired()
                         .HasColumnType("varchar(60)")
                         .HasAnnotation("MySql:CharSet", "utf8mb4")
                         .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");

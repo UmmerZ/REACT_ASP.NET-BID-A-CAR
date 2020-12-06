@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bid_A_Car_Prject.Migrations
 {
-    public partial class InitialMigrations : Migration
+    public partial class addedTransactionColumn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,7 @@ namespace Bid_A_Car_Prject.Migrations
                         .Annotation("MySql:Collation", "utf8mb4_general_ci"),
                     UserName = table.Column<string>(type: "varchar(50)", nullable: true),
                     Email = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Password = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Password = table.Column<string>(type: "varchar(1000)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "varchar(10)", nullable: true),
                     StreetAdress = table.Column<string>(type: "varchar(200)", nullable: true),
                     City = table.Column<string>(type: "varchar(50)", nullable: true),
@@ -36,6 +36,8 @@ namespace Bid_A_Car_Prject.Migrations
                     TransactionID = table.Column<int>(type: "int(10)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     SellerID = table.Column<int>(type: "int(10)", nullable: false),
+                    BuyerID = table.Column<int>(type: "int(10)", nullable: false),
+                    NumberOfBids = table.Column<int>(type: "int(10)", nullable: false),
                     SaleAmount = table.Column<int>(type: "int(15)", nullable: false)
                 },
                 constraints: table =>
@@ -55,7 +57,7 @@ namespace Bid_A_Car_Prject.Migrations
                 {
                     ID = table.Column<int>(type: "int(10)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Make = table.Column<string>(type: "varchar(60)", nullable: true),
+                    Make = table.Column<string>(type: "varchar(60)", nullable: false),
                     Model = table.Column<string>(type: "varchar(60)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_general_ci"),
@@ -64,7 +66,8 @@ namespace Bid_A_Car_Prject.Migrations
                     Description = table.Column<string>(type: "varchar(500)", nullable: true),
                     UserID = table.Column<int>(type: "int(10)", nullable: false),
                     IsSold = table.Column<string>(type: "varchar(10)", nullable: false),
-                    Price = table.Column<int>(type: "int(10)", nullable: false)
+                    Price = table.Column<int>(type: "int(10)", nullable: false),
+                    Color = table.Column<string>(type: "varchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,18 +97,18 @@ namespace Bid_A_Car_Prject.Migrations
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "ID", "Description", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
-                values: new object[] { -2, "3 year old drives like brand new ", "0", 13000, "AUDI", "Q5", 40000, -1, 2012 });
+                columns: new[] { "ID", "Color", "Description", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
+                values: new object[] { -2, null, "3 year old drives like brand new ", "0", 13000, "AUDI", "Q5", 40000, -1, 2012 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "ID", "Description", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
-                values: new object[] { -1, "The cat is in mint condition, Lady Driven ", "0", 3000, "BMW", "X5", 30000, -2, 2014 });
+                columns: new[] { "ID", "Color", "Description", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
+                values: new object[] { -1, null, "The cat is in mint condition, Lady Driven ", "0", 3000, "BMW", "X5", 30000, -2, 2014 });
 
             migrationBuilder.InsertData(
                 table: "Vehicle",
-                columns: new[] { "ID", "Description", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
-                values: new object[] { -3, "Trick runs smooth Dont need it any more ", "0", 33000, "Ford", "F150", 20000, -3, 2018 });
+                columns: new[] { "ID", "Color", "Description", "IsSold", "Kilometers", "Make", "Model", "Price", "UserID", "Year" },
+                values: new object[] { -3, null, "Trick runs smooth Dont need it any more ", "0", 33000, "Ford", "F150", 20000, -3, 2018 });
 
             migrationBuilder.CreateIndex(
                 name: "FK_Transaction_User",

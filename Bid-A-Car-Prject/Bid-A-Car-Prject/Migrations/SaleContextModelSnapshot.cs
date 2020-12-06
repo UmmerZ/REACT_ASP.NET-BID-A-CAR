@@ -22,6 +22,12 @@ namespace Bid_A_Car_Prject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(10)");
 
+                    b.Property<int>("BuyerID")
+                        .HasColumnType("int(10)");
+
+                    b.Property<int>("NumberOfBids")
+                        .HasColumnType("int(10)");
+
                     b.Property<int>("SaleAmount")
                         .HasColumnType("int(15)");
 
@@ -117,6 +123,9 @@ namespace Bid_A_Car_Prject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int(10)");
 
+                    b.Property<string>("Color")
+                        .HasColumnType("varchar(50)");
+
                     b.Property<string>("Description")
                         .HasColumnType("varchar(500)");
 
@@ -128,9 +137,11 @@ namespace Bid_A_Car_Prject.Migrations
                         .HasColumnType("int(9)");
 
                     b.Property<string>("Make")
+                        .IsRequired()
                         .HasColumnType("varchar(60)");
 
                     b.Property<string>("Model")
+                        .IsRequired()
                         .HasColumnType("varchar(60)")
                         .HasAnnotation("MySql:CharSet", "utf8mb4")
                         .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");

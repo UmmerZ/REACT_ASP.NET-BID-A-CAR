@@ -125,6 +125,25 @@ namespace Bid_A_Car_Project.Controllers
             return result;
         }
 
+        public Transaction CreateTransaction(string sellerID, string buyerID, string numberOfBids, string saleAmount)
+        {
+            
+            using(SaleContext context = new SaleContext())
+            {
+                Transaction newTransaction = new Transaction()
+                {
+                    SellerID = int.Parse(sellerID),
+                    BuyerID = int.Parse(buyerID),
+                    SaleAmount = int.Parse(saleAmount),
+
+                };
+                newTransaction.NumberOfBids++;
+                context.Transactions.Add(newTransaction);
+                context.SaveChanges();
+                return newTransaction;
+            }
+            
+        }
 
 
         public List<Vehicle> GetListings()

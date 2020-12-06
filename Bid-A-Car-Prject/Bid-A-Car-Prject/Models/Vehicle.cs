@@ -11,29 +11,22 @@ namespace Bid_A_Car_Project.Models
 { [Table("Vehicle")]
     public class Vehicle
     {
-      
-
-
 
         [Key]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        
-
-        
+        [Required]
         [Column(TypeName = "varchar(60)")]
         public string Make { get; set; }
 
-       
+        [Required]
         [Column(TypeName = "varchar(60)")]
         public string Model { get; set; }
-
         
         [Column(TypeName = "int(9)")]
         public int Kilometers { get; set; }
-
-        
+  
         [Column(TypeName = "int(6)")]
         public int Year { get; set; }
 
@@ -49,8 +42,9 @@ namespace Bid_A_Car_Project.Models
         [Column(TypeName = "int(10)")]
         public int Price { get; set; }
 
-       
-        
+        [Column(TypeName = "varchar(50)")]
+        public string Color { get; set; }
+
 
         [ForeignKey(nameof(UserID))]
         [InverseProperty(nameof(Models.User.Vehicles))]
