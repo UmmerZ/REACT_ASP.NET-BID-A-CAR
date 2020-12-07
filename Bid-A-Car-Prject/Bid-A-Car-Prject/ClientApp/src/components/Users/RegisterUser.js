@@ -55,7 +55,7 @@ import { Link, Redirect } from 'react-router-dom';
             if (response.data.status === 'created') 
             console.log(response);
             setWaiting(false);
-            return <Redirect to={'/login'} />
+            return <Redirect to= {'/login'} />
                   setResponse(response.data);
             setStatusCode(response.status);
            

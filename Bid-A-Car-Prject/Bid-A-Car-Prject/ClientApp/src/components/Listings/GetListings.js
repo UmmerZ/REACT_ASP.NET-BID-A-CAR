@@ -2,6 +2,7 @@
 import axios from "axios";
 import { Button } from "bootstrap";
 import { Link } from "react-router-dom";
+import { NavMenu } from "../NavMenu";
 
 
 function GetListings(props) {
@@ -27,7 +28,7 @@ function GetListings(props) {
   function renderProductsTable(vehicles) {
       return (
           <>
-        
+              
       <div className="card-body" >
         {vehicles.map(product => {
             return (
@@ -91,7 +92,8 @@ function GetListings(props) {
   );
 
   return (
-    <div className="">
+      <div className="">
+          <NavMenu />
       <h1 className="shadow p-3 mb-5 bg-dark rounded ">Listings</h1>
       <p>This component demonstrates fetching data from the server.</p>
       {contents}

@@ -1,6 +1,11 @@
 ﻿import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useAuth } from "../context/Auth";
+
+
+/**********************************************************************************************************
+ * Code Borrowed from = ttps://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
+ * ********************************************************************************************************/
 
 function PrivateRoute({ component: Component, ...rest }) {
     const { authTokens } = useAuth();

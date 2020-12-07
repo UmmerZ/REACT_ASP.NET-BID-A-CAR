@@ -13,6 +13,8 @@ import Login from './components/Login';
 import { EditListing } from './components/Listings/EditListing';
 import { AuthContext } from './context/Auth';
 import { UserProfile } from './components/Users/UserProfile';
+import  PrivateRoute  from './components/PrivateRoute';
+import Admin from './components/Admin';
 
 
 
@@ -30,14 +32,14 @@ function App(props) {
                  <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
             <Router>
                 <Route exact path='/' component={Home} />
-                        <Route path='/create-listing' component={CreateListing} />
+                        <PrivateRoute path='/create-listing' component={CreateListing} />
                 <Route path="/login" component={Login} />
-                <Route path='/get-listings' component={GetListings} />
-                        <Route path='/create-Images' component={FileUpload} />
-                        <Route path='/user-profile' component={UserProfile} />
-                <Route path='/login' component={Login} />
+                <PrivateRoute path='/get-listings' component={GetListings} />
+                        <PrivateRoute path='/create-Images' component={FileUpload} />
+                        <PrivateRoute path='/user-profile' component={UserProfile} />
+                        <PrivateRoute path='/Admin' component={Admin} />
                 <Route path='/signup' component={RegisterUser} />
-                        <Route exact path='/edit-listing/:id' component={EditListing} />
+                        <Route exact path='/edit-listing/' component={EditListing} />
 
                     </Router>
                     

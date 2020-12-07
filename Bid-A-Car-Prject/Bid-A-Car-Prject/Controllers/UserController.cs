@@ -120,6 +120,11 @@ namespace Bid_A_Car_Prject.Controllers
 
         }
 
+        /****************************************************************************
+         Http POST method to check user with the given username and password exists
+        it sends a status code 200 for if does else 401. 200 response will trigger login
+         ******************************************************************************/
+
         [HttpPost("login")]
         public ActionResult<User> Login(string userName, string password )
         {

@@ -1,6 +1,6 @@
 ﻿import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import { NavMenu } from '../NavMenu';
 
 /**************************************************************
@@ -157,7 +157,7 @@ class EditListing extends React.Component {
                                             </div>
                   
                     <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Save Changes" />
-                    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" value="Cancel">Cancel</button>
+                    <Link to="/get-listings" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" value="Cancel">Cancel</Link>
                 </form>
                                     </div>
                                 </div>

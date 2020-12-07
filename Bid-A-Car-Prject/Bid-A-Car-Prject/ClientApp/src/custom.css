@@ -41,6 +41,7 @@ code {
     display: flex;
     align-items: center;
     position: relative;
+    margin-top: 0px;
 }
 
 #cover-caption {
@@ -67,4 +68,10 @@ form:before {
 }
 .card {
     width: 18rem;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem
 }

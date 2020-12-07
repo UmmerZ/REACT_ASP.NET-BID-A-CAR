@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { NavMenuLogin } from './PageLayout/NavMenuLogin';
+import { Footer } from './PageLayout/Footer';
 import { NavMenu } from './NavMenu';
 
-export class Home extends Component {
-  static displayName = Home.name;
+export function Home (props) {
+  
 
-  render () {
+
     return (
         <div class="container" class="text-center">
             <NavMenu />
@@ -15,8 +17,8 @@ export class Home extends Component {
                 <input class="btn btn-success" type ="submit" value="Search"/>
            </div>
             <p >Please Register or Sign up to get started</p>
-       
+       <Footer />
       </div>
     );
   }
-}
+

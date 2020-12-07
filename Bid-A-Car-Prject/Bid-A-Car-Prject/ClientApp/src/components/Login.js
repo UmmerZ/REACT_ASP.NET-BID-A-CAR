@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/Auth.js";
 import { NavMenuLogin } from "./PageLayout/NavMenuLogin.js";
+import { Footer } from "./PageLayout/Footer";
 
 
 /**********************************************************************************************************
@@ -47,7 +48,7 @@ function Login(props) {
                 if (result.status == 200) {
                     setAuthTokens(result.data);
                     console.log(result);
-                    console.log(userName);
+                    console.log(result.data);
                     setLoggedIn(true);
                 } else {
                     setIsError(true);
@@ -71,9 +72,9 @@ function Login(props) {
 
     return (
         <>
-            <NavMenuLogin / >
+            <NavMenuLogin />  
             <section id="cover" className="min-vh-100">
-                
+                 
             <div id="cover-caption">
                 <div className="container">
                     <div className="row text-white">
@@ -109,7 +110,8 @@ function Login(props) {
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+                <Footer />
                 </section>
 </>
     );

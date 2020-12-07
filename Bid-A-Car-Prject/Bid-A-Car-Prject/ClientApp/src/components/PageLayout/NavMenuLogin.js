@@ -24,7 +24,7 @@ export class NavMenuLogin extends Component {
     render() {
         return (
             <header>
-                <Navbar className="navbar-expand-sm  navbar-toggleable-sm ng-white border-bottom box-shadow mb-3 bg-warning" light>
+                <Navbar className="navbar-expand-sm  navbar-toggleable-sm ng-white border-bottom box-shadow mb-3 bg-warning b-0" light>
                     <Container>
                         <NavbarBrand className="bg-warning" tag={Link} to="/"></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
