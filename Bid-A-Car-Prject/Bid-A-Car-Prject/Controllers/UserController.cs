@@ -1,6 +1,7 @@
 ﻿using Bid_A_Car_Project.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,17 @@ namespace Bid_A_Car_Prject.Controllers
                   userResult = context.Users.Where(x => x.UserName == userName.Trim() && x.Password == password.Trim()).Single();
             }
             return Ok();
+        }
+        [HttpGet("ByID")]
+        public ActionResult<User> GetUserByID(string userID)
+        {
+            User userResult;
+            using (SaleContext context = new SaleContext())
+
+            {
+                userResult = context.Users.Where(x => x.UserID == int.Parse(userID)).Single();
+            }
+            return userResult;
         }
 
         [HttpGet("All")]
@@ -94,6 +106,7 @@ namespace Bid_A_Car_Prject.Controllers
                 result = context.Users.Where(x => x.UserID == int.Parse(userID)).FirstOrDefault();
 
                 result.Name = name.Trim();
+                result.UserName = userName.Trim();
                 result.Email = email.Trim();
                 result.StreetAdress = streetAddress.Trim();
                 result.PhoneNumber = phoneNumber.Trim();
@@ -106,18 +119,28 @@ namespace Bid_A_Car_Prject.Controllers
             
 
         }
-       
-        [HttpPost("login")]
-        public IActionResult Login(User user)
-        {
-            
-            using (SaleContext context = new SaleContext()){
-             User result = context.Users.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
 
-                
+        [HttpPost("login")]
+        public ActionResult<User> Login(string userName, string password )
+        {
+
+            using (SaleContext context = new SaleContext())
+            {
+
+               
+                   User  loginUser = context.Users.Where(x => x.UserName == userName && x.Password == password).FirstOrDefault();
+                    if (loginUser != null)
+                    {
+                        return Ok(StatusCode(200));
+                    }
+                else
+                    
+                     {
+                           return StatusCode(401, "User Not Found");
+                     }
+
             }
-            return Ok(StatusCode(200));
-            
+          
         }
     }
 }

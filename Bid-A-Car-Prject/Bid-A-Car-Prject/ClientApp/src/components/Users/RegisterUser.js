@@ -1,6 +1,7 @@
 ﻿import React, {useState } from "react";
 import axios from "axios";
-import { NavMenu } from "../NavMenu";
+import { NavMenuLogin } from "../PageLayout/NavMenuLogin";
+import { Link, Redirect } from 'react-router-dom';
 
 
 
@@ -53,10 +54,11 @@ import { NavMenu } from "../NavMenu";
         ).then(response => {
             if (response.data.status === 'created') 
             console.log(response);
-                setWaiting(false);
+            setWaiting(false);
+            return <Redirect to={'/login'} />
                   setResponse(response.data);
-                setStatusCode(response.status);
-              
+            setStatusCode(response.status);
+           
         }).catch((err) => {
             setWaiting(false);
         setResponse(err.response.data);
@@ -67,42 +69,54 @@ import { NavMenu } from "../NavMenu";
      
      return (
          <>
-             <NavMenu />
+             <NavMenuLogin />
            
-                <div class="form-group">
-                 <h1 className="shadow p-3 mb-5 bg-dark rounded">Register</h1>
-                 <div className="register-forms">
+             <section id="cover" className="min-vh-100">
+                 <div id="cover-caption">
+                     <div className="container">
+                         <div className="row text-white">
+                             <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                                 <h1 className="display-4 py-2 text-truncate">Register</h1>
+                                 <div className="px-2">
+                 
                     <p>{waiting ? "Awaiting response..." : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
                     <form   onSubmit={handleSubmit}>
                         <div class="form-group">
-
+                                             <label className="sr-only">UserName</label>
                             <input class="form-control" type="text" placeholder="User Name" id="userName"  
                                 onChange={handleChange} required />
                         </div>
 
                         <div class="form-group">
-
+                                             <label className="sr-only">Email</label>
                             <input class="form-control" type="email" placeholder="Email" id="email"  
                                 onChange={handleChange} required />
                         </div>
-                        <div class="row">
-                            <div class="col">
+                                         <div className="form-group">
+                                         <label className="sr-only">Password</label>
 
                                 <input class="form-control" type="password" placeholder="Password" id="password" 
                                     onChange={handleChange} />
 
                             </div>
 
-                            <div class="col">
+                                         <div className="form-group">
+                                             <label className="sr-only">Confirm Password</label>
                                 <input class="form-control" type="password" placeholder="Confirm Password" id="confirmPassword" 
                                     onChange={handleChange} />
                             </div>
-                        </div>
+                        
 
                         <input className="btn btn-info btn-block my-4" type="submit" value="Register"/>
                      </form>
+               
+                 <Link to="/login">Already have an account?</Link>
+                                 </div>
+                             </div>
+                         </div>
                      </div>
-             </div>
+                 </div>
+                 </section>
              </>
             );
         }

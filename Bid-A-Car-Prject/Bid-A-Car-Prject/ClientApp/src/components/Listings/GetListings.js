@@ -11,14 +11,16 @@ function GetListings(props) {
   // Configure our state, and our setState standin methods.
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
-
+    const [response, setResponse] = useState();
     const deleteListing =  (id) => {
-        
+       
       const payload = props.match.params.id;
-    fetch(
-        "https://localhost:44314/VehicleAPI/DeleteListing?id=" + id, {method: 'delete'}
-      
-    );
+        fetch(
+            "https://localhost:44314/VehicleAPI/DeleteListing?id=" + id, { method: 'delete' }
+               
+    
+        );
+       
   };
 
   // Build the table based on forecast data.
