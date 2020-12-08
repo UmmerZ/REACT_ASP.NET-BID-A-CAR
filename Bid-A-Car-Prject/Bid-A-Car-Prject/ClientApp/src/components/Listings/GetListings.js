@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "bootstrap";
-import { Link } from "react-router-dom";
+import { Link,  Redirect } from "react-router-dom";
 import { NavMenu } from "../NavMenu";
 
 
@@ -13,16 +13,21 @@ function GetListings(props) {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
     const [response, setResponse] = useState();
-    const deleteListing =  (id) => {
-       
-      const payload = props.match.params.id;
+    const deleteListing = (id) => {
+
+        const payload = props.match.params.id;
         fetch(
             "https://localhost:44314/VehicleAPI/DeleteListing?id=" + id, { method: 'delete' }
-               
-    
-        );
-       
-  };
+
+
+        ).then(response =>
+
+            console.log(response)
+        ).catch(error => {
+            console.log(error)
+        });
+        return <Redirect to ="/get-listings" />
+    };
 
   // Build the table based on forecast data.
   function renderProductsTable(vehicles) {

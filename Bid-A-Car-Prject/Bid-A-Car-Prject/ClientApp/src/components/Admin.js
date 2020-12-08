@@ -1,19 +1,20 @@
-﻿import React from "react";
+﻿import React, { useState}from "react";
 import { Redirect } from "react-router-dom";
-
 import { useAuth } from "../context/Auth";
+
+
 /**********************************************************************************************************
  * Code Borrowed from = ttps://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
  * ********************************************************************************************************/
 
 function Admin(props) {
+    const [isLoggedIn, setLoggedIn] = useState(false);
     const { setAuthTokens } = useAuth();
-
    function logOut() {
-       setAuthTokens();
-       if (logOut()) {
+           setAuthTokens(false);
+          
          return  <Redirect to='/login' />
-       }
+       
        
     }
 

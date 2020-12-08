@@ -31,16 +31,14 @@ function App(props) {
            <>
                  <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
             <Router>
-                <Route exact path='/' component={Home} />
-                        <PrivateRoute path='/create-listing' component={CreateListing} />
+                <PrivateRoute exact path='/' component={Home} />
                 <Route path="/login" component={Login} />
-                <PrivateRoute path='/get-listings' component={GetListings} />
+                        <Route path='/signup' component={RegisterUser} />
+                        <Route exact path='/edit-listing/:id' component={EditListing} />
                         <PrivateRoute path='/create-Images' component={FileUpload} />
                         <PrivateRoute path='/user-profile' component={UserProfile} />
-                        <PrivateRoute path='/Admin' component={Admin} />
-                <Route path='/signup' component={RegisterUser} />
-                        <Route exact path='/edit-listing/' component={EditListing} />
-
+                        <PrivateRoute path='/get-listings' component={GetListings} />
+                        <PrivateRoute path='/create-listing' component={CreateListing} />
                     </Router>
                     
                 </AuthContext.Provider>

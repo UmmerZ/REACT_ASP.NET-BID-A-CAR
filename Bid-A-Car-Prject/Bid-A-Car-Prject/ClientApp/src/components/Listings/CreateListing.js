@@ -67,6 +67,7 @@ function CreateListing(props) {
                     year: year,
                     description: description,
                     userID: userID,
+                    price: price
                 }
             }
 
@@ -83,7 +84,7 @@ function CreateListing(props) {
             setStatusCode(err.response.status);
         });
     }
-
+    
     return (
         <>
         <NavMenu />
@@ -113,16 +114,17 @@ function CreateListing(props) {
                                     </div>
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="price">Price</label>
-                                        <input type="text" className="form-control" placeholder="Price" id="price" onChange={handleFieldChange} />
-                                    </div>
+                                        <input type="number" className="form-control" placeholder="Price" id="price" onChange={handleFieldChange} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="sr-only" htmlFor="userID">Price</label>
+                                            <input type="number" className="form-control" placeholder="Price" id="userID" onChange={handleFieldChange} />
+                                        </div>
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="description">Description</label>
                                         <textarea type="text" className="form-control" placeholder="Description" id="description" onChange={handleFieldChange} />
                                     </div>
-                                    <div className="form-group">
-                                        <label className="sr-only">Email</label>
-                                        <input type="hidden" className="form-control" placeholder="jane.doe@example.com" />
-                                    </div>
+                                
                                     <button type="submit" className="btn btn-primary btn-lg">Add Listing</button>
                                 </form>
                             </div>

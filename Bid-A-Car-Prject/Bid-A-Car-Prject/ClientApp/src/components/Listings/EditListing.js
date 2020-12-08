@@ -1,6 +1,6 @@
 ﻿import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NavMenu } from '../NavMenu';
 
 /**************************************************************
@@ -39,6 +39,7 @@ class EditListing extends React.Component {
                     year: response.data.year,
                     description: response.data.description,
                     price: response.data.price,
+                    userID: response.data.userID
 
                 });
             })
@@ -50,15 +51,7 @@ class EditListing extends React.Component {
                     console.log(error.response.data);
                     console.log(error.response.status);
                     console.log(error.response.headers);
-                } else if (error.request) {
-                    // The request was made but no response was received
-                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                } else {
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
+                } 
                 console.log(error.config);
             })
     }
@@ -98,19 +91,36 @@ class EditListing extends React.Component {
        
         e.preventDefault();
         const obj = {
-            id: this.state.id,
+            id: this.props.match.params,
             make: this.state.make,
             model: this.state.model,
             kilometers: this.state.kilometers,
             year: this.state.year,
             description: this.state.description,
-            price: this.state.price
+            price: this.state.price,
+         
 
         };
-        axios.put('https://localhost:44314/VehicleAPI/UpdateListing/', obj)
-            .then(res => console.log(res.data));
+        axios
+            ({
+                method: 'put',
+                url: 'VehicleAPI/UpdateListing',
+                params: {
+                    id: this.props.match.params.id,
+                    make: this.state.make,
+                    model: this.state.model,
+                    kilometers: this.state.kilometers,
+                    year: this.state.year,
+                    description: this.state.description,
+                    price: this.state.price
+                  
+                }
+            })
+            .then(res => console.log(res.data)).catch(error => {
+                console.log(error)
+            });
        
-        this.props.history.push('/GetListing') 
+        this.props.history.push('/get-Listings') 
     }
     render() {
 
@@ -127,10 +137,7 @@ class EditListing extends React.Component {
                                     <h1 className="display-5 py-2 ">Edit Listing</h1>
                                     <div className="px-2">
                 <form onSubmit={this.onSubmit} id="contact_form" >
-                                            <div className="form-group">
-                                                <label className="sr-only" htmlFor="id">ID</label>
-                    <input name="make" type="hidden" className="form-control mb-4" value={this.state.id} onChange={this.id} />
-                                            </div>
+                                           
                                             <div className="form-group">
                                                 <label className="sr-only"  htmlFor="make">Make</label>
                                                 <input name="make" type="text" className="form-control mb-4" value={this.state.make} onChange={this.make} />

@@ -59,6 +59,7 @@ function Login(props) {
                 console.log(err);
             });
     }
+    console.log(setLoggedIn);
     let referer;
     if (props.location.state !== undefined) {
         referer = props.location.state.referer;
