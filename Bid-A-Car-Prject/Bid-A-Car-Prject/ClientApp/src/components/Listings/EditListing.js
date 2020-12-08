@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { NavMenu } from '../NavMenu';
+import { Footer } from '../PageLayout/Footer';
 
 /**************************************************************
  Code Borrowed from-https://github.com/toofaniCoder/React-Users.
@@ -163,6 +164,7 @@ class EditListing extends React.Component {
                         </div>
                     </div>
                 </section>
+                <Footer />
             </>
         );
     }

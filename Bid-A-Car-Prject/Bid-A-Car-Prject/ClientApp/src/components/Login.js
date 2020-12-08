@@ -75,7 +75,6 @@ function Login(props) {
         <>
             <NavMenuLogin />  
             <section id="cover" className="min-vh-100">
-                 
             <div id="cover-caption">
                 <div className="container">
                     <div className="row text-white">

@@ -1,7 +1,7 @@
 ﻿import React, {useState } from "react";
 import axios from "axios";
 import { NavMenuLogin } from "../PageLayout/NavMenuLogin";
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 
 
@@ -9,7 +9,7 @@ import { Link, Redirect } from 'react-router-dom';
     
     const [statusCode, setStatusCode] = useState(0);
     const [response, setResponse] = useState([]);
-
+     let history= useHistory();
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ import { Link, Redirect } from 'react-router-dom';
     function handleSubmit(event) {
         event.preventDefault();
         setWaiting(true);
-        
+        history.push("/get-listings");
         axios(
             {
             method: 'post',
@@ -55,10 +55,9 @@ import { Link, Redirect } from 'react-router-dom';
             if (response.data.status === 'created') 
             console.log(response);
             setWaiting(false);
-            return <Redirect to= {'/login'} />
-                  setResponse(response.data);
+            setResponse(response.data);
             setStatusCode(response.status);
-           
+            history.push("/get-listings");
         }).catch((err) => {
             setWaiting(false);
         setResponse(err.response.data);

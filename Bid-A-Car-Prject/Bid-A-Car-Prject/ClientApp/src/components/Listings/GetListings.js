@@ -1,14 +1,14 @@
 ﻿import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "bootstrap";
-import { Link,  Redirect } from "react-router-dom";
+import { Link,  Redirect, useHistory } from "react-router-dom";
 import { NavMenu } from "../NavMenu";
 
 
 function GetListings(props) {
   
   const [id, setID] = useState("");
-
+    let history = useHistory();
   // Configure our state, and our setState standin methods.
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,13 +27,16 @@ function GetListings(props) {
             }
         }
 
-        ).then(response =>
-
+        ).then(response => {
             console.log(response)
-        ).catch(error => {
+            if (response.data.status == 200) {
+                history.push("/get-listings");
+            }
+            
+        }   ).catch(error => {
             console.log(error)
         });
-        return <Redirect to ="/get-listings" />
+       
     };
 
   // Build the table based on forecast data.
