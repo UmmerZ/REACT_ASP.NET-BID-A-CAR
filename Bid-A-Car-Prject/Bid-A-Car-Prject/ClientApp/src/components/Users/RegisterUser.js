@@ -83,26 +83,26 @@ import { Link, Redirect } from 'react-router-dom';
                     <form   onSubmit={handleSubmit}>
                         <div class="form-group">
                                              <label className="sr-only">UserName</label>
-                            <input class="form-control" type="text" placeholder="User Name" id="userName"  
+                                             <input className="form-control" type="text" placeholder="User Name" id="userName"  
                                 onChange={handleChange} required />
                         </div>
 
                         <div class="form-group">
                                              <label className="sr-only">Email</label>
-                            <input class="form-control" type="email" placeholder="Email" id="email"  
+                                             <input className="form-control" type="email" placeholder="Email" id="email"  
                                 onChange={handleChange} required />
                         </div>
                                          <div className="form-group">
                                          <label className="sr-only">Password</label>
 
-                                <input class="form-control" type="password" placeholder="Password" id="password" 
+                                             <input className="form-control" type="password" placeholder="Password" id="password" 
                                     onChange={handleChange} />
 
                             </div>
 
                                          <div className="form-group">
                                              <label className="sr-only">Confirm Password</label>
-                                <input class="form-control" type="password" placeholder="Confirm Password" id="confirmPassword" 
+                                <input className="form-control" type="password" placeholder="Confirm Password" id="confirmPassword" 
                                     onChange={handleChange} />
                             </div>
                         

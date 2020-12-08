@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { GetListings } from './components/Listings/GetListings';
@@ -30,7 +30,8 @@ function App(props) {
         return (
            <>
                  <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
-            <Router>
+                    <Router>
+                        <Switch>
                 <PrivateRoute exact path='/' component={Home} />
                 <Route path="/login" component={Login} />
                         <Route path='/signup' component={RegisterUser} />
@@ -38,7 +39,9 @@ function App(props) {
                         <PrivateRoute path='/create-Images' component={FileUpload} />
                         <PrivateRoute path='/user-profile' component={UserProfile} />
                         <PrivateRoute path='/get-listings' component={GetListings} />
-                        <PrivateRoute path='/create-listing' component={CreateListing} />
+                            <PrivateRoute path='/create-listing' component={CreateListing} />
+                            <PrivateRoute path='/admin' component={Admin} />
+                            </Switch>
                     </Router>
                     
                 </AuthContext.Provider>

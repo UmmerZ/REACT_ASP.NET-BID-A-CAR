@@ -86,21 +86,12 @@ class EditListing extends React.Component {
             price: e.target.value
         });
     }
-
+    /****************************************************************************************
+     This submit will sent the PUT request to the server to update the given  parameters.
+     Citation: Will the help of Aaron Champagne.
+     ****************************************************************************************/
     onSubmit(e) {
-       
         e.preventDefault();
-        const obj = {
-            id: this.props.match.params,
-            make: this.state.make,
-            model: this.state.model,
-            kilometers: this.state.kilometers,
-            year: this.state.year,
-            description: this.state.description,
-            price: this.state.price,
-         
-
-        };
         axios
             ({
                 method: 'put',

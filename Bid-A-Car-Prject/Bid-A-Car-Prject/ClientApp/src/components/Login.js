@@ -85,7 +85,7 @@ function Login(props) {
                                     <form className="justify-content-center" onSubmit={postLogin}>
                                     <div className="form-group">
                                         <label className="sr-only">User Name</label>
-                <input
+                                            <input className="form-control"
                     type="text"
                     id = "userName"
                     onChange={handleChange}
@@ -94,14 +94,14 @@ function Login(props) {
                                     </div>
                                     <div className="form-group">
                                         <label className="sr-only">Password</label>
-                <input
+                                            <input className="form-control"
                     type="password"
                     id="password"
                     onChange={handleChange}
                     placeholder="Password"
                                         />
                                     </div>
-                <input type = "submit" value ="Login" />
+                                        <input className = "btn btn-info btn-block my-4" type = "submit" value ="Login" />
             </form>
             <Link to="/signup">Don't have an account?</Link>
             {isError && (

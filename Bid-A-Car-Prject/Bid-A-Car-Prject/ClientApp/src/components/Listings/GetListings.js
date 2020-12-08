@@ -13,12 +13,19 @@ function GetListings(props) {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
     const [response, setResponse] = useState();
-    const deleteListing = (id) => {
+    const [waiting, setWaiting] = useState();
+    function deleteListing (id) {
+       
+        setWaiting(true);
+        
+        axios ({
+            method: 'delete',
+            url: 'VehicleAPI/DeleteListing',
 
-        const payload = props.match.params.id;
-        fetch(
-            "https://localhost:44314/VehicleAPI/DeleteListing?id=" + id, { method: 'delete' }
-
+            params: {
+                id: id
+            }
+        }
 
         ).then(response =>
 
@@ -99,8 +106,8 @@ function GetListings(props) {
   return (
       <div className="">
           <NavMenu />
-      <h1 className="shadow p-3 mb-5 bg-dark rounded ">Listings</h1>
-      <p>This component demonstrates fetching data from the server.</p>
+          <h1 className="shadow p-3 mb-5 bg-dark rounded ">Listings</h1>
+          <h2> {(vehicles == 0) ? "No Listing Available" : "Current Listings"}</h2>
       {contents}
       <hr />
       <button

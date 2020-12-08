@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import axios from 'axios';
 import { NavMenu } from '../NavMenu';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -15,7 +16,6 @@ function CreateListing(props) {
     const [year, setYear] = useState("");
     const [description, setDescription] = useState("");
     const [userID, setUserID] = useState("");
-
     const [price, setPrice] = useState("");
     
 
@@ -23,7 +23,6 @@ function CreateListing(props) {
 
     function handleFieldChange(event) {
         switch (event.target.id) {
-            
             case "make":
                 setMake(event.target.value);
                 break;
@@ -60,7 +59,6 @@ function CreateListing(props) {
                 url: 'VehicleAPI/Create',
                  
                 params: {
-                 
                     make: make,
                     model: model,
                     kms: kms,
@@ -72,28 +70,36 @@ function CreateListing(props) {
             }
 
         ).then((res) => {
-
+            console.log(res);
             setWaiting(false);
             setResponse(res.data);
             setStatusCode(res.status);
+            
+                return <Redirect to='/get-listings' />
+        
         }
+            
+            
 
         ).catch((err) => {
             setWaiting(false);
             setResponse(err.response.data);
             setStatusCode(err.response.status);
         });
+        
     }
     
     return (
         <>
         <NavMenu />
         <section id="cover" className="min-vh-100">
-            <div id="cover-caption">
+                <div id="cover-caption">
+                    
                 <div className="container">
                     <div className="row text-white">
                         <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                            <h1 className="display-5 py-2 ">Create A Listing</h1>
+                                <h1 className="display-5 py-2 ">Create A Listing</h1>
+                                <p>{waiting ? "Listing has been Posted" : " "}</p>
                             <div className="px-2">
                                 <form onSubmit={handleSubmit} className="justify-content-center">
                                     <div className="form-group">
@@ -110,22 +116,22 @@ function CreateListing(props) {
                                     </div>
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="kilometers">Odometer</label>
-                                        <input type="number" className="form-control" placeholder="Kilometers" id="kilometers" onChange={handleFieldChange} />
+                                        <input type="number" className="form-control" placeholder="Kilometers" id="kms" onChange={handleFieldChange} />
                                     </div>
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="price">Price</label>
                                         <input type="number" className="form-control" placeholder="Price" id="price" onChange={handleFieldChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label className="sr-only" htmlFor="userID">Price</label>
-                                            <input type="number" className="form-control" placeholder="Price" id="userID" onChange={handleFieldChange} />
+                                            <label className="sr-only" htmlFor="userID">User ID</label>
+                                            <input type="number" className="form-control" placeholder="User ID" id="userID" onChange={handleFieldChange} />
                                         </div>
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="description">Description</label>
                                         <textarea type="text" className="form-control" placeholder="Description" id="description" onChange={handleFieldChange} />
                                     </div>
                                 
-                                    <button type="submit" className="btn btn-primary btn-lg">Add Listing</button>
+                                    <input type="submit" value ="Add Lisitng" className="btn btn-primary btn-lg"/>
                                 </form>
                             </div>
                         </div>

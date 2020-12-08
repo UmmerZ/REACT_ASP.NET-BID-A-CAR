@@ -34,7 +34,7 @@ code {
         border-radius: 15%;
     }
 #cover {
-     background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;
+     background-color: aliceblue;
     background-size: cover;
     height: 100%;
     text-align: center;

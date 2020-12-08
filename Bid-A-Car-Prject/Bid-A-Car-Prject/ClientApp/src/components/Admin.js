@@ -8,11 +8,11 @@ import { useAuth } from "../context/Auth";
  * ********************************************************************************************************/
 
 function Admin(props) {
-    const [isLoggedIn, setLoggedIn] = useState(false);
     const { setAuthTokens } = useAuth();
+    
    function logOut() {
-           setAuthTokens(false);
-          
+       setAuthTokens();
+       localStorage.clear("tokens");
          return  <Redirect to='/login' />
        
        

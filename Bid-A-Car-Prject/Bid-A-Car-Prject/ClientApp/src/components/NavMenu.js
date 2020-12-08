@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import Admin from './/Admin';
 
+
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
 
@@ -23,8 +24,7 @@ export class NavMenu extends Component {
     });
     }
    
-
-     
+ 
 
   render () {
     return (
@@ -45,9 +45,6 @@ export class NavMenu extends Component {
                                 <NavLink tag={Link} className="text-light bg-dark " to="/get-listings">Listing</NavLink>
                             </NavItem>
 
-                            <NavItem>
-                                <NavLink tag={Link} className="text-light bg-dark" to="/registration">Register User</NavLink>
-                            </NavItem>
                             <NavItem>
                                 <NavLink tag={Link} className="text-light bg-dark" to="/login" onClick={this.logOut}>Log Out</NavLink>
                             </NavItem>
