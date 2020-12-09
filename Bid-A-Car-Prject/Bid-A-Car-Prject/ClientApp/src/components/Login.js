@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/Auth.js";
@@ -15,7 +15,7 @@ function Login(props) {
     const [isError, setIsError] = useState(false);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
+    const [user, setUser]         =  useState("")
     const { setAuthTokens } = useAuth();
 
     function handleChange(event) {
@@ -29,6 +29,7 @@ function Login(props) {
            
         }
     }
+  
 
    function postLogin(e)  {
         e.preventDefault();
@@ -45,8 +46,10 @@ function Login(props) {
             })
             .then(result => {
                 console.log(result);
-                if (result.status == 200) {
+                if (result.status === 200) {
                     setAuthTokens(result.data);
+                    setUser('user', result.data);
+                    localStorage.setItem('user', result.userName);
                     console.log(result);
                     console.log(result.data);
                     setLoggedIn(true);

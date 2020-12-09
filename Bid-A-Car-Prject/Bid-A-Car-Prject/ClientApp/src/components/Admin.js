@@ -1,4 +1,4 @@
-﻿import React, { useState}from "react";
+﻿import React from "react";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../context/Auth";
 
@@ -21,7 +21,7 @@ function Admin(props) {
     return (
         <div>
             <div>Admin Page</div>
-            <button onClick={logOut}>Log out</button>
+            <button  onClick={logOut}>Log out</button>
         </div>
     );
 }

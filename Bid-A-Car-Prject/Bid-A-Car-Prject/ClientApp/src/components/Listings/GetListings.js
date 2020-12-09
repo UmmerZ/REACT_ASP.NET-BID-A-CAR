@@ -1,18 +1,16 @@
 ﻿import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button } from "bootstrap";
-import { Link,  Redirect, useHistory } from "react-router-dom";
+import { Link,   useHistory } from "react-router-dom";
 import { NavMenu } from "../NavMenu";
 
 
 function GetListings(props) {
   
-  const [id, setID] = useState("");
+  
     let history = useHistory();
   // Configure our state, and our setState standin methods.
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
-    const [response, setResponse] = useState();
     const [waiting, setWaiting] = useState();
     function deleteListing (id) {
        
@@ -29,7 +27,7 @@ function GetListings(props) {
 
         ).then(response => {
             console.log(response)
-            if (response.data.status == 200) {
+            if (response.data.status === 200) {
                 history.push("/get-listings");
             }
             
@@ -49,7 +47,6 @@ function GetListings(props) {
             return (
                 
             <div>
-              <img src={product.imageUrl} />
               <h5 className="card-title" >Make: {product.make}
               </h5>
               <h6 className=" card-subtitle mb-2 text-muted">Model: {product.model}
@@ -65,7 +62,7 @@ function GetListings(props) {
               </h6>
 
               <div class="btn-toolbar">
-                <Link class="button-view">View</Link>
+                
                 <Link class="button-view" to={"/edit-listing/" + product.id}>
                   Edit
                 </Link>
@@ -109,8 +106,8 @@ function GetListings(props) {
   return (
       <div className="">
           <NavMenu />
-          <h1 className="shadow p-3 mb-5 bg-dark rounded ">Listings</h1>
-          <h2> {(vehicles == 0) ? "No Listing Available" : "Current Listings"}</h2>
+          <h1 className="shadow p-3 mb-5 bg-dark rounded text-white ">Listings</h1>
+          <h2> {(vehicles === 0) ? "No Listing Available" : "Current Listings"}</h2>
       {contents}
       <hr />
       <button

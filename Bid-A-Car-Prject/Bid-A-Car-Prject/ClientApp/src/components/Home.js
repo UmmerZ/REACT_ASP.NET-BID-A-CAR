@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { NavMenuLogin } from './PageLayout/NavMenuLogin';
+import React from 'react';
 import { Footer } from './PageLayout/Footer';
 import { NavMenu } from './NavMenu';
+
 
 export function Home (props) {
   
@@ -10,10 +10,11 @@ export function Home (props) {
      ********************************************************************/
 
     return (
-        <div className="container" class="text-center">
+        <div className="text-center">
             <NavMenu />
+           
             <div>
-                <img src={require('./images/website_logo.jpg')} />
+                <img src={require('./images/website_logo.jpg')} alt = "bid a car logo"/>
                 </div>
             
            

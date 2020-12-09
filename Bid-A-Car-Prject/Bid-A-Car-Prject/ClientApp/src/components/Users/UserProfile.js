@@ -1,6 +1,5 @@
-﻿import React, { Component, useEffect, useState } from 'react';
+﻿import React  from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import { NavMenu } from '../NavMenu';
 
 /**************************************************************

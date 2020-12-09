@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, {  useState } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from './components/Layout';
+
 import { Home } from './components/Home';
 import { GetListings } from './components/Listings/GetListings';
 import { CreateListing } from './components/Listings/CreateListing';
@@ -15,6 +15,7 @@ import { AuthContext } from './context/Auth';
 import { UserProfile } from './components/Users/UserProfile';
 import  PrivateRoute  from './components/PrivateRoute';
 import Admin from './components/Admin';
+import { WelcomeUsers } from './components/PageLayout/WelcomeUser';
 
 
 
@@ -36,6 +37,7 @@ function App(props) {
                 <Route path="/login" component={Login} />
                         <Route path='/signup' component={RegisterUser} />
                         <Route exact path='/edit-listing/:id' component={EditListing} />
+                        <Route path='/welcome-users' component={WelcomeUsers} />
                         <PrivateRoute path='/create-Images' component={FileUpload} />
                         <PrivateRoute path='/user-profile' component={UserProfile} />
                         <PrivateRoute path='/get-listings' component={GetListings} />
