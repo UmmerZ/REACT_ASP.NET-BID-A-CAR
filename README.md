@@ -9,15 +9,15 @@ https://www.youtube.com/watch?v=eJyZ7k6lWfE
 
 most of my code is borrowed from inclass practices as my entire code was based on Entity framework.(James Grieve)
 
-Documentaion: 
+#Documentaion: 
                                             Capstone Project by North Ark
 
 
-Abstract:
+#Abstract:
 
 My Goal for this project was to create an online bidding system for used cars. A user will have to register himself/herself in order to view or post an advertisement. The way it will work is that once a user is logged in he or she will be able to see all the posted advertisements as most of the buy and sell websites. Since in our city I see there is no website where you can post your vehicle for bidding. So I thought it would be convenient for the people who wish so.Since we recently were taught Web APIs where the front connects with the back end via an http request. So I thought it would be efficient to use React as the front end and ASP.NET Core and mySql as backend. 
 
-Challenges: 
+#Challenges: 
 
 With being new to the industry it seemed kind of challenging. I was quite clear on ASP,NET Core and mysql but while doing the project there were a lot of challenges which I will describe briefly.
 Image upload: was most vital in my project as consumers will have to see what he is bidding on. I spent a lot of time researching, and asked peers turns out most of them were struggling too with that. So finally I decided to drop the image upload as the timeline was very short.
@@ -40,7 +40,7 @@ Then created a file called private.js where I defined only a user with auth toke
 Created a login page with an axios post call to my database with API end to the login method in UserController. It sends the user provided username and password checks if the user the given credential exists in the database. If yes the controller method sends statusCode 200 which authenticates the user and creates a token in the local storage.
 When this token is created it setsLogged to true. So now an authenticated user can navigate through all the private routes. If a user types username and password which does not match any user in the database it sends a status code of 401 which means unauthorized. Which then sets authentication to false and redirects the user to the login page again.
 
-Technicalities:
+#Technicalities:
 
 I created a wire diagram of my table and layout of my website which I will be using in this project.
 I choose Visual Studio 2019 mainly because of the debugging tools and many other features.
@@ -131,7 +131,7 @@ There up in the navigation bar you will see my listings since at the moment I wa
 I found a bug that when you edit something for the first time It does edit but the edited version doesn't show up in the list. So if you refresh the list you will see the edited version then after that it is not a problem.
 If  you click on the delete it will delete and take out of the list right away.
 
-FInal Scope:
+#FInal Scope:
 
 Does it solve the problem: At the moment NO. After I will be able to persist the username state of the logged in user then It will solve the problem. But right now the majority of the features are all set.
 
@@ -142,7 +142,13 @@ Some validation was clashing with the back end so I had to get rid of them for t
 
 Bid Feature: as I couldn't figure out the state of username so It was useless to have a bidding feature on my project. So I will have to figure out the logic of how to persist the state of the username so that user information can be saved.
 
-wire frames which I used for this project are included in the folder with the project
+wire frames which I used for this project are included in the folder with the project.
+
+#what I learned:
+
+As of now I feel like the amount of research I have done on react js which by the way is my favorite language gave me immense confindence, the biggest take away from this project with authentication I had no clue in the begining of the project that I could even attempt user authentication.
+
+On the backend side I have achieved immense command over creating API and what kind of information should be sent to the request. which makes most of the web right  now. The reason I choose React js with asp.net core is because there is lot of demand for developers for that.  After doing this project I feel confident that I can start my journey of web development.
 
 
 
