@@ -65,15 +65,23 @@ namespace Bid_A_Car_Prject.Controllers
 		}
 
 		[HttpPost("Register")]
-		public User RegisterUser(string email, string userName, string password)
+		public ActionResult<User> RegisterUser(string email, string userName, string password)
 		{
 			using (SaleContext context = new SaleContext())
 			{
-				User newRegistration = new User { Email = email.Trim(), UserName = userName.Trim(), Password = password.Trim() };
-				context.Users.Add(newRegistration);
-				context.SaveChanges();
-				return newRegistration;
+				if (context.Users.Any(x => x.UserName == userName.Trim()))
+                {
+					return StatusCode(401, "user already exists");
+                }
+                else
+                {
+					User newRegistration = new User { Email = email.Trim(), UserName = userName.Trim(), Password = password.Trim() };
+					context.Users.Add(newRegistration);
+					context.SaveChanges();
+					return newRegistration;
+				}
 			}
+				
 		}
 
 		[HttpPut("UpdateUser")]

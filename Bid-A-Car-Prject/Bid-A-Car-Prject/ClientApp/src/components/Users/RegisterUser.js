@@ -37,8 +37,7 @@ export function RegisterUser(props) {
     //this axios call will register a user on the database
     function handleSubmit(event) {
         event.preventDefault()
-        if (userName < 6) {
-         error = "Username is shorter than 6 charectors"}
+       
             setWaiting(true)
         axios(
             {
