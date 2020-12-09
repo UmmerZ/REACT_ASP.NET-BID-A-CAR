@@ -14,6 +14,8 @@ export function RegisterUser(props) {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [waiting, setWaiting] = useState(false)
     const [error, setError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
+    const [userError, setUserError] = useState('')
    
  
   
@@ -37,7 +39,9 @@ export function RegisterUser(props) {
     //this axios call will register a user on the database
     function handleSubmit(event) {
         event.preventDefault()
-       
+        if (password !== confirmPassword) {
+            setPasswordError(true)
+        }
             setWaiting(true)
         axios(
             {
@@ -60,6 +64,7 @@ export function RegisterUser(props) {
             history.push('/welcome-users')
         }).catch((err) => {
             setWaiting(false)
+            setError(true);
             setResponse(err.response.data)
             setStatusCode(err.response.status)
         })
@@ -89,7 +94,9 @@ export function RegisterUser(props) {
                                                 required
                                             />
                                         </div>
-                                        <p>{error}</p>
+                                        {userError && (
+                                            <error style={{ color: "red" }}>User Name should be at least 6 charectors</error>
+                                        )}
                                         <div className="form-group">
                                             <label className="sr-only">Email</label>
                                             <input
@@ -101,6 +108,7 @@ export function RegisterUser(props) {
                                                 required
                                             />
                                         </div>
+                                       
                                         <div className="form-group">
                                             <label className="sr-only">Password</label>
 
@@ -124,11 +132,16 @@ export function RegisterUser(props) {
                                                 onChange={handleChange}
                                             />
                                         </div>
-
+                                        {passwordError && (
+                                            <error style={{ color: "red" }}>Passwords Dont Match!</error>
+                                        )}
                                         <input className="btn btn-info btn-block my-4" type="submit" value="Register" />
                                     </form>
 
                                     <Link to="/login">Already have an account?</Link>
+                                    {error && (
+                                        <error style={{color: "red"}}>The username already exists!</error>
+                                    )}
                                 </div>
                             </div>
                         </div>
