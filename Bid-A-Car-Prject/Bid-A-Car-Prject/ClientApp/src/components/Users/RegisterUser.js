@@ -5,14 +5,14 @@ import { Link, useHistory } from 'react-router-dom'
 import { Footer } from '../PageLayout/Footer'
 
 export function RegisterUser(props) {
-    const [statusCode, setStatusCode] = useState(0)
-    const [response, setResponse] = useState([])
+    const [ setStatusCode] = useState(0)
+    const [ setResponse] = useState([])
     const history = useHistory()
     const [userName, setUserName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [waiting, setWaiting] = useState(false)
+    const [ setWaiting] = useState(false)
     const [error, setError] = useState('')
     const [passwordError, setPasswordError] = useState('')
    
@@ -59,7 +59,7 @@ export function RegisterUser(props) {
                 }
             }
         ).then((response) => {
-            if (response.data.status === 'created') console.log(response)
+            if (response.data.status === 'created') console.log(response.data.statusCode)
             setWaiting(false)
             setResponse(response.data)
             setStatusCode(response.status)

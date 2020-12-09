@@ -1,17 +1,17 @@
 ﻿import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link,   useHistory } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { NavMenu } from "../NavMenu";
 
 
 function GetListings(props) {
   
   
-    let history = useHistory();
+    
   // Configure our state, and our setState standin methods.
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
-    const [waiting, setWaiting] = useState();
+    const [ setWaiting] = useState();
     function deleteListing (id) {
        
         setWaiting(true);
@@ -63,17 +63,17 @@ function GetListings(props) {
               <h6 className=" card-subtitle mb-2 text-muted">Kilometers:   {product.kilometers}
               </h6>
 
-              <div class="btn-toolbar">
+              <div className="btn-toolbar">
                 
-                <Link class="button-view" to={"/edit-listing/" + product.id}>
+                <Link className="button-view" to={"/edit-listing/" + product.id}>
                   Edit
                 </Link>
-                <Link
-                  class="button-view"
+                <button
+                  className="button-view"
                   onClick={(id) => deleteListing(product.id)}
                 >
                   Delete
-                </Link>
+                </button>
               </div>
               <hr />
                     </div>

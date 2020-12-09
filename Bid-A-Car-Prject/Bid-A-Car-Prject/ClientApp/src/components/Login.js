@@ -4,7 +4,6 @@ import axios from "axios";
 import { useAuth } from "../context/Auth.js";
 import { NavMenuLogin } from "./PageLayout/NavMenuLogin.js";
 import { Footer } from "./PageLayout/Footer";
-import { NavMenu } from "./NavMenu.js";
 
 
 /**********************************************************************************************************

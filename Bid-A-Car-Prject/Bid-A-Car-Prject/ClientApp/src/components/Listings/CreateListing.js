@@ -71,7 +71,7 @@ function CreateListing(props) {
             setWaiting(false);
             setResponse(response.data);
             setStatusCode(response.status);
-            history.push('/message-confirmation');
+            history.push('/get-listings');
         }).catch((err) => {
             setWaiting(false);
             setResponse(err.response.data);
@@ -114,11 +114,11 @@ function CreateListing(props) {
                                         </div>
                                         <div className="form-group">
                                             <label className="sr-only" htmlFor="userID">User ID</label>
-                                            <input type="number" className="form-control" placeholder="User ID" id="userID" onChange={handleFieldChange} required/>
+                                            <input type="number" className="form-control" placeholder="User ID" id="userID" onChange={handleFieldChange} />
                                         </div>
                                         <div className="form-group">
                                             <label className="sr-only" htmlFor="description">Description</label>
-                                            <textarea type="text" className="form-control" placeholder="Description" id="description" onChange={handleFieldChange} re />
+                                            <textarea type="text" className="form-control" placeholder="Description" id="description" onChange={handleFieldChange} required/>
                                         </div>
 
                                         <input type="submit" value="Add Lisitng" className="btn btn-info btn-block my-4" />
