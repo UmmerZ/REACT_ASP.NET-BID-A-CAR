@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { NavMenuLogin } from '../PageLayout/NavMenuLogin'
 import { Link, useHistory } from 'react-router-dom'
+import { Footer } from '../PageLayout/Footer'
 
 export function RegisterUser(props) {
     const [statusCode, setStatusCode] = useState(0)
@@ -12,6 +13,10 @@ export function RegisterUser(props) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [waiting, setWaiting] = useState(false)
+    const [error, setError] = useState('')
+   
+ 
+  
 
     function handleChange(event) {
         switch (event.target.id) {
@@ -32,7 +37,9 @@ export function RegisterUser(props) {
     //this axios call will register a user on the database
     function handleSubmit(event) {
         event.preventDefault()
-        setWaiting(true)
+        if (userName < 6) {
+         error = "Username is shorter than 6 charectors"}
+            setWaiting(true)
         axios(
             {
                 method: 'post',
@@ -58,11 +65,12 @@ export function RegisterUser(props) {
             setStatusCode(err.response.status)
         })
     }
+ 
 
     return (
         <>
             <NavMenuLogin />
-         
+            <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Register Yourself</h1>
             <section id="cover" className="min-vh-100">
                 <div id="cover-caption">
                     <div className="container">
@@ -70,8 +78,6 @@ export function RegisterUser(props) {
                             <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
                                 <h1 className="display-4 py-2 text-truncate"></h1>
                                 <div className="px-2">
-
-                                    <p>{waiting ? 'Awaiting response...' : `Response recieved ${statusCode}: ${JSON.stringify(response)}`}</p>
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <label className="sr-only">UserName</label>
@@ -84,7 +90,7 @@ export function RegisterUser(props) {
                                                 required
                                             />
                                         </div>
-
+                                        <p>{error}</p>
                                         <div className="form-group">
                                             <label className="sr-only">Email</label>
                                             <input
@@ -130,6 +136,7 @@ export function RegisterUser(props) {
                     </div>
                 </div>
             </section>
+            <Footer />
         </>
     )
 }

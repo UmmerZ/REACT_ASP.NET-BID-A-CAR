@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { NavMenu } from '../NavMenu';
 import { useHistory } from 'react-router-dom';
+import { Footer } from '../PageLayout/Footer';
 
 
 function CreateListing(props) {
@@ -81,13 +82,13 @@ function CreateListing(props) {
     return (
         <>
             <NavMenu />
+            <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Create A Listing</h1>
             <section id="cover" className="min-vh-100">
                 <div id="cover-caption">
 
                     <div className="container">
                         <div className="row text-white">
                             <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                                <h1 className="display-5 py-2 ">Create A Listing</h1>
                                 <p>{waiting ? 'Listing has been Posted' : ' '}</p>
                                 <div className="px-2">
                                     <form onSubmit={handleSubmit} className="justify-content-center">
@@ -120,7 +121,7 @@ function CreateListing(props) {
                                             <textarea type="text" className="form-control" placeholder="Description" id="description" onChange={handleFieldChange} />
                                         </div>
 
-                                        <input type="submit" value="Add Lisitng" className="btn btn-primary btn-lg" />
+                                        <input type="submit" value="Add Lisitng" className="btn btn-info btn-block my-4" />
                                     </form>
                                 </div>
                             </div>
@@ -128,7 +129,7 @@ function CreateListing(props) {
                     </div>
                 </div>
             </section>
-
+          <Footer />
         </>
     );
 }

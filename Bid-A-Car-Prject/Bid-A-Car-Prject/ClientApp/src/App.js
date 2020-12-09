@@ -30,7 +30,7 @@ function App(props) {
     
         return (
            <>
-                 <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+                <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
                     <Router>
                         <Switch>
                 <PrivateRoute exact path='/' component={Home} />

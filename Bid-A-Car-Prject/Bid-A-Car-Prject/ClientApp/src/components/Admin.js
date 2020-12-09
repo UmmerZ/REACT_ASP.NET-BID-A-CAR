@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../context/Auth";
+import { NavMenu } from "./NavMenu";
 
 
 /**********************************************************************************************************
@@ -9,7 +10,8 @@ import { useAuth } from "../context/Auth";
 
 function Admin(props) {
     const { setAuthTokens } = useAuth();
-    
+
+    // this action will clear the token from the local storage that means user is no longer authenticated
    function logOut() {
        setAuthTokens();
        localStorage.clear("tokens");
@@ -19,9 +21,11 @@ function Admin(props) {
     }
 
     return (
-        <div>
-            <div>Admin Page</div>
-            <button  onClick={logOut}>Log out</button>
+        <div className="welcome-users">
+            <NavMenu />
+            <h1 className="welcome">Are you Sure</h1>
+            <h2 className="h2-line">Click below to Proceed...</h2>
+            <button className= "a" onClick={logOut}>Yes I want to Logout!</button>
         </div>
     );
 }

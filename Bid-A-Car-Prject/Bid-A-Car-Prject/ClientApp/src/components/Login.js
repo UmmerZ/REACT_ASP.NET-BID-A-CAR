@@ -1,9 +1,10 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, { useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/Auth.js";
 import { NavMenuLogin } from "./PageLayout/NavMenuLogin.js";
 import { Footer } from "./PageLayout/Footer";
+import { NavMenu } from "./NavMenu.js";
 
 
 /**********************************************************************************************************
@@ -48,8 +49,7 @@ function Login(props) {
                 console.log(result);
                 if (result.status === 200) {
                     setAuthTokens(result.data);
-                    setUser('user', result.data);
-                    localStorage.setItem('user', result.userName);
+
                     console.log(result);
                     console.log(result.data);
                     setLoggedIn(true);
@@ -62,7 +62,6 @@ function Login(props) {
                 console.log(err);
             });
     }
-    console.log(setLoggedIn);
     let referer;
     if (props.location.state !== undefined) {
         referer = props.location.state.referer;
@@ -77,6 +76,7 @@ function Login(props) {
     return (
         <>
             <NavMenuLogin />  
+            <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Welcome to Bid-A-Car</h1>
             <section id="cover" className="min-vh-100">
             <div id="cover-caption">
                 <div className="container">
@@ -114,8 +114,9 @@ function Login(props) {
                     </div>
                 </div>
                 </div>
-                <Footer />
-                </section>
+               
+            </section>
+            <Footer />
 </>
     );
 }

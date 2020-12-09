@@ -53,7 +53,7 @@ function GetListings(props) {
               </h6>
               <h6 className=" card-subtitle mb-2 text-muted">Year: {product.year}
               </h6>
-              <p class="card-text">Description: 
+              <p className="card-text">Description: 
                 {product.description}
               </p>
               <h6 className=" card-subtitle mb-2 text-muted">Price: {product.price}
@@ -106,7 +106,7 @@ function GetListings(props) {
   return (
       <div className="">
           <NavMenu />
-          <h1 className="shadow p-3 mb-5 bg-dark rounded text-white ">Listings</h1>
+          <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Listings</h1>
           <h2> {(vehicles === 0) ? "No Listing Available" : "Current Listings"}</h2>
       {contents}
       <hr />
