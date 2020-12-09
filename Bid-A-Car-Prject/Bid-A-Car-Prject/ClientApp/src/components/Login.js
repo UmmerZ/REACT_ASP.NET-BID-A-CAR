@@ -49,8 +49,7 @@ function Login(props) {
                 console.log(result);
                 if (result.status === 200) {
                     setAuthTokens(result.data);
-                    console.log(result);
-                    console.log(result.data);
+                    
                     setLoggedIn(true);
                 } else {
                     setIsError(true);
@@ -58,7 +57,7 @@ function Login(props) {
             })
             .catch(err => {
                 setIsError(true);
-                console.log(err);
+                
             });
     }
     let referer;
