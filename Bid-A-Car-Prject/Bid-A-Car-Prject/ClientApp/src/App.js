@@ -16,6 +16,7 @@ import { UserProfile } from './components/Users/UserProfile';
 import  PrivateRoute  from './components/PrivateRoute';
 import Admin from './components/Admin';
 import { WelcomeUsers } from './components/PageLayout/WelcomeUser';
+import { ConfirmListing } from './components/Listings/ListingConfomration';
 
 
 
@@ -43,6 +44,7 @@ function App(props) {
                         <PrivateRoute path='/get-listings' component={GetListings} />
                             <PrivateRoute path='/create-listing' component={CreateListing} />
                             <PrivateRoute path='/admin' component={Admin} />
+                            <PrivateRoute path='/message-confirmation' component={ConfirmListing} />
                             </Switch>
                     </Router>
                     

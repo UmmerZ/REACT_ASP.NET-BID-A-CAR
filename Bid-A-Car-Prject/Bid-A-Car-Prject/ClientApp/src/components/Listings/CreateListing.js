@@ -71,7 +71,7 @@ function CreateListing(props) {
             setWaiting(false);
             setResponse(response.data);
             setStatusCode(response.status);
-            history.push('/get-listings');
+            history.push('/message-confirmation');
         }).catch((err) => {
             setWaiting(false);
             setResponse(err.response.data);
