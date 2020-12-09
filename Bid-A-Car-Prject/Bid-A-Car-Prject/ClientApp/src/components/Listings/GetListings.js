@@ -44,7 +44,7 @@ function GetListings(props) {
       return (
           <>
               
-      <div className="card-body" >
+              <div className="card-body" style={{width:"18rem"}} >
         {vehicles.map(product => {
             return (
                 

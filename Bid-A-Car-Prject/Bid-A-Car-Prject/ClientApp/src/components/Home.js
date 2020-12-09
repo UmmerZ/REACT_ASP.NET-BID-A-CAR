@@ -75,10 +75,11 @@ export function Home(props) {
     return (
         <div className="text-center">
             <NavMenu />
-           
+            
             <div>
                 <img src={require('./images/website_logo.jpg')} alt = "bid a car logo"/>
             </div>
+            <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Current Listings</h1>
             <div>
                 {contents}
             </div>

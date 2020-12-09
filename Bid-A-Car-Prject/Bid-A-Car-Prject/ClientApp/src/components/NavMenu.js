@@ -28,8 +28,8 @@ export class NavMenu extends Component {
 
   render () {
     return (
-      <header >
-        <Navbar className="navbar-expand-sm navbar-dark navbar-toggleable-sm ng-white border-bottom box-shadow mb-3 bg-dark" >
+      <header className= "mb-0">
+        <Navbar className="navbar-expand-sm navbar-dark navbar-toggleable-sm ng-white border-bottom box-shadow mh-100 bg-dark" >
                 <Container className="bg-dark">
                     <NavbarBrand className= ""tag={Link} to="/"></NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2 bg-dark" />
@@ -47,8 +47,7 @@ export class NavMenu extends Component {
 
                             <NavItem>
                                 <NavLink tag={Link} className="text-light bg-dark" to="/admin" onClick={this.logOut}>Log Out</NavLink>
-                            </NavItem>
-                            
+                            </NavItem>          
                           
               </ul>
             </Collapse>

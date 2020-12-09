@@ -29,6 +29,9 @@ class EditListing extends React.Component {
            
         }
     }
+    /*****************************************************************************************************
+     * Warren help with this axios method as path was not routed properly as I struggled with this function
+     * ************************************************************************************************/
     componentDidMount() {
         console.log(this.props.match.params)
         axios.get('https://localhost:44314/VehicleAPI/ByID?id=' + this.props.match.params.id)
@@ -47,13 +50,9 @@ class EditListing extends React.Component {
             .catch(function (error) {
                
                 if (error.response) {
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
+                    console.log(error.config);
                 } 
-                console.log(error.config);
+                
             })
     }
 
@@ -121,6 +120,7 @@ class EditListing extends React.Component {
         return (
            <>
                 <NavMenu />
+                <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Create A Listing</h1>
                 <section id="cover" className="min-vh-100">
                     <div id="cover-caption">
                         <div className="container">

@@ -1,12 +1,9 @@
 ﻿using Bid_A_Car_Prject.Controllers;
 using Bid_A_Car_Project.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Bid_A_Car_Project.Controllers
 {
@@ -86,7 +83,9 @@ namespace Bid_A_Car_Project.Controllers
 				throw new Exception($"Sorry! {e.Message}");
 			}
 		}
-
+		/******************************************************************************************
+		 will be used in future for my bidding purpose
+		 ****************************************************************************************/
 		[HttpPost("Bid")]
 		public ActionResult<Transaction> CreateTransaction_POST(string sellerID, string buyerID, string numberOfBids, string saleAmount)
 		{

@@ -15,6 +15,7 @@ export function RegisterUser(props) {
     const [waiting, setWaiting] = useState(false)
     const [error, setError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+   
 
    
  
@@ -42,7 +43,9 @@ export function RegisterUser(props) {
         event.preventDefault()
         if (password !== confirmPassword) {
             setPasswordError(true)
+            return
         }
+       
             setWaiting(true)
         axios(
             {
@@ -92,8 +95,9 @@ export function RegisterUser(props) {
                                                 placeholder="User Name"
                                                 id="userName"
                                                 onChange={handleChange}
-                                                required
+                                              required  
                                             />
+                                            
                                         </div>
                                         <div className="form-group">
                                             <label className="sr-only">Email</label>

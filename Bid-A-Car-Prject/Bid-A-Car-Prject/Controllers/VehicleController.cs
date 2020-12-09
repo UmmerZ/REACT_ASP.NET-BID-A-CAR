@@ -62,37 +62,7 @@ namespace Bid_A_Car_Project.Controllers
 
         using (SaleContext context = new SaleContext())
         {
-                if (make == null )
-                {
-                    return StatusCode(401);   
-                }
-                if (model == null)
-                {
-                    return StatusCode(401);
-                }
-                if (kms == null)
-                {
-                    return StatusCode(401);
-                }
-                if (year == null)
-                {
-                    return StatusCode(401);
-                }
-                if (description == null)
-                {
-                    return StatusCode(401);
-                }
-                if (userID == null)
-                {
-                    return StatusCode(401);
-                }
-                if (price == null)
-                {
-                    return StatusCode(401);
-                }
-                else
-                {
-                    Vehicle newListing = new Vehicle()
+                Vehicle newListing = new Vehicle()
                     {
 
                         Make = make.Trim(),
@@ -108,7 +78,7 @@ namespace Bid_A_Car_Project.Controllers
                     context.Vehicles.Add(newListing);
                     context.SaveChanges();
                     return newListing;
-                }
+                
               
         }
         

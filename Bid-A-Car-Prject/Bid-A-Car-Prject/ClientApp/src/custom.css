@@ -26,18 +26,24 @@ code {
         text-decoration: none;
        
     }
-
+.heading-title {
+    background-color: #32b1b5;
+    margin: 0;
+    text-align : center;
+    height: 80px;
+    padding-top: 17px;
+}
     
  
 #cover {
-     background-color: #fff;
+     background-color: #f3eded;
     background-size: cover;
     height: 100%;
     text-align: center;
     display: flex;
     align-items: center;
-    
-    margin-top: -10px;
+   vertical-align: top;
+   margin-top: -50px;
 }
 
 #cover-caption {
@@ -62,9 +68,8 @@ form:before {
     z-index: -1;
   
 }
-.card {
-    width: 18rem;
-}
+
+
 footer {
     position: relative;
     bottom: 0;
