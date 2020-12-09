@@ -107,7 +107,7 @@ function Login(props) {
             </form>
             <Link to="/signup">Don't have an account?</Link>
             {isError && (
-                <error>The username or password provided were incorrect!</error>
+                                        <error style={{ color: "red" }}>The username or password provided were incorrect!</error>
                                 )}
                             </div>
                         </div>

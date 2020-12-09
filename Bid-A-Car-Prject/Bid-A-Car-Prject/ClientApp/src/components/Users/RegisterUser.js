@@ -15,7 +15,7 @@ export function RegisterUser(props) {
     const [waiting, setWaiting] = useState(false)
     const [error, setError] = useState('')
     const [passwordError, setPasswordError] = useState('')
-    const [userError, setUserError] = useState('')
+
    
  
   
@@ -34,6 +34,7 @@ export function RegisterUser(props) {
             case 'confirmPassword':
                 setConfirmPassword(event.target.value)
                 break
+            
         }
     }
     //this axios call will register a user on the database
@@ -94,9 +95,6 @@ export function RegisterUser(props) {
                                                 required
                                             />
                                         </div>
-                                        {userError && (
-                                            <error style={{ color: "red" }}>User Name should be at least 6 charectors</error>
-                                        )}
                                         <div className="form-group">
                                             <label className="sr-only">Email</label>
                                             <input

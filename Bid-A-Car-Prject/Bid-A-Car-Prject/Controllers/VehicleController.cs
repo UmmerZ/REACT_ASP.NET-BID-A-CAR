@@ -56,29 +56,60 @@ namespace Bid_A_Car_Project.Controllers
 
        
     
-    public Vehicle CreateListing( string make, string model, string kms, string year, string description, string userID, string price )
+    public ActionResult<Vehicle> CreateListing( string make, string model, string kms, string year, string description, string userID, string price )
     {
         //Adds new Listing to the Database
 
         using (SaleContext context = new SaleContext())
         {
-                Vehicle newListing = new Vehicle()
+                if (make == null )
                 {
-                    
-                   
-                    Make = make.Trim(),
-                    Model = model.Trim(),
-                    Kilometers = int.Parse(kms),
-                    Year = int.Parse(year),
-                    Description = description.Trim(),
-                    UserID = int.Parse(userID),
-                    IsSold = false,
-                    Price = int.Parse(price)
+                    return StatusCode(401);   
+                }
+                if (model == null)
+                {
+                    return StatusCode(401);
+                }
+                if (kms == null)
+                {
+                    return StatusCode(401);
+                }
+                if (year == null)
+                {
+                    return StatusCode(401);
+                }
+                if (description == null)
+                {
+                    return StatusCode(401);
+                }
+                if (userID == null)
+                {
+                    return StatusCode(401);
+                }
+                if (price == null)
+                {
+                    return StatusCode(401);
+                }
+                else
+                {
+                    Vehicle newListing = new Vehicle()
+                    {
 
-                };
-            context.Vehicles.Add(newListing);
-             context.SaveChanges();
-            return newListing;
+                        Make = make.Trim(),
+                        Model = model.Trim(),
+                        Kilometers = int.Parse(kms),
+                        Year = int.Parse(year),
+                        Description = description.Trim(),
+                        UserID = int.Parse(userID),
+                        IsSold = false,
+                        Price = int.Parse(price)
+
+                    };
+                    context.Vehicles.Add(newListing);
+                    context.SaveChanges();
+                    return newListing;
+                }
+              
         }
         
     }

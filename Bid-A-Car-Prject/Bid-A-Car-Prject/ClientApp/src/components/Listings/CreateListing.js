@@ -7,7 +7,7 @@ import { Footer } from '../PageLayout/Footer';
 
 function CreateListing(props) {
     const [statusCode, setStatusCode] = useState(0);
-    const [response, setResponse] = useState([]);
+    const [ setResponse] = useState([]);
     const [make, setMake] = useState('');
     const [model, setModel] = useState('');
     const [kms, setKms] = useState('');
@@ -16,6 +16,7 @@ function CreateListing(props) {
     const [userID, setUserID] = useState('');
     const [price, setPrice] = useState('');
     const history = useHistory();
+    const [error, setError] = useState('');
 
 
     const [waiting, setWaiting] = useState(false);
@@ -48,6 +49,9 @@ function CreateListing(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
+        if (make === "" || model === "" || kms === "" || year === "" || description === "" || userID === "" || price === "") {
+            setError(true)
+        }
         setWaiting(true);
 
         axios(
@@ -74,6 +78,7 @@ function CreateListing(props) {
             history.push('/get-listings');
         }).catch((err) => {
             setWaiting(false);
+            setError(true);
             setResponse(err.response.data);
             setStatusCode(err.response.status);
         });
@@ -120,7 +125,9 @@ function CreateListing(props) {
                                             <label className="sr-only" htmlFor="description">Description</label>
                                             <textarea type="text" className="form-control" placeholder="Description" id="description" onChange={handleFieldChange} />
                                         </div>
-
+                                        {error && (
+                                            <error style={{ color: "red" }}>Fields cannot be blank!</error>
+                                        )}
                                         <input type="submit" value="Add Lisitng" className="btn btn-info btn-block my-4" />
                                     </form>
                                 </div>
