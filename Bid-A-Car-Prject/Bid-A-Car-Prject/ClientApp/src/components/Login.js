@@ -16,7 +16,7 @@ function Login(props) {
     const [isError, setIsError] = useState(false);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser]         =  useState("")
+    
     const { setAuthTokens } = useAuth();
 
     function handleChange(event) {
@@ -33,7 +33,8 @@ function Login(props) {
   
 
    function postLogin(e)  {
-        e.preventDefault();
+       e.preventDefault();
+    
        axios
            (
                {
@@ -49,7 +50,6 @@ function Login(props) {
                 console.log(result);
                 if (result.status === 200) {
                     setAuthTokens(result.data);
-
                     console.log(result);
                     console.log(result.data);
                     setLoggedIn(true);

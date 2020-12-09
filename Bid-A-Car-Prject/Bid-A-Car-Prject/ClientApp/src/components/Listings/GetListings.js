@@ -27,8 +27,10 @@ function GetListings(props) {
 
         ).then(response => {
             console.log(response)
-            if (response.data.status === 200) {
-                history.push("/get-listings");
+
+            //this will refresh the list when delete button on that vehicle is pressed.
+            if (response.data != null) {
+                setVehicles(vehicles.filter(product => product.id !== id));
             }
             
         }   ).catch(error => {
@@ -106,8 +108,8 @@ function GetListings(props) {
   return (
       <div className="">
           <NavMenu />
-          <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">Listings</h1>
-          <h2> {(vehicles === 0) ? "No Listing Available" : "Current Listings"}</h2>
+          <h1 className="shadow p-3 mb-5 bg-dark rounded text-white text-center ">My Listings</h1>
+          <h2> {(vehicles === 0) ? "No Listing Available" : "My Current Listings"}</h2>
       {contents}
       <hr />
       <button

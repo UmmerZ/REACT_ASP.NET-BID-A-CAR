@@ -67,7 +67,7 @@ class UserProfile extends React.Component {
                 console.log(error.config);
             })
     }
-
+  
    name = (e) => {
         this.setState({
             name: e.target.value
@@ -116,7 +116,7 @@ class UserProfile extends React.Component {
             method: 'put',
             url: 'VehicleAPI/UpdateListing',
             params: {
-                userID: 2,
+                userID: this.state.id,
                 name: this.state.name,
                 userName: this.state.userName,
                 password: this.state.password,
