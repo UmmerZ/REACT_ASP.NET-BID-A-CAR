@@ -155,7 +155,7 @@ class EditListing extends React.Component {
                                                 <input name="price" type="number" className="form-control mb-4" value={this.state.price} onChange={this.price} />
                                             </div>
                   
-                    <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Save Changes" />
+                    <input className="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Save Changes" />
                     <Link to="/get-listings" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" value="Cancel">Cancel</Link>
                 </form>
                                     </div>

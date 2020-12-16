@@ -14,7 +14,7 @@ function GetListings(props) {
     const [ setWaiting] = useState();
     function deleteListing (id) {
        
-        setWaiting(true);
+     
         
         axios ({
             method: 'delete',

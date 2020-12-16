@@ -49,7 +49,7 @@ function Login(props) {
                 console.log(result);
                 if (result.status === 200) {
                     setAuthTokens(result.data);
-                    
+                    console.log(result.data)
                     setLoggedIn(true);
                 } else {
                     setIsError(true);

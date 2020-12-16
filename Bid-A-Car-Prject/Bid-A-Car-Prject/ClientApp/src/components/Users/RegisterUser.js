@@ -5,17 +5,16 @@ import { Link, useHistory } from 'react-router-dom'
 import { Footer } from '../PageLayout/Footer'
 
 export function RegisterUser(props) {
-    const [ setStatusCode] = useState(0)
-    const [ setResponse] = useState([])
+    const [statusCode, setStatusCode] = useState(0)
+    const [response, setResponse] = useState([])
     const history = useHistory()
     const [userName, setUserName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [ setWaiting] = useState(false)
+    const [waiting, setWaiting] = useState(false)
     const [error, setError] = useState('')
     const [passwordError, setPasswordError] = useState('')
-   
 
    
  
@@ -42,11 +41,10 @@ export function RegisterUser(props) {
     function handleSubmit(event) {
         event.preventDefault()
         if (password !== confirmPassword) {
-            setPasswordError(true)
+            setPasswordError(true);
             return
         }
-       
-            setWaiting(true)
+ 
         axios(
             {
                 method: 'post',
@@ -59,7 +57,7 @@ export function RegisterUser(props) {
                 }
             }
         ).then((response) => {
-            if (response.data.status === 'created') console.log(response.data.statusCode)
+            if (response.data.status === 'created') console.log(response)
             setWaiting(false)
             setResponse(response.data)
             setStatusCode(response.status)
@@ -67,10 +65,9 @@ export function RegisterUser(props) {
             //this will redirect users to welcome-users page after successful creation
             history.push('/welcome-users')
         }).catch((err) => {
-            setWaiting(false)
+            setPasswordError(true);
             setError(true);
-            setResponse(err.response.data)
-            setStatusCode(err.response.status)
+            
         })
     }
  
@@ -95,9 +92,8 @@ export function RegisterUser(props) {
                                                 placeholder="User Name"
                                                 id="userName"
                                                 onChange={handleChange}
-                                              required  
+                                                required
                                             />
-                                            
                                         </div>
                                         <div className="form-group">
                                             <label className="sr-only">Email</label>
