@@ -1,15 +1,9 @@
 # capstone-project-northark
 capstone-project-northark created by GitHub Classroom
-# trello Link: https://trello.com/b/pmRlOCyR/capstone-project-northark
 
-Citations: 
-https://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
 
-https://www.youtube.com/watch?v=eJyZ7k6lWfE
 
-most of my code is borrowed from inclass practices as my entire code was based on Entity framework.(James Grieve)
 
-#Documentaion: 
                                             Capstone Project by North Ark
 
 
@@ -142,13 +136,8 @@ Some validation was clashing with the back end so I had to get rid of them for t
 
 Bid Feature: as I couldn't figure out the state of username so It was useless to have a bidding feature on my project. So I will have to figure out the logic of how to persist the state of the username so that user information can be saved.
 
-wire frames which I used for this project are included in the folder with the project.
 
-#what I learned:
 
-As of now I feel like the amount of research I have done on react js which by the way is my favorite language gave me immense confindence, the biggest take away from this project with authentication I had no clue in the begining of the project that I could even attempt user authentication.
-
-On the backend side I have achieved immense command over creating API and what kind of information should be sent to the request. which makes most of the web right  now. The reason I choose React js with asp.net core is because there is lot of demand for developers for that.  After doing this project I feel confident that I can start my journey of web development.
 
 
 
