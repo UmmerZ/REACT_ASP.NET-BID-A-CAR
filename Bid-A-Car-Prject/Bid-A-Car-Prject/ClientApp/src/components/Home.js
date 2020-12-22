@@ -9,12 +9,9 @@ export function Home(props) {
 
     const [vehicles, setVehicles] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [bid, setBid] = useState(vehicles.map(product => { product.price * .75 }));
+   
     
-    function increment(e) {
-        e.preventDefault();
-      setBid( +1);
-    }
+   
 
     // Build the table based on forecast data.
     function renderProductsTable(vehicles) {
@@ -39,7 +36,7 @@ export function Home(props) {
                                 <p className="card-text"><strong>Description:
                 </strong>{product.description}
                                 </p>
-                                <button onClick={increment}>{bid}</button>
+                                <button></button>
                                   
                                 <hr />
                             </div>
